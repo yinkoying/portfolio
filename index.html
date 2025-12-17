@@ -64,54 +64,20 @@
                 { id: 9, title: "AI 人工智慧人才養成基礎班", organization: "勞動部產業人才投資", category: "AI" }
             ];
 
-            // 注意：將 image 連結改為您的 GitHub 圖片路徑，例如: "./images/project-ecologic.jpg"
             const projects = [
-                {
-                    id: 'p1', type: 'personal', title: "EcoLogic 專案", link: "https://ecoshane.github.io/ecologic/", tags: ["ESG", "Carbon Calc"],
-                    description: "結合原有碳排計算系統，擴充並提早應對 HRDD 風險。",
-                    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800"
-                },
-                {
-                    id: 'p2', type: 'personal', title: "S-Quant", link: "https://ecoshane.github.io/s-quant/", tags: ["AI", "Social Impact"],
-                    description: "AI 驅動的社會績效量化平台。以參加 2026 Google Solution Challenge 為目標。",
-                    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800"
-                },
-                {
-                    id: 'p3', type: 'personal', title: "115年度 ESG 評鑑自評系統", link: "https://ecoshane.github.io/esgeva/115", tags: ["ESG", "Evaluation"],
-                    description: "提供給上市櫃公司填報人員練習。",
-                    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800"
-                },
-                {
-                    id: 't1', type: 'team', title: "BlinkAI", link: "https://ecoshane.github.io/BlinkAI/", tags: ["AI", "Fan Engagement"],
-                    description: "為 BLACKPINK 粉絲互動參與而生的專精 AI 平台（客服後端已移除）。",
-                    image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&q=80&w=800"
-                },
-                {
-                    id: 't2', type: 'team', title: "Ecoshane Bank", link: "https://ecoshane.github.io/bank/", tags: ["FinTech", "Green Loan"],
-                    description: "將 HRDD 納入銀行綠色連結貸款之永續績效項目。",
-                    image: "https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?auto=format&fit=crop&q=80&w=800"
-                },
-                {
-                    id: 't3', type: 'team', title: "Ecoshane 永續家", link: "https://ecoshane.github.io/esg/", tags: ["ESG", "HRDD"],
-                    description: "提供量化 HRDD 的方法論。",
-                    image: "https://images.unsplash.com/photo-1542601906990-b4d3fb7d5fa5?auto=format&fit=crop&q=80&w=800"
-                },
-                {
-                    id: 't4', type: 'team', title: "永續數據 AI 轉換平台", link: "https://ecoshane.github.io/esg/data.html", tags: ["AI", "Data"],
-                    description: "結合原有碳排計算系統，擴充並提早應對 HRDD 風險。",
-                    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800"
-                },
-                {
-                    id: 't5', type: 'team', title: "搶票系統 API", link: "https://ecoshane.github.io/tixcraft/api.html", tags: ["API", "Microservices"],
-                    description: "瞭解微服務架構與 API 設計基礎。",
-                    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=800"
-                }
+                { id: 'p1', type: 'personal', title: "EcoLogic 專案", link: "https://ecoshane.github.io/ecologic/", tags: ["ESG", "Carbon Calc"], description: "結合原有碳排計算系統，擴充並提早應對 HRDD 風險。", image: "images/ecologic.jpg" },
+                { id: 'p2', type: 'personal', title: "S-Quant", link: "https://ecoshane.github.io/s-quant/", tags: ["AI", "Social Impact"], description: "AI 驅動的社會績效量化平台。以參加 2026 Google Solution Challenge 為目標。", image: "images/s-quant.jpg" },
+                { id: 'p3', type: 'personal', title: "115年度 ESG 評鑑自評系統", link: "https://ecoshane.github.io/esgeva/115", tags: ["ESG", "Evaluation"], description: "提供給上市櫃公司填報人員練習。", image: "images/esg-eval.jpg" },
+                { id: 't1', type: 'team', title: "BlinkAI", link: "https://ecoshane.github.io/BlinkAI/", tags: ["AI", "Fan Engagement"], description: "為 BLACKPINK 粉絲互動參與而生的專精 AI 平台（客服後端已移除）。", image: "images/blinkai.jpg" },
+                { id: 't2', type: 'team', title: "Ecoshane Bank", link: "https://ecoshane.github.io/bank/", tags: ["FinTech", "Green Loan"], description: "將 HRDD 納入銀行綠色連結貸款之永續績效項目。", image: "images/ecoshane-bank.jpg" },
+                { id: 't3', type: 'team', title: "Ecoshane 永續家", link: "https://ecoshane.github.io/esg/", tags: ["ESG", "HRDD"], description: "提供量化 HRDD 的方法論。", image: "images/ecoshane-home.jpg" },
+                { id: 't4', type: 'team', title: "永續數據 AI 轉換平台", link: "https://ecoshane.github.io/esg/data.html", tags: ["AI", "Data"], description: "結合原有碳排計算系統，擴充並提早應對 HRDD 風險。", image: "images/ai-platform.jpg" },
+                { id: 't5', type: 'team', title: "搶票系統 API", link: "https://ecoshane.github.io/tixcraft/api.html", tags: ["API", "Microservices"], description: "瞭解微服務架構與 API 設計基礎。", image: "images/ticket-api.jpg" }
             ];
 
             const filteredCertifications = activeCredentialTab === 'all' ? certifications : certifications.filter(c => c.category === activeCredentialTab);
             const filteredTrainings = activeCredentialTab === 'all' ? trainings : trainings.filter(t => t.category === activeCredentialTab);
             const filteredProjects = activeProjectTab === 'all' ? projects : projects.filter(p => p.type === activeProjectTab);
-
             const credentialTabs = [{ id: 'all', label: '全部' }, { id: 'AI', label: 'AI' }, { id: 'ESG', label: 'ESG' }, { id: 'Finance', label: '金融' }, { id: 'Tech', label: '資訊技術' }];
 
             return (
@@ -133,46 +99,19 @@
                     <header id="about" className="relative pt-28 pb-16 px-4 bg-gradient-to-br from-purple-900 via-indigo-900 to-purple-800 text-white overflow-hidden">
                         <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-purple-800/50 to-transparent"></div>
                         <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl"></div>
-                        
                         <div className="max-w-6xl mx-auto relative z-10">
                             <div className="flex flex-col md:flex-row items-center gap-12">
-                                {/* 個人區塊 - 佔比較大 */}
                                 <div className="flex-[1.5] text-center md:text-left space-y-6">
-                                    <h1 className="text-4xl md:text-6xl font-extrabold leading-tight tracking-tight">
-                                        殷可盈 <br/>
-                                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-200 to-pink-300">YIN, KOYING</span>
-                                    </h1>
-                                    <div className="text-lg text-purple-100 leading-relaxed space-y-2 max-w-xl mx-auto md:mx-0">
-                                        <p>專注於 AI 人工智慧與 ESG 永續發展的跨領域整合。</p>
-                                        <p className="opacity-90">致力於運用數據科學解決環境議題，為金融科技與綠色供應鏈創造價值。</p>
-                                    </div>
+                                    <h1 className="text-4xl md:text-6xl font-extrabold leading-tight tracking-tight">殷可盈 <br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-200 to-pink-300">YIN, KOYING</span></h1>
+                                    <div className="text-lg text-purple-100 leading-relaxed space-y-2 max-w-xl mx-auto md:mx-0"><p>專注於 AI 人工智慧與 ESG 永續發展的跨領域整合。</p><p className="opacity-90">致力於運用數據科學解決環境議題，為金融科技與綠色供應鏈創造價值。</p></div>
                                 </div>
-
-                                {/* 分隔線 (僅在桌面顯示) */}
                                 <div className="hidden md:block w-px h-64 bg-gradient-to-b from-transparent via-purple-400/30 to-transparent"></div>
-
-                                {/* 團隊區塊 - 佔比較小 */}
                                 <div className="flex-1 w-full md:w-auto">
                                     <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:bg-white/10 transition-colors group cursor-default">
-                                        <div className="flex items-center gap-3 mb-4 text-purple-200">
-                                            <UsersIcon size={24} className="group-hover:text-purple-300 transition-colors" />
-                                            <span className="font-bold tracking-wider uppercase text-sm">The Team</span>
-                                        </div>
+                                        <div className="flex items-center gap-3 mb-4 text-purple-200"><UsersIcon size={24} className="group-hover:text-purple-300 transition-colors" /><span className="font-bold tracking-wider uppercase text-sm">The Team</span></div>
                                         <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">Ecoshane</h2>
-                                        <p className="text-purple-100 text-sm leading-relaxed mb-4">
-                                            我們是一群致力於 AI 賦能永續的專業團隊。與我並肩作戰，提供全方位的 ESG 數位轉型解決方案，讓永續不再只是口號。
-                                        </p>
+                                        <p className="text-purple-100 text-sm leading-relaxed mb-4">我們是一群致力於 AI 賦能永續的專業團隊。與我並肩作戰，提供全方位的 ESG 數位轉型解決方案，讓永續不再只是口號。</p>
                                     </div>
-                                </div>
-                            </div>
-                            
-                            {/* 共用格言 */}
-                            <div className="mt-12 text-center">
-                                <div className="inline-block p-6 bg-white/10 backdrop-blur-sm border-t-4 border-purple-400 rounded-lg max-w-2xl">
-                                    <p className="italic text-purple-50 font-light text-lg">
-                                        "Data is the new oil, but Sustainability is the engine. <br/>
-                                        We build the AI to run it efficiently."
-                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -181,45 +120,21 @@
                     <section id="credentials" className="py-20 bg-white">
                         <div className="max-w-6xl mx-auto px-4">
                             <div className="flex flex-col md:flex-row justify-between items-end mb-8 gap-6">
-                                <div>
-                                    <div className="flex items-center gap-3 mb-2">
-                                        <div className="p-2 bg-purple-100 rounded-lg text-purple-700"><Award size={24} /></div>
-                                        <h2 className="text-3xl font-bold text-slate-800">專業資歷</h2>
-                                    </div>
-                                    <p className="text-slate-500 pl-14">Professional Credentials & Training</p>
-                                </div>
+                                <div><div className="flex items-center gap-3 mb-2"><div className="p-2 bg-purple-100 rounded-lg text-purple-700"><Award size={24} /></div><h2 className="text-3xl font-bold text-slate-800">專業資歷</h2></div><p className="text-slate-500 pl-14">Professional Credentials & Training</p></div>
                                 <div className="flex flex-wrap gap-2 bg-slate-50 p-1 rounded-lg border border-slate-200">
-                                    {credentialTabs.map((tab) => (
-                                        <button key={tab.id} onClick={() => setActiveCredentialTab(tab.id)} className={`px-3 py-1.5 rounded-md text-sm font-medium transition-all ${activeCredentialTab === tab.id ? 'bg-purple-600 text-white shadow-sm' : 'text-slate-600 hover:bg-slate-200'}`}>{tab.label}</button>
-                                    ))}
+                                    {credentialTabs.map((tab) => (<button key={tab.id} onClick={() => setActiveCredentialTab(tab.id)} className={`px-3 py-1.5 rounded-md text-sm font-medium transition-all ${activeCredentialTab === tab.id ? 'bg-purple-600 text-white shadow-sm' : 'text-slate-600 hover:bg-slate-200'}`}>{tab.label}</button>))}
                                 </div>
                             </div>
                             <div className="flex flex-col gap-8">
                                 {filteredCertifications.length > 0 && (
-                                    <div className="w-full animate-fadeIn">
-                                        <h3 className="text-lg font-bold text-slate-700 mb-4 flex items-center gap-2 border-b border-purple-100 pb-2"><CheckCircle size={18} className="text-purple-600" />專業證照</h3>
-                                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-                                            {filteredCertifications.map((cert) => (
-                                                <div key={cert.id} className="flex items-center p-3 rounded-lg border border-slate-100 bg-white hover:border-purple-200 hover:bg-purple-50/30 transition-all group">
-                                                    <div className="w-8 h-8 rounded-full bg-purple-50 text-purple-600 flex items-center justify-center shrink-0 mr-3 group-hover:bg-purple-100 transition-colors">{cert.icon}</div>
-                                                    <div className="overflow-hidden"><h4 className="font-bold text-slate-800 text-sm truncate" title={cert.title}>{cert.title}</h4><span className="text-xs text-slate-500 truncate block">{cert.issuer}</span></div>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </div>
+                                    <div className="w-full animate-fadeIn"><h3 className="text-lg font-bold text-slate-700 mb-4 flex items-center gap-2 border-b border-purple-100 pb-2"><CheckCircle size={18} className="text-purple-600" />專業證照</h3><div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+                                            {filteredCertifications.map((cert) => (<div key={cert.id} className="flex items-center p-3 rounded-lg border border-slate-100 bg-white hover:border-purple-200 hover:bg-purple-50/30 transition-all group"><div className="w-8 h-8 rounded-full bg-purple-50 text-purple-600 flex items-center justify-center shrink-0 mr-3 group-hover:bg-purple-100 transition-colors">{cert.icon}</div><div className="overflow-hidden"><h4 className="font-bold text-slate-800 text-sm truncate" title={cert.title}>{cert.title}</h4><span className="text-xs text-slate-500 truncate block">{cert.issuer}</span></div></div>))}
+                                    </div></div>
                                 )}
                                 {filteredTrainings.length > 0 && (
-                                    <div className="w-full animate-fadeIn">
-                                        <h3 className="text-lg font-bold text-slate-700 mb-4 flex items-center gap-2 border-b border-purple-100 pb-2"><BookOpen size={18} className="text-purple-600" />專業培訓</h3>
-                                        <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-                                            {filteredTrainings.map((train) => (
-                                                <div key={train.id} className="flex flex-col justify-center p-3 rounded-lg border border-slate-100 bg-slate-50 hover:bg-white hover:border-purple-200 hover:shadow-sm transition-all group h-full">
-                                                    <div className="mb-1"><span className="inline-block text-[10px] font-bold text-purple-700 bg-purple-50 px-1.5 py-0.5 rounded border border-purple-100">{train.organization}</span></div>
-                                                    <h4 className="font-medium text-slate-700 text-sm leading-snug group-hover:text-purple-700 transition-colors line-clamp-2" title={train.title}>{train.title}</h4>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </div>
+                                    <div className="w-full animate-fadeIn"><h3 className="text-lg font-bold text-slate-700 mb-4 flex items-center gap-2 border-b border-purple-100 pb-2"><BookOpen size={18} className="text-purple-600" />專業培訓</h3><div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                                            {filteredTrainings.map((train) => (<div key={train.id} className="flex flex-col justify-center p-3 rounded-lg border border-slate-100 bg-slate-50 hover:bg-white hover:border-purple-200 hover:shadow-sm transition-all group h-full"><div className="mb-1"><span className="inline-block text-[10px] font-bold text-purple-700 bg-purple-50 px-1.5 py-0.5 rounded border border-purple-100">{train.organization}</span></div><h4 className="font-medium text-slate-700 text-sm leading-snug group-hover:text-purple-700 transition-colors line-clamp-2" title={train.title}>{train.title}</h4></div>))}
+                                    </div></div>
                                 )}
                             </div>
                         </div>
@@ -228,13 +143,7 @@
                     <section id="portfolio" className="py-20 bg-slate-50">
                         <div className="max-w-6xl mx-auto px-4">
                             <div className="flex flex-col md:flex-row justify-between items-end mb-10 gap-4">
-                                <div>
-                                    <div className="flex items-center gap-3 mb-2">
-                                        <div className="p-2 bg-indigo-100 rounded-lg text-indigo-700"><Cpu size={24} /></div>
-                                        <h2 className="text-3xl font-bold text-slate-800">精選專案</h2>
-                                    </div>
-                                    <p className="text-slate-500 pl-14">結合 AI 技術與 ESG 指標的實務應用成果</p>
-                                </div>
+                                <div><div className="flex items-center gap-3 mb-2"><div className="p-2 bg-indigo-100 rounded-lg text-indigo-700"><Cpu size={24} /></div><h2 className="text-3xl font-bold text-slate-800">精選專案</h2></div><p className="text-slate-500 pl-14">結合 AI 技術與 ESG 指標的實務應用成果</p></div>
                                 <div className="flex gap-2 bg-white p-1 rounded-lg shadow-sm border border-slate-200">
                                     <button onClick={() => setActiveProjectTab('all')} className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all ${activeProjectTab === 'all' ? 'bg-purple-600 text-white shadow-sm' : 'text-slate-600 hover:bg-slate-100'}`}>全部</button>
                                     <button onClick={() => setActiveProjectTab('personal')} className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all ${activeProjectTab === 'personal' ? 'bg-purple-600 text-white shadow-sm' : 'text-slate-600 hover:bg-slate-100'}`}><User size={14} /> 個人作品</button>
@@ -244,15 +153,8 @@
                             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 animate-fadeIn">
                                 {filteredProjects.map((project) => (
                                     <a key={project.id} href={project.link} target="_blank" rel="noopener noreferrer" className="block bg-white rounded-xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
-                                        <div className="h-48 overflow-hidden relative">
-                                            <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                                            <div className={`absolute top-3 right-3 backdrop-blur px-3 py-1 rounded-full text-xs font-bold shadow-sm ${project.type === 'personal' ? 'bg-purple-100/90 text-purple-800' : 'bg-indigo-100/90 text-indigo-800'}`}>{project.type === 'personal' ? 'Personal' : 'Team'}</div>
-                                        </div>
-                                        <div className="p-6">
-                                            <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-purple-700 transition-colors flex items-center gap-2">{project.title}<Mail size={14} className="opacity-0 group-hover:opacity-100 transition-opacity text-slate-400" /></h3>
-                                            <p className="text-slate-600 text-sm mb-4 leading-relaxed line-clamp-2">{project.description}</p>
-                                            <div className="flex flex-wrap gap-2 pt-2">{project.tags.map(tag => (<span key={tag} className="text-xs px-2.5 py-1 bg-slate-50 text-slate-600 rounded-md border border-slate-200">{tag}</span>))}</div>
-                                        </div>
+                                        <div className="h-48 overflow-hidden relative"><img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" /><div className={`absolute top-3 right-3 backdrop-blur px-3 py-1 rounded-full text-xs font-bold shadow-sm ${project.type === 'personal' ? 'bg-purple-100/90 text-purple-800' : 'bg-indigo-100/90 text-indigo-800'}`}>{project.type === 'personal' ? 'Personal' : 'Team'}</div></div>
+                                        <div className="p-6"><h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-purple-700 transition-colors flex items-center gap-2">{project.title}<Mail size={14} className="opacity-0 group-hover:opacity-100 transition-opacity text-slate-400" /></h3><p className="text-slate-600 text-sm mb-4 leading-relaxed line-clamp-2">{project.description}</p><div className="flex flex-wrap gap-2 pt-2">{project.tags.map(tag => (<span key={tag} className="text-xs px-2.5 py-1 bg-slate-50 text-slate-600 rounded-md border border-slate-200">{tag}</span>))}</div></div>
                                     </a>
                                 ))}
                             </div>
@@ -263,17 +165,10 @@
                         <div className="max-w-4xl mx-auto px-4">
                             <div className="bg-gradient-to-r from-purple-900 to-indigo-900 rounded-2xl p-8 md:p-12 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-8">
                                 <div className="text-center md:text-left flex-1">
-                                    <h2 className="text-2xl font-bold mb-2">聯絡方式</h2>
-                                    <p className="text-purple-200 text-sm mb-6">歡迎金融機構與科技企業聯繫，討論 AI 與 ESG 相關合作機會。</p>
+                                    <h2 className="text-2xl font-bold mb-2">聯絡方式</h2><p className="text-purple-200 text-sm mb-6">歡迎金融機構與科技企業聯繫，討論 AI 與 ESG 相關合作機會。</p>
                                     <div className="grid md:grid-cols-2 gap-4">
-                                        <div className="flex items-center gap-3 bg-white/10 p-4 rounded-lg backdrop-blur-sm border border-white/10 hover:bg-white/20 transition-colors">
-                                            <div className="bg-white text-purple-900 p-2 rounded-full"><Mail size={16} /></div>
-                                            <div className="text-left overflow-hidden"><p className="text-xs text-purple-300">個人聯繫</p><a href="mailto:yinkoying.yky@gmail.com" className="text-sm font-medium hover:text-white block truncate">yinkoying.yky@gmail.com</a></div>
-                                        </div>
-                                        <div className="flex items-center gap-3 bg-white/10 p-4 rounded-lg backdrop-blur-sm border border-white/10 hover:bg-white/20 transition-colors">
-                                            <div className="bg-white text-purple-900 p-2 rounded-full"><UsersIcon size={16} /></div>
-                                            <div className="text-left overflow-hidden"><p className="text-xs text-purple-300">團隊業務/合作</p><a href="mailto:ecoshane.esg@gmail.com" className="text-sm font-medium hover:text-white block truncate">ecoshane.esg@gmail.com</a></div>
-                                        </div>
+                                        <div className="flex items-center gap-3 bg-white/10 p-4 rounded-lg backdrop-blur-sm border border-white/10 hover:bg-white/20 transition-colors"><div className="bg-white text-purple-900 p-2 rounded-full"><Mail size={16} /></div><div className="text-left overflow-hidden"><p className="text-xs text-purple-300">個人聯繫</p><a href="mailto:yinkoying.yky@gmail.com" className="text-sm font-medium hover:text-white block truncate">yinkoying.yky@gmail.com</a></div></div>
+                                        <div className="flex items-center gap-3 bg-white/10 p-4 rounded-lg backdrop-blur-sm border border-white/10 hover:bg-white/20 transition-colors"><div className="bg-white text-purple-900 p-2 rounded-full"><UsersIcon size={16} /></div><div className="text-left overflow-hidden"><p className="text-xs text-purple-300">團隊業務/合作</p><a href="mailto:ecoshane.esg@gmail.com" className="text-sm font-medium hover:text-white block truncate">ecoshane.esg@gmail.com</a></div></div>
                                     </div>
                                 </div>
                             </div>
@@ -282,14 +177,8 @@
 
                     <footer className="bg-slate-50 py-10 border-t border-slate-200">
                         <div className="max-w-6xl mx-auto px-4 text-center">
-                            <div className="mb-8 max-w-2xl mx-auto">
-                                <div className="inline-flex items-center justify-center p-3 bg-purple-50 rounded-full mb-4"><Palette size={20} className="text-purple-600" /></div>
-                                <h4 className="text-sm font-bold text-purple-800 mb-2 uppercase tracking-wide">Why Purple?</h4>
-                                <p className="text-slate-600 text-sm leading-relaxed">紫色融合了代表熱情與行動的紅色，以及象徵科技與智慧的藍色。<br/>這正代表著我如何運用理性的 AI 數據技術 (Blue)，去實踐對 ESG 永續發展的熱忱 (Red)。<br/>科技與人性的平衡，即是永續的起點。</p>
-                            </div>
-                            <div className="w-12 h-1 bg-purple-200 rounded-full mx-auto mb-6"></div>
-                            <p className="text-slate-500 text-sm font-medium">© 2026 YIN, KOYING. All rights reserved.</p>
-                            <p className="text-slate-400 text-xs mt-1">Specialized in AI & ESG Solutions</p>
+                            <div className="mb-8 max-w-2xl mx-auto"><div className="inline-flex items-center justify-center p-3 bg-purple-50 rounded-full mb-4"><Palette size={20} className="text-purple-600" /></div><h4 className="text-sm font-bold text-purple-800 mb-2 uppercase tracking-wide">Why Purple?</h4><p className="text-slate-600 text-sm leading-relaxed">紫色融合了代表熱情與行動的紅色，以及象徵科技與智慧的藍色。<br/>這正代表著我如何運用理性的 AI 數據技術 (Blue)，去實踐對 ESG 永續發展的熱忱 (Red)。<br/>科技與人性的平衡，即是永續的起點。</p></div>
+                            <div className="w-12 h-1 bg-purple-200 rounded-full mx-auto mb-6"></div><p className="text-slate-500 text-sm font-medium">© 2026 YIN, KOYING. All rights reserved.</p><p className="text-slate-400 text-xs mt-1">Specialized in AI & ESG Solutions</p>
                         </div>
                     </footer>
                 </div>

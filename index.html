@@ -130,26 +130,50 @@
                         </div>
                     </nav>
 
-                    <header id="about" className="relative pt-32 pb-24 px-4 bg-gradient-to-br from-purple-900 via-indigo-900 to-purple-800 text-white overflow-hidden">
+                    <header id="about" className="relative pt-28 pb-16 px-4 bg-gradient-to-br from-purple-900 via-indigo-900 to-purple-800 text-white overflow-hidden">
                         <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-purple-800/50 to-transparent"></div>
                         <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl"></div>
                         
-                        <div className="max-w-4xl mx-auto relative z-10 text-center space-y-8">
-                            <h1 className="text-5xl md:text-7xl font-extrabold leading-tight tracking-tight">
-                                殷可盈 <br/>
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-200 to-pink-300">YIN, KOYING</span>
-                            </h1>
-                            
-                            <div className="text-xl text-purple-100 max-w-2xl mx-auto leading-relaxed space-y-4">
-                                <p>專注於 AI 人工智慧與 ESG 永續發展的跨領域整合。</p>
-                                <p className="opacity-90">致力於運用數據科學解決環境議題，為金融科技與綠色供應鏈創造價值。</p>
+                        <div className="max-w-6xl mx-auto relative z-10">
+                            <div className="flex flex-col md:flex-row items-center gap-12">
+                                {/* 個人區塊 - 佔比較大 */}
+                                <div className="flex-[1.5] text-center md:text-left space-y-6">
+                                    <h1 className="text-4xl md:text-6xl font-extrabold leading-tight tracking-tight">
+                                        殷可盈 <br/>
+                                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-200 to-pink-300">YIN, KOYING</span>
+                                    </h1>
+                                    <div className="text-lg text-purple-100 leading-relaxed space-y-2 max-w-xl mx-auto md:mx-0">
+                                        <p>專注於 AI 人工智慧與 ESG 永續發展的跨領域整合。</p>
+                                        <p className="opacity-90">致力於運用數據科學解決環境議題，為金融科技與綠色供應鏈創造價值。</p>
+                                    </div>
+                                </div>
+
+                                {/* 分隔線 (僅在桌面顯示) */}
+                                <div className="hidden md:block w-px h-64 bg-gradient-to-b from-transparent via-purple-400/30 to-transparent"></div>
+
+                                {/* 團隊區塊 - 佔比較小 */}
+                                <div className="flex-1 w-full md:w-auto">
+                                    <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:bg-white/10 transition-colors group cursor-default">
+                                        <div className="flex items-center gap-3 mb-4 text-purple-200">
+                                            <UsersIcon size={24} className="group-hover:text-purple-300 transition-colors" />
+                                            <span className="font-bold tracking-wider uppercase text-sm">The Team</span>
+                                        </div>
+                                        <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">Ecoshane</h2>
+                                        <p className="text-purple-100 text-sm leading-relaxed mb-4">
+                                            我們是一群致力於 AI 賦能永續的專業團隊。與我並肩作戰，提供全方位的 ESG 數位轉型解決方案，讓永續不再只是口號。
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
                             
-                            <div className="mt-12 inline-block p-6 bg-white/10 backdrop-blur-sm border-t-4 border-purple-400 rounded-lg">
-                                <p className="italic text-purple-50 font-light text-lg">
-                                    "Data is the new oil, but Sustainability is the engine. <br/>
-                                    I build the AI to run it efficiently."
-                                </p>
+                            {/* 共用格言 */}
+                            <div className="mt-12 text-center">
+                                <div className="inline-block p-6 bg-white/10 backdrop-blur-sm border-t-4 border-purple-400 rounded-lg max-w-2xl">
+                                    <p className="italic text-purple-50 font-light text-lg">
+                                        "Data is the new oil, but Sustainability is the engine. <br/>
+                                        We build the AI to run it efficiently."
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </header>
@@ -243,12 +267,12 @@
                                     <p className="text-purple-200 text-sm mb-6">歡迎金融機構與科技企業聯繫，討論 AI 與 ESG 相關合作機會。</p>
                                     <div className="grid md:grid-cols-2 gap-4">
                                         <div className="flex items-center gap-3 bg-white/10 p-4 rounded-lg backdrop-blur-sm border border-white/10 hover:bg-white/20 transition-colors">
-                                            <div className="bg-white text-purple-900 p-2 rounded-full"><UsersIcon size={16} /></div>
-                                            <div className="text-left overflow-hidden"><p className="text-xs text-purple-300">團隊業務/合作</p><a href="mailto:ecoshane.esg@gmail.com" className="text-sm font-medium hover:text-white block truncate">ecoshane.esg@gmail.com</a></div>
-                                        </div>
-                                        <div className="flex items-center gap-3 bg-white/10 p-4 rounded-lg backdrop-blur-sm border border-white/10 hover:bg-white/20 transition-colors">
                                             <div className="bg-white text-purple-900 p-2 rounded-full"><Mail size={16} /></div>
                                             <div className="text-left overflow-hidden"><p className="text-xs text-purple-300">個人聯繫</p><a href="mailto:yinkoying.yky@gmail.com" className="text-sm font-medium hover:text-white block truncate">yinkoying.yky@gmail.com</a></div>
+                                        </div>
+                                        <div className="flex items-center gap-3 bg-white/10 p-4 rounded-lg backdrop-blur-sm border border-white/10 hover:bg-white/20 transition-colors">
+                                            <div className="bg-white text-purple-900 p-2 rounded-full"><UsersIcon size={16} /></div>
+                                            <div className="text-left overflow-hidden"><p className="text-xs text-purple-300">團隊業務/合作</p><a href="mailto:ecoshane.esg@gmail.com" className="text-sm font-medium hover:text-white block truncate">ecoshane.esg@gmail.com</a></div>
                                         </div>
                                     </div>
                                 </div>

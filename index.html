@@ -64,6 +64,7 @@
                 { id: 9, title: "AI 人工智慧人才養成基礎班", organization: "勞動部產業人才投資", category: "AI" }
             ];
 
+            // 注意：將 image 連結改為您的 GitHub 圖片路徑，例如: "./images/project-ecologic.jpg"
             const projects = [
                 {
                     id: 'p1', type: 'personal', title: "EcoLogic 專案", link: "https://ecoshane.github.io/ecologic/", tags: ["ESG", "Carbon Calc"],
@@ -129,37 +130,26 @@
                         </div>
                     </nav>
 
-                    <header id="about" className="relative pt-24 pb-20 px-4 bg-gradient-to-br from-purple-900 via-indigo-900 to-purple-800 text-white overflow-hidden">
+                    <header id="about" className="relative pt-32 pb-24 px-4 bg-gradient-to-br from-purple-900 via-indigo-900 to-purple-800 text-white overflow-hidden">
                         <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-purple-800/50 to-transparent"></div>
                         <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl"></div>
-                        <div className="max-w-6xl mx-auto relative z-10 flex flex-col md:flex-row items-center gap-12">
-                            <div className="flex-1 space-y-6">
-                                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-800/80 border border-purple-400/30 text-purple-200 text-sm font-medium">
-                                    <Leaf size={14} className="text-purple-300" />
-                                    <span>AI for Sustainable Finance</span>
-                                </div>
-                                <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight">
-                                    殷可盈 <br/>
-                                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-200 to-pink-300">YIN, KOYING</span>
-                                </h1>
-                                <div className="text-lg text-purple-100 max-w-xl leading-relaxed space-y-2">
-                                    <p>專注於 AI 人工智慧與 ESG 永續發展的跨領域整合。</p>
-                                    <p className="opacity-90">致力於運用數據科學解決環境議題，為金融科技與綠色供應鏈創造價值。</p>
-                                </div>
-                                <div className="mt-8 p-4 bg-white/10 backdrop-blur-sm border-l-4 border-purple-400 rounded-r-lg">
-                                    <p className="italic text-purple-50 font-light">"Data is the new oil, but Sustainability is the engine. <br/>I build the AI to run it efficiently."</p>
-                                </div>
+                        
+                        <div className="max-w-4xl mx-auto relative z-10 text-center space-y-8">
+                            <h1 className="text-5xl md:text-7xl font-extrabold leading-tight tracking-tight">
+                                殷可盈 <br/>
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-200 to-pink-300">YIN, KOYING</span>
+                            </h1>
+                            
+                            <div className="text-xl text-purple-100 max-w-2xl mx-auto leading-relaxed space-y-4">
+                                <p>專注於 AI 人工智慧與 ESG 永續發展的跨領域整合。</p>
+                                <p className="opacity-90">致力於運用數據科學解決環境議題，為金融科技與綠色供應鏈創造價值。</p>
                             </div>
-                            <div className="flex-1 flex justify-center w-full">
-                                <div className="relative w-64 h-64 md:w-80 md:h-80 bg-slate-800 rounded-full overflow-hidden shadow-2xl border-4 border-white/20 group ring-4 ring-purple-500/30">
-                                    <div className="absolute inset-0 bg-gradient-to-br from-slate-800 to-slate-900 flex flex-col items-center justify-center p-8 text-center">
-                                        <div className="w-16 h-16 bg-purple-600/20 rounded-full flex items-center justify-center mb-4 group-hover:bg-purple-600/30 transition-colors">
-                                            <TrendingUp className="text-purple-300" size={32} />
-                                        </div>
-                                        <p className="text-slate-400 text-sm">[ 大頭照 ]</p>
-                                        <p className="text-xs text-slate-500 mt-2">請上傳圖片替換</p>
-                                    </div>
-                                </div>
+                            
+                            <div className="mt-12 inline-block p-6 bg-white/10 backdrop-blur-sm border-t-4 border-purple-400 rounded-lg">
+                                <p className="italic text-purple-50 font-light text-lg">
+                                    "Data is the new oil, but Sustainability is the engine. <br/>
+                                    I build the AI to run it efficiently."
+                                </p>
                             </div>
                         </div>
                     </header>

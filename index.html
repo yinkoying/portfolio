@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="noindex">
     <title>YIN, KOYING | AI x ESG Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
@@ -40,17 +39,17 @@
             const [activeProjectTab, setActiveProjectTab] = React.useState('all');
 
             const certifications = [
-                { id: 1, title: "永續發展基礎能力測驗", issuer: "證期會", category: "ESG", icon: <Leaf size={16} /> },
-                { id: 2, title: "金融市場常識與職業道德", issuer: "證期會", category: "Finance", icon: <TrendingUp size={16} /> },
-                { id: 3, title: "iPAS AI應用規劃師", issuer: "經濟部", category: "AI", icon: <Cpu size={16} /> },
-                { id: 4, title: "iPAS 淨零碳規劃管理師", issuer: "經濟部", category: "ESG", icon: <Leaf size={16} /> },
-                { id: 5, title: "GRI 永續報告書管理師", issuer: "商研院", category: "ESG", icon: <Leaf size={16} /> },
-                { id: 6, title: "ISO 14067 產品碳足跡盤查管理師", issuer: "商研院", category: "ESG", icon: <Leaf size={16} /> },
-                { id: 7, title: "ISO 14064-1 溫室氣體盤查管理師", issuer: "商研院", category: "ESG", icon: <Leaf size={16} /> },
-                { id: 8, title: "AWS Certified AI Practitioner", issuer: "AWS", category: "AI", icon: <Cpu size={16} /> },
-                { id: 9, title: "Azure AI-900", issuer: "Microsoft Azure", category: "AI", icon: <Cpu size={16} /> },
-                { id: 10, title: "TQC Microsoft Office 專業級", issuer: "TQC", category: "Tech", icon: <Database size={16} /> },
-                { id: 11, title: "TQC 資訊科技 Python 專業級", issuer: "TQC", category: "Tech", icon: <Code size={16} /> }
+                { id: 1, title: "永續發展基礎能力測驗", issuer: "證期會", category: "ESG" },
+                { id: 2, title: "金融市場常識與職業道德", issuer: "證期會", category: "Finance" },
+                { id: 3, title: "iPAS AI應用規劃師", issuer: "經濟部", category: "AI" },
+                { id: 4, title: "iPAS 淨零碳規劃管理師", issuer: "經濟部", category: "ESG" },
+                { id: 5, title: "GRI 永續報告書管理師", issuer: "商研院", category: "ESG" },
+                { id: 6, title: "ISO 14067 產品碳足跡盤查管理師", issuer: "商研院", category: "ESG" },
+                { id: 7, title: "ISO 14064-1 溫室氣體盤查管理師", issuer: "商研院", category: "ESG" },
+                { id: 8, title: "AWS Certified AI Practitioner", issuer: "AWS", category: "AI" },
+                { id: 9, title: "Azure AI-900", issuer: "Azure", category: "AI" },
+                { id: 10, title: "TQC Microsoft Office 專業級", issuer: "TQC", category: "Tech" },
+                { id: 11, title: "TQC 資訊科技 Python 專業級", issuer: "TQC", category: "Tech" }
             ];
 
             const trainings = [
@@ -123,19 +122,37 @@
                             <div className="flex flex-col md:flex-row justify-between items-end mb-8 gap-6">
                                 <div><div className="flex items-center gap-3 mb-2"><div className="p-2 bg-purple-100 rounded-lg text-purple-700"><Award size={24} /></div><h2 className="text-3xl font-bold text-slate-800">專業資歷</h2></div><p className="text-slate-500 pl-14">Professional Credentials & Training</p></div>
                                 <div className="flex flex-wrap gap-2 bg-slate-50 p-1 rounded-lg border border-slate-200">
-                                    {credentialTabs.map((tab) => (<button key={tab.id} onClick={() => setActiveCredentialTab(tab.id)} className={`px-3 py-1.5 rounded-md text-sm font-medium transition-all ${activeCredentialTab === tab.id ? 'bg-purple-600 text-white shadow-sm' : 'text-slate-600 hover:bg-slate-200'}`}>{tab.label}</button>))}
+                                    {credentialTabs.map((tab) => (<button key={tab.id} onClick={() => setActiveCredentialTab(tab.id)} className={`px-3 py-1.5 rounded-md text-xs font-medium transition-all ${activeCredentialTab === tab.id ? 'bg-purple-600 text-white shadow-sm' : 'text-slate-600 hover:bg-slate-200'}`}>{tab.label}</button>))}
                                 </div>
                             </div>
-                            <div className="flex flex-col gap-8">
+                            
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
                                 {filteredCertifications.length > 0 && (
-                                    <div className="w-full animate-fadeIn"><h3 className="text-lg font-bold text-slate-700 mb-4 flex items-center gap-2 border-b border-purple-100 pb-2"><CheckCircle size={18} className="text-purple-600" />專業證照</h3><div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-                                            {filteredCertifications.map((cert) => (<div key={cert.id} className="flex items-center p-3 rounded-lg border border-slate-100 bg-white hover:border-purple-200 hover:bg-purple-50/30 transition-all group"><div className="w-8 h-8 rounded-full bg-purple-50 text-purple-600 flex items-center justify-center shrink-0 mr-3 group-hover:bg-purple-100 transition-colors">{cert.icon}</div><div className="overflow-hidden"><h4 className="font-bold text-slate-800 text-sm truncate" title={cert.title}>{cert.title}</h4><span className="text-xs text-slate-500 truncate block">{cert.issuer}</span></div></div>))}
-                                    </div></div>
+                                    <div className="w-full animate-fadeIn">
+                                        <h3 className="text-sm font-bold text-slate-700 mb-3 flex items-center gap-2 border-b border-purple-100 pb-2"><CheckCircle size={16} className="text-purple-600" />專業證照</h3>
+                                        <div className="flex flex-col rounded-lg border border-slate-100 divide-y divide-slate-100 bg-white shadow-sm">
+                                            {filteredCertifications.map((cert) => (
+                                                <div key={cert.id} className="flex justify-between items-center px-4 py-2 hover:bg-purple-50/20 transition-colors">
+                                                    <span className="font-medium text-slate-700 text-xs">{cert.title}</span>
+                                                    <span className="text-[10px] text-slate-400 border border-slate-100 px-2 py-0.5 rounded-full whitespace-nowrap ml-2">{cert.issuer}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
                                 )}
+                                
                                 {filteredTrainings.length > 0 && (
-                                    <div className="w-full animate-fadeIn"><h3 className="text-lg font-bold text-slate-700 mb-4 flex items-center gap-2 border-b border-purple-100 pb-2"><BookOpen size={18} className="text-purple-600" />專業培訓</h3><div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-                                            {filteredTrainings.map((train) => (<div key={train.id} className="flex flex-col justify-center p-3 rounded-lg border border-slate-100 bg-slate-50 hover:bg-white hover:border-purple-200 hover:shadow-sm transition-all group h-full"><div className="mb-1"><span className="inline-block text-[10px] font-bold text-purple-700 bg-purple-50 px-1.5 py-0.5 rounded border border-purple-100">{train.organization}</span></div><h4 className="font-medium text-slate-700 text-sm leading-snug group-hover:text-purple-700 transition-colors line-clamp-2" title={train.title}>{train.title}</h4></div>))}
-                                    </div></div>
+                                    <div className="w-full animate-fadeIn">
+                                        <h3 className="text-sm font-bold text-slate-700 mb-3 flex items-center gap-2 border-b border-purple-100 pb-2"><BookOpen size={16} className="text-purple-600" />專業培訓</h3>
+                                        <div className="flex flex-col rounded-lg border border-slate-100 divide-y divide-slate-100 bg-white shadow-sm">
+                                            {filteredTrainings.map((train) => (
+                                                <div key={train.id} className="flex justify-between items-center px-4 py-2 hover:bg-purple-50/20 transition-colors">
+                                                    <span className="font-medium text-slate-700 text-xs">{train.title}</span>
+                                                    <span className="text-[10px] text-slate-400 border border-slate-100 px-2 py-0.5 rounded-full whitespace-nowrap ml-2">{train.organization}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
                                 )}
                             </div>
                         </div>

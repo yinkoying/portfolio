@@ -182,16 +182,16 @@
                 { id: 9, title: "AI 人工智慧人才養成基礎班", organization: "勞動部產業人才投資", category: "AI" }
             ];
 
-            // Projects List - TanJi removed from here to be featured above
+            // Projects List - 使用 placeholder 圖片以防止破圖
             const projects = [
-                { id: 'p1', type: 'personal', title: "EcoLogic 專案", link: "https://ecoshane.github.io/ecologic/", tags: ["ESG", "Carbon Calc"], description: "結合原有碳排計算系統，擴充並提早應對 HRDD 風險。", image: "images/ecologic.jpg" },
-                { id: 'p2', type: 'personal', title: "S-Quant", link: "https://ecoshane.github.io/s-quant/", tags: ["AI", "Social Impact"], description: "AI 驅動的社會績效量化平台。以參加 2026 Google Solution Challenge 為目標。", image: "images/s-quant.jpg" },
-                { id: 'p3', type: 'personal', title: "115年度 ESG 評鑑自評系統", link: "https://ecoshane.github.io/esgeva/115", tags: ["ESG", "Evaluation"], description: "提供給上市櫃公司填報人員練習。", image: "images/esg-eval.jpg" },
-                { id: 't1', type: 'team', title: "BlinkAI", link: "https://ecoshane.github.io/BlinkAI/", tags: ["AI", "Fan Engagement"], description: "為 BLACKPINK 粉絲互動參與而生的專精 AI 平台（客服後端已移除）。", image: "images/blinkai.jpg" },
-                { id: 't2', type: 'team', title: "Ecoshane Bank", link: "https://ecoshane.github.io/bank/", tags: ["FinTech", "Green Loan"], description: "將 HRDD 納入銀行綠色連結貸款之永續績效項目。", image: "images/ecoshane-bank.jpg" },
-                { id: 't3', type: 'team', title: "Ecoshane 永續家", link: "https://ecoshane.github.io/esg/", tags: ["ESG", "HRDD"], description: "提供量化 HRDD 的方法論。", image: "images/ecoshane-home.jpg" },
-                { id: 't4', type: 'team', title: "永續數據 AI 轉換平台", link: "https://ecoshane.github.io/esg/data.html", tags: ["AI", "Data"], description: "結合原有碳排計算系統，擴充並提早應對 HRDD 風險。", image: "images/ai-platform.jpg" },
-                { id: 't5', type: 'team', title: "搶票系統 API", link: "https://ecoshane.github.io/tixcraft/api.html", tags: ["API", "Microservices"], description: "瞭解微服務架構與 API 設計基礎。", image: "images/ticket-api.jpg" }
+                { id: 'p1', type: 'personal', title: "EcoLogic 專案", link: "https://ecoshane.github.io/ecologic/", tags: ["ESG", "Carbon Calc"], description: "結合原有碳排計算系統，擴充並提早應對 HRDD 風險。", image: "https://placehold.co/600x400/e2e8f0/475569?text=EcoLogic" },
+                { id: 'p2', type: 'personal', title: "S-Quant", link: "https://ecoshane.github.io/s-quant/", tags: ["AI", "Social Impact"], description: "AI 驅動的社會績效量化平台。以參加 2026 Google Solution Challenge 為目標。", image: "https://placehold.co/600x400/e2e8f0/475569?text=S-Quant" },
+                { id: 'p3', type: 'personal', title: "115年度 ESG 評鑑自評系統", link: "https://ecoshane.github.io/esgeva/115", tags: ["ESG", "Evaluation"], description: "提供給上市櫃公司填報人員練習。", image: "https://placehold.co/600x400/e2e8f0/475569?text=ESG+Eval" },
+                { id: 't1', type: 'team', title: "BlinkAI", link: "https://ecoshane.github.io/BlinkAI/", tags: ["AI", "Fan Engagement"], description: "為 BLACKPINK 粉絲互動參與而生的專精 AI 平台（客服後端已移除）。", image: "https://placehold.co/600x400/e2e8f0/475569?text=BlinkAI" },
+                { id: 't2', type: 'team', title: "Ecoshane Bank", link: "https://ecoshane.github.io/bank/", tags: ["FinTech", "Green Loan"], description: "將 HRDD 納入銀行綠色連結貸款之永續績效項目。", image: "https://placehold.co/600x400/e2e8f0/475569?text=Eco+Bank" },
+                { id: 't3', type: 'team', title: "Ecoshane 永續家", link: "https://ecoshane.github.io/esg/", tags: ["ESG", "HRDD"], description: "提供量化 HRDD 的方法論。", image: "https://placehold.co/600x400/e2e8f0/475569?text=Ecoshane+Home" },
+                { id: 't4', type: 'team', title: "永續數據 AI 轉換平台", link: "https://ecoshane.github.io/esg/data.html", tags: ["AI", "Data"], description: "結合原有碳排計算系統，擴充並提早應對 HRDD 風險。", image: "https://placehold.co/600x400/e2e8f0/475569?text=AI+Platform" },
+                { id: 't5', type: 'team', title: "搶票系統 API", link: "https://ecoshane.github.io/tixcraft/api.html", tags: ["API", "Microservices"], description: "瞭解微服務架構與 API 設計基礎。", image: "https://placehold.co/600x400/e2e8f0/475569?text=Ticket+API" }
             ];
 
             const filteredCertifications = activeCredentialTab === 'all' ? certifications : certifications.filter(c => c.category === activeCredentialTab);

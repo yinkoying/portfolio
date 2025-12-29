@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
     <title>YIN, KOYING | AI x ESG Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
@@ -33,6 +34,7 @@
         const Code = (p) => <Icon {...p}><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></Icon>;
         const User = (p) => <Icon {...p}><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></Icon>;
         const Palette = (p) => <Icon {...p}><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></Icon>;
+        const Sprout = (p) => <Icon {...p}><path d="M2 22h20"/><path d="M12 22v-9"/><path d="M15.183 5.183a5 5 0 0 1 3.536 8.536L12 20l-6.719-6.281a5 5 0 1 1 7.072-7.072 2.5 2.5 0 0 1 .83 1.536 2.5 2.5 0 0 1 .83-1.536Z"/></Icon>;
 
         const App = () => {
             const [activeCredentialTab, setActiveCredentialTab] = React.useState('all');
@@ -65,6 +67,8 @@
             ];
 
             const projects = [
+                { id: 'tj1', type: 'tanji', title: "碳吉：社區微氣候韌性決策平台", link: "https://tanji2026.github.io/nbs/", tags: ["Climate Tech", "GIS", "NbS"], description: "結合 GIS 風險快篩與 NbS 自然解方選物的決策平台。能指認熱點、模擬降溫效益，協助社區落實氣候韌性。", image: "images/tanji-nbs.jpg" },
+                { id: 'tj2', type: 'tanji', title: "碳吉：低碳改造讓社區碳吉", link: "https://tanji2026.github.io/livinglab/", tags: ["GovTech", "PLM", "行政減負"], description: "針對管委會開發的數位助理。具備「智慧自評」與「文件自動生成」引擎，解決複雜法規痛點，一鍵產出申請書。", image: "images/tanji-admin.jpg" },
                 { id: 'p1', type: 'personal', title: "EcoLogic 專案", link: "https://ecoshane.github.io/ecologic/", tags: ["ESG", "Carbon Calc"], description: "結合原有碳排計算系統，擴充並提早應對 HRDD 風險。", image: "images/ecologic.jpg" },
                 { id: 'p2', type: 'personal', title: "S-Quant", link: "https://ecoshane.github.io/s-quant/", tags: ["AI", "Social Impact"], description: "AI 驅動的社會績效量化平台。以參加 2026 Google Solution Challenge 為目標。", image: "images/s-quant.jpg" },
                 { id: 'p3', type: 'personal', title: "115年度 ESG 評鑑自評系統", link: "https://ecoshane.github.io/esgeva/115", tags: ["ESG", "Evaluation"], description: "提供給上市櫃公司填報人員練習。", image: "images/esg-eval.jpg" },
@@ -100,17 +104,25 @@
                         <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-purple-800/50 to-transparent"></div>
                         <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl"></div>
                         <div className="max-w-6xl mx-auto relative z-10">
-                            <div className="flex flex-col md:flex-row items-center gap-12">
-                                <div className="flex-[1.5] text-center md:text-left space-y-6">
+                            <div className="flex flex-col md:flex-row items-stretch gap-12">
+                                <div className="flex-[1.5] flex flex-col justify-center text-center md:text-left space-y-6">
                                     <h1 className="text-4xl md:text-6xl font-extrabold leading-tight tracking-tight">殷可盈 <br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-200 to-pink-300">YIN, KOYING</span></h1>
                                     <div className="text-lg text-purple-100 leading-relaxed space-y-2 max-w-xl mx-auto md:mx-0"><p>專注於 AI 人工智慧與 ESG 永續發展的跨領域整合。</p><p className="opacity-90">致力於運用數據科學解決環境議題，為金融科技與綠色供應鏈創造價值。</p></div>
                                 </div>
-                                <div className="hidden md:block w-px h-64 bg-gradient-to-b from-transparent via-purple-400/30 to-transparent"></div>
-                                <div className="flex-1 w-full md:w-auto">
-                                    <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:bg-white/10 transition-colors group cursor-default">
-                                        <div className="flex items-center gap-3 mb-4 text-purple-200"><UsersIcon size={24} className="group-hover:text-purple-300 transition-colors" /><span className="font-bold tracking-wider uppercase text-sm">The Team</span></div>
-                                        <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">Ecoshane</h2>
-                                        <p className="text-purple-100 text-sm leading-relaxed mb-4">我們是一群致力於 AI 賦能永續的專業團隊。與我並肩作戰，提供全方位的 ESG 數位轉型解決方案，讓永續不再只是口號。</p>
+                                <div className="hidden md:block w-px bg-gradient-to-b from-transparent via-purple-400/30 to-transparent"></div>
+                                <div className="flex-1 w-full md:w-auto flex flex-col gap-4">
+                                    {/* Ecoshane Team Card */}
+                                    <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-colors group cursor-default flex-1">
+                                        <div className="flex items-center gap-3 mb-2 text-purple-200"><UsersIcon size={20} className="group-hover:text-purple-300 transition-colors" /><span className="font-bold tracking-wider uppercase text-xs">The Team</span></div>
+                                        <h2 className="text-xl md:text-2xl font-bold text-white mb-2">Ecoshane</h2>
+                                        <p className="text-purple-100 text-sm leading-relaxed">我們是一群致力於 AI 賦能永續的專業團隊。與我並肩作戰，提供全方位的 ESG 數位轉型解決方案，讓永續不再只是口號。</p>
+                                    </div>
+                                    
+                                    {/* TanJi Team Card */}
+                                    <div className="bg-white/5 backdrop-blur-sm border border-emerald-400/30 rounded-2xl p-6 hover:bg-white/10 transition-colors group cursor-default flex-1">
+                                        <div className="flex items-center gap-3 mb-2 text-emerald-200"><Sprout size={20} className="group-hover:text-emerald-300 transition-colors" /><span className="font-bold tracking-wider uppercase text-xs">The Project</span></div>
+                                        <h2 className="text-xl md:text-2xl font-bold text-white mb-2">碳吉 TanJi</h2>
+                                        <p className="text-emerald-50 text-sm leading-relaxed">結合 GIS 微氣候風險快篩與低碳改造行政自動化的決策平台，讓社區氣候韌性看得見、算得出。</p>
                                     </div>
                                 </div>
                             </div>
@@ -162,17 +174,38 @@
                         <div className="max-w-6xl mx-auto px-4">
                             <div className="flex flex-col md:flex-row justify-between items-end mb-10 gap-4">
                                 <div><div className="flex items-center gap-3 mb-2"><div className="p-2 bg-indigo-100 rounded-lg text-indigo-700"><Cpu size={24} /></div><h2 className="text-3xl font-bold text-slate-800">精選專案</h2></div><p className="text-slate-500 pl-14">結合 AI 技術與 ESG 指標的實務應用成果</p></div>
-                                <div className="flex gap-2 bg-white p-1 rounded-lg shadow-sm border border-slate-200">
+                                <div className="flex flex-wrap gap-2 bg-white p-1 rounded-lg shadow-sm border border-slate-200">
                                     <button onClick={() => setActiveProjectTab('all')} className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all ${activeProjectTab === 'all' ? 'bg-purple-600 text-white shadow-sm' : 'text-slate-600 hover:bg-slate-100'}`}>全部</button>
                                     <button onClick={() => setActiveProjectTab('personal')} className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all ${activeProjectTab === 'personal' ? 'bg-purple-600 text-white shadow-sm' : 'text-slate-600 hover:bg-slate-100'}`}><User size={14} /> 個人作品</button>
+                                    <button onClick={() => setActiveProjectTab('tanji')} className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all ${activeProjectTab === 'tanji' ? 'bg-emerald-600 text-white shadow-sm' : 'text-slate-600 hover:bg-slate-100'}`}><Sprout size={14} /> 碳吉 TanJi</button>
                                     <button onClick={() => setActiveProjectTab('team')} className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all ${activeProjectTab === 'team' ? 'bg-purple-600 text-white shadow-sm' : 'text-slate-600 hover:bg-slate-100'}`}><UsersIcon size={14} /> Ecoshane 團隊</button>
                                 </div>
                             </div>
                             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 animate-fadeIn">
                                 {filteredProjects.map((project) => (
                                     <a key={project.id} href={project.link} target="_blank" rel="noopener noreferrer" className="block bg-white rounded-xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
-                                        <div className="h-48 overflow-hidden relative"><img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" /><div className={`absolute top-3 right-3 backdrop-blur px-3 py-1 rounded-full text-xs font-bold shadow-sm ${project.type === 'personal' ? 'bg-purple-100/90 text-purple-800' : 'bg-indigo-100/90 text-indigo-800'}`}>{project.type === 'personal' ? 'Personal' : 'Team'}</div></div>
-                                        <div className="p-6"><h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-purple-700 transition-colors flex items-center gap-2">{project.title}<Mail size={14} className="opacity-0 group-hover:opacity-100 transition-opacity text-slate-400" /></h3><p className="text-slate-600 text-sm mb-4 leading-relaxed line-clamp-2">{project.description}</p><div className="flex flex-wrap gap-2 pt-2">{project.tags.map(tag => (<span key={tag} className="text-xs px-2.5 py-1 bg-slate-50 text-slate-600 rounded-md border border-slate-200">{tag}</span>))}</div></div>
+                                        <div className="h-48 overflow-hidden relative">
+                                            <img src={project.image} onError={(e) => {e.target.onerror = null; e.target.src = "https://via.placeholder.com/400x300/f3f4f6/64748b?text=Project+Image"}} alt={project.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                                            <div className={`absolute top-3 right-3 backdrop-blur px-3 py-1 rounded-full text-xs font-bold shadow-sm ${
+                                                project.type === 'tanji' ? 'bg-emerald-100/90 text-emerald-800' :
+                                                project.type === 'personal' ? 'bg-purple-100/90 text-purple-800' : 
+                                                'bg-indigo-100/90 text-indigo-800'
+                                            }`}>
+                                                {project.type === 'tanji' ? 'TanJi' : project.type === 'personal' ? 'Personal' : 'Team'}
+                                            </div>
+                                        </div>
+                                        <div className="p-6">
+                                            <h3 className={`text-lg font-bold text-slate-900 mb-2 transition-colors flex items-center gap-2 ${project.type === 'tanji' ? 'group-hover:text-emerald-700' : 'group-hover:text-purple-700'}`}>
+                                                {project.title}
+                                                <Mail size={14} className="opacity-0 group-hover:opacity-100 transition-opacity text-slate-400" />
+                                            </h3>
+                                            <p className="text-slate-600 text-sm mb-4 leading-relaxed line-clamp-2">{project.description}</p>
+                                            <div className="flex flex-wrap gap-2 pt-2">
+                                                {project.tags.map(tag => (
+                                                    <span key={tag} className="text-xs px-2.5 py-1 bg-slate-50 text-slate-600 rounded-md border border-slate-200">{tag}</span>
+                                                ))}
+                                            </div>
+                                        </div>
                                     </a>
                                 ))}
                             </div>
@@ -180,13 +213,32 @@
                     </section>
 
                     <section id="contact" className="py-16 bg-white border-t border-slate-100">
-                        <div className="max-w-4xl mx-auto px-4">
+                        <div className="max-w-5xl mx-auto px-4">
                             <div className="bg-gradient-to-r from-purple-900 to-indigo-900 rounded-2xl p-8 md:p-12 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-8">
-                                <div className="text-center md:text-left flex-1">
+                                <div className="text-center md:text-left flex-1 w-full">
                                     <h2 className="text-2xl font-bold mb-2">聯絡方式</h2><p className="text-purple-200 text-sm mb-6">歡迎金融機構與科技企業聯繫，討論 AI 與 ESG 相關合作機會。</p>
-                                    <div className="grid md:grid-cols-2 gap-4">
-                                        <div className="flex items-center gap-3 bg-white/10 p-4 rounded-lg backdrop-blur-sm border border-white/10 hover:bg-white/20 transition-colors"><div className="bg-white text-purple-900 p-2 rounded-full"><Mail size={16} /></div><div className="text-left overflow-hidden"><p className="text-xs text-purple-300">個人聯繫</p><a href="mailto:yinkoying.yky@gmail.com" className="text-sm font-medium hover:text-white block truncate">yinkoying.yky@gmail.com</a></div></div>
-                                        <div className="flex items-center gap-3 bg-white/10 p-4 rounded-lg backdrop-blur-sm border border-white/10 hover:bg-white/20 transition-colors"><div className="bg-white text-purple-900 p-2 rounded-full"><UsersIcon size={16} /></div><div className="text-left overflow-hidden"><p className="text-xs text-purple-300">團隊業務/合作</p><a href="mailto:ecoshane.esg@gmail.com" className="text-sm font-medium hover:text-white block truncate">ecoshane.esg@gmail.com</a></div></div>
+                                    <div className="grid md:grid-cols-3 gap-4">
+                                        <div className="flex items-center gap-3 bg-white/10 p-4 rounded-lg backdrop-blur-sm border border-white/10 hover:bg-white/20 transition-colors">
+                                            <div className="bg-white text-purple-900 p-2 rounded-full flex-shrink-0"><Mail size={16} /></div>
+                                            <div className="text-left overflow-hidden min-w-0">
+                                                <p className="text-xs text-purple-300">個人聯繫</p>
+                                                <a href="mailto:yinkoying.yky@gmail.com" className="text-sm font-medium hover:text-white block truncate">yinkoying.yky@gmail.com</a>
+                                            </div>
+                                        </div>
+                                        <div className="flex items-center gap-3 bg-white/10 p-4 rounded-lg backdrop-blur-sm border border-white/10 hover:bg-white/20 transition-colors">
+                                            <div className="bg-white text-purple-900 p-2 rounded-full flex-shrink-0"><UsersIcon size={16} /></div>
+                                            <div className="text-left overflow-hidden min-w-0">
+                                                <p className="text-xs text-purple-300">團隊業務/合作</p>
+                                                <a href="mailto:ecoshane.esg@gmail.com" className="text-sm font-medium hover:text-white block truncate">ecoshane.esg@gmail.com</a>
+                                            </div>
+                                        </div>
+                                        <div className="flex items-center gap-3 bg-white/10 p-4 rounded-lg backdrop-blur-sm border border-emerald-400/20 hover:bg-emerald-900/40 transition-colors">
+                                            <div className="bg-emerald-100 text-emerald-800 p-2 rounded-full flex-shrink-0"><Sprout size={16} /></div>
+                                            <div className="text-left overflow-hidden min-w-0">
+                                                <p className="text-xs text-emerald-300">碳吉專案</p>
+                                                <a href="mailto:tanji2026@gmail.com" className="text-sm font-medium hover:text-white block truncate">tanji2026@gmail.com</a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

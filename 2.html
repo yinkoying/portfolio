@@ -66,8 +66,8 @@
             ];
 
             const projects = [
-                { id: 'tj1', type: 'tanji', title: "碳吉：社區微氣候韌性決策平台", link: "https://tanji2026.github.io/livinglab/", tags: ["Climate Tech", "GIS", "NbS"], description: "首創結合 GIS 風險快篩與 NbS 自然解方選物的決策平台。能指認熱點、模擬降溫效益，協助社區落實氣候韌性。", image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=800&q=80" },
-                { id: 'tj2', type: 'tanji', title: "碳吉：低碳改造讓社區碳吉", link: "https://tanji2026.github.io/livinglab/", tags: ["GovTech", "PLM", "行政減負"], description: "針對管委會開發的數位助理。具備「智慧自評」與「文件自動生成」引擎，解決複雜法規痛點，一鍵產出申請書。", image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80" },
+                { id: 'tj1', type: 'tanji', title: "碳吉：社區微氣候韌性決策平台", link: "https://tanji2026.github.io/nbs/", tags: ["Climate Tech", "GIS", "NbS"], description: "首創結合 GIS 風險快篩與 NbS 自然解方選物的決策平台。能指認熱點、模擬降溫效益，協助社區落實氣候韌性。", image: "images/tanji-nbs.jpg" },
+                { id: 'tj2', type: 'tanji', title: "碳吉：低碳改造讓社區碳吉", link: "https://tanji2026.github.io/livinglab/", tags: ["GovTech", "PLM", "行政減負"], description: "針對管委會開發的數位助理。具備「智慧自評」與「文件自動生成」引擎，解決複雜法規痛點，一鍵產出申請書。", image: "images/tanji-admin.jpg" },
                 { id: 'p1', type: 'personal', title: "EcoLogic 專案", link: "https://ecoshane.github.io/ecologic/", tags: ["ESG", "Carbon Calc"], description: "結合原有碳排計算系統，擴充並提早應對 HRDD 風險。", image: "images/ecologic.jpg" },
                 { id: 'p2', type: 'personal', title: "S-Quant", link: "https://ecoshane.github.io/s-quant/", tags: ["AI", "Social Impact"], description: "AI 驅動的社會績效量化平台。以參加 2026 Google Solution Challenge 為目標。", image: "images/s-quant.jpg" },
                 { id: 'p3', type: 'personal', title: "115年度 ESG 評鑑自評系統", link: "https://ecoshane.github.io/esgeva/115", tags: ["ESG", "Evaluation"], description: "提供給上市櫃公司填報人員練習。", image: "images/esg-eval.jpg" },
@@ -175,8 +175,8 @@
                                 <div><div className="flex items-center gap-3 mb-2"><div className="p-2 bg-indigo-100 rounded-lg text-indigo-700"><Cpu size={24} /></div><h2 className="text-3xl font-bold text-slate-800">精選專案</h2></div><p className="text-slate-500 pl-14">結合 AI 技術與 ESG 指標的實務應用成果</p></div>
                                 <div className="flex flex-wrap gap-2 bg-white p-1 rounded-lg shadow-sm border border-slate-200">
                                     <button onClick={() => setActiveProjectTab('all')} className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all ${activeProjectTab === 'all' ? 'bg-purple-600 text-white shadow-sm' : 'text-slate-600 hover:bg-slate-100'}`}>全部</button>
-                                    <button onClick={() => setActiveProjectTab('tanji')} className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all ${activeProjectTab === 'tanji' ? 'bg-emerald-600 text-white shadow-sm' : 'text-slate-600 hover:bg-slate-100'}`}><Sprout size={14} /> 碳吉 TanJi</button>
                                     <button onClick={() => setActiveProjectTab('personal')} className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all ${activeProjectTab === 'personal' ? 'bg-purple-600 text-white shadow-sm' : 'text-slate-600 hover:bg-slate-100'}`}><User size={14} /> 個人作品</button>
+                                    <button onClick={() => setActiveProjectTab('tanji')} className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all ${activeProjectTab === 'tanji' ? 'bg-emerald-600 text-white shadow-sm' : 'text-slate-600 hover:bg-slate-100'}`}><Sprout size={14} /> 碳吉 TanJi</button>
                                     <button onClick={() => setActiveProjectTab('team')} className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all ${activeProjectTab === 'team' ? 'bg-purple-600 text-white shadow-sm' : 'text-slate-600 hover:bg-slate-100'}`}><UsersIcon size={14} /> Ecoshane 團隊</button>
                                 </div>
                             </div>

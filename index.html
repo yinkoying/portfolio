@@ -9,16 +9,25 @@
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         html { scroll-behavior: smooth; }
+        body { font-family: 'Noto Sans TC', sans-serif; }
         .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         .animate-fadeIn { animation: fadeIn 0.5s ease-out forwards; }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
     </style>
 </head>
-<body class="bg-slate-50 font-sans text-slate-800">
+<body class="bg-slate-50 text-slate-800">
     <div id="root"></div>
     <script type="text/babel">
+        // --- Icons Components ---
         const Icon = ({ size = 24, className = "", children }) => (
             <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>{children}</svg>
         );
@@ -35,92 +44,119 @@
         const User = (p) => <Icon {...p}><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></Icon>;
         const Palette = (p) => <Icon {...p}><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></Icon>;
         const Sprout = (p) => <Icon {...p}><path d="M2 22h20"/><path d="M12 22v-9"/><path d="M15.183 5.183a5 5 0 0 1 3.536 8.536L12 20l-6.719-6.281a5 5 0 1 1 7.072-7.072 2.5 2.5 0 0 1 .83 1.536 2.5 2.5 0 0 1 .83-1.536Z"/></Icon>;
+        const ExternalLink = (p) => <Icon {...p}><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></Icon>;
+
+        // --- Data ---
+        const certifications = [
+            { id: 1, title: "永續發展基礎能力測驗", issuer: "證期會", category: "ESG" },
+            { id: 2, title: "金融市場常識與職業道德", issuer: "證期會", category: "Finance" },
+            { id: 3, title: "iPAS AI應用規劃師", issuer: "經濟部", category: "AI" },
+            { id: 4, title: "iPAS 淨零碳規劃管理師", issuer: "經濟部", category: "ESG" },
+            { id: 5, title: "GRI 永續報告書管理師", issuer: "商研院", category: "ESG" },
+            { id: 6, title: "ISO 14067 產品碳足跡盤查管理師", issuer: "商研院", category: "ESG" },
+            { id: 7, title: "ISO 14064-1 溫室氣體盤查管理師", issuer: "商研院", category: "ESG" },
+            { id: 8, title: "AWS Certified AI Practitioner", issuer: "AWS", category: "AI" },
+            { id: 9, title: "Azure AI-900", issuer: "Azure", category: "AI" },
+            { id: 10, title: "TQC Microsoft Office 專業級", issuer: "TQC", category: "Tech" },
+            { id: 11, title: "TQC 資訊科技 Python 專業級", issuer: "TQC", category: "Tech" }
+        ];
+
+        const trainings = [
+            { id: 1, title: "AI 新秀-金融創新X生成式AI", organization: "經濟部AI新秀計劃（臺北大學）", category: "AI" },
+            { id: 2, title: "ESG 淨零人才永續管理師養成班", organization: "勞動部產業新尖兵", category: "ESG" },
+            { id: 3, title: "ESG 企業永續報告書製作實務班", organization: "勞動部產業人才投資", category: "ESG" },
+            { id: 4, title: "環境部 環境教育人員訓練", organization: "環境部環教人員（中央大學）", category: "ESG" },
+            { id: 5, title: "環境部 淨零綠領人才培育課程", organization: "環境部綠領人才（中央大學）", category: "ESG" },
+            { id: 6, title: "Google Cloud 學程結業證書", organization: "Google Cloud", category: "Tech" },
+            { id: 7, title: "臺北大學 GDSC 程式開發社團", organization: "大學社團（臺北大學）", category: "Tech" },
+            { id: 8, title: "Python 大數據資料分析實戰班", organization: "勞動部產業人才投資", category: "Tech" },
+            { id: 9, title: "AI 人工智慧人才養成基礎班", organization: "勞動部產業人才投資", category: "AI" }
+        ];
+
+        const projects = [
+            { id: 'tj1', type: 'tanji', title: "碳吉：社區微氣候韌性決策平台", link: "https://tanji2026.github.io/nbs/", tags: ["Climate Tech", "GIS", "NbS"], description: "結合 GIS 風險快篩與 NbS 自然解方選物的決策平台。能指認熱點、模擬降溫效益，協助社區落實氣候韌性。", image: "images/tanji-nbs.jpg" },
+            { id: 'tj2', type: 'tanji', title: "碳吉：低碳改造讓社區碳吉", link: "https://tanji2026.github.io/livinglab/", tags: ["GovTech", "PLM", "行政減負"], description: "針對管委會開發的數位助理。具備「智慧自評」與「文件自動生成」引擎，解決複雜法規痛點，一鍵產出申請書。", image: "images/tanji-admin.jpg" },
+            { id: 'p1', type: 'personal', title: "EcoLogic 專案", link: "https://ecoshane.github.io/ecologic/", tags: ["ESG", "Carbon Calc"], description: "結合原有碳排計算系統，擴充並提早應對 HRDD 風險。", image: "images/ecologic.jpg" },
+            { id: 'p2', type: 'personal', title: "S-Quant", link: "https://ecoshane.github.io/s-quant/", tags: ["AI", "Social Impact"], description: "AI 驅動的社會績效量化平台。以參加 2026 Google Solution Challenge 為目標。", image: "images/s-quant.jpg" },
+            { id: 'p3', type: 'personal', title: "115年度 ESG 評鑑自評系統", link: "https://ecoshane.github.io/esgeva/115", tags: ["ESG", "Evaluation"], description: "提供給上市櫃公司填報人員練習。", image: "images/esg-eval.jpg" },
+            { id: 't1', type: 'team', title: "BlinkAI", link: "https://ecoshane.github.io/BlinkAI/", tags: ["AI", "Fan Engagement"], description: "為 BLACKPINK 粉絲互動參與而生的專精 AI 平台（客服後端已移除）。", image: "images/blinkai.jpg" },
+            { id: 't2', type: 'team', title: "Ecoshane Bank", link: "https://ecoshane.github.io/bank/", tags: ["FinTech", "Green Loan"], description: "將 HRDD 納入銀行綠色連結貸款之永續績效項目。", image: "images/ecoshane-bank.jpg" },
+            { id: 't3', type: 'team', title: "Ecoshane 永續家", link: "https://ecoshane.github.io/esg/", tags: ["ESG", "HRDD"], description: "提供量化 HRDD 的方法論。", image: "images/ecoshane-home.jpg" },
+            { id: 't4', type: 'team', title: "永續數據 AI 轉換平台", link: "https://ecoshane.github.io/esg/data.html", tags: ["AI", "Data"], description: "結合原有碳排計算系統，擴充並提早應對 HRDD 風險。", image: "images/ai-platform.jpg" },
+            { id: 't5', type: 'team', title: "搶票系統 API", link: "https://ecoshane.github.io/tixcraft/api.html", tags: ["API", "Microservices"], description: "瞭解微服務架構與 API 設計基礎。", image: "images/ticket-api.jpg" }
+        ];
 
         const App = () => {
             const [activeCredentialTab, setActiveCredentialTab] = React.useState('all');
             const [activeProjectTab, setActiveProjectTab] = React.useState('all');
-
-            const certifications = [
-                { id: 1, title: "永續發展基礎能力測驗", issuer: "證期會", category: "ESG" },
-                { id: 2, title: "金融市場常識與職業道德", issuer: "證期會", category: "Finance" },
-                { id: 3, title: "iPAS AI應用規劃師", issuer: "經濟部", category: "AI" },
-                { id: 4, title: "iPAS 淨零碳規劃管理師", issuer: "經濟部", category: "ESG" },
-                { id: 5, title: "GRI 永續報告書管理師", issuer: "商研院", category: "ESG" },
-                { id: 6, title: "ISO 14067 產品碳足跡盤查管理師", issuer: "商研院", category: "ESG" },
-                { id: 7, title: "ISO 14064-1 溫室氣體盤查管理師", issuer: "商研院", category: "ESG" },
-                { id: 8, title: "AWS Certified AI Practitioner", issuer: "AWS", category: "AI" },
-                { id: 9, title: "Azure AI-900", issuer: "Azure", category: "AI" },
-                { id: 10, title: "TQC Microsoft Office 專業級", issuer: "TQC", category: "Tech" },
-                { id: 11, title: "TQC 資訊科技 Python 專業級", issuer: "TQC", category: "Tech" }
-            ];
-
-            const trainings = [
-                { id: 1, title: "AI 新秀-金融創新X生成式AI", organization: "經濟部AI新秀計劃（臺北大學）", category: "AI" },
-                { id: 2, title: "ESG 淨零人才永續管理師養成班", organization: "勞動部產業新尖兵", category: "ESG" },
-                { id: 3, title: "ESG 企業永續報告書製作實務班", organization: "勞動部產業人才投資", category: "ESG" },
-                { id: 4, title: "環境部 環境教育人員訓練", organization: "環境部環教人員（中央大學）", category: "ESG" },
-                { id: 5, title: "環境部 淨零綠領人才培育課程", organization: "環境部綠領人才（中央大學）", category: "ESG" },
-                { id: 6, title: "Google Cloud 學程結業證書", organization: "Google Cloud", category: "Tech" },
-                { id: 7, title: "臺北大學 GDSC 程式開發社團", organization: "大學社團（臺北大學）", category: "Tech" },
-                { id: 8, title: "Python 大數據資料分析實戰班", organization: "勞動部產業人才投資", category: "Tech" },
-                { id: 9, title: "AI 人工智慧人才養成基礎班", organization: "勞動部產業人才投資", category: "AI" }
-            ];
-
-            const projects = [
-                { id: 'tj1', type: 'tanji', title: "碳吉：社區微氣候韌性決策平台", link: "https://tanji2026.github.io/nbs/", tags: ["Climate Tech", "GIS", "NbS"], description: "結合 GIS 風險快篩與 NbS 自然解方選物的決策平台。能指認熱點、模擬降溫效益，協助社區落實氣候韌性。", image: "images/tanji-nbs.jpg" },
-                { id: 'tj2', type: 'tanji', title: "碳吉：低碳改造讓社區碳吉", link: "https://tanji2026.github.io/livinglab/", tags: ["GovTech", "PLM", "行政減負"], description: "針對管委會開發的數位助理。具備「智慧自評」與「文件自動生成」引擎，解決複雜法規痛點，一鍵產出申請書。", image: "images/tanji-admin.jpg" },
-                { id: 'p1', type: 'personal', title: "EcoLogic 專案", link: "https://ecoshane.github.io/ecologic/", tags: ["ESG", "Carbon Calc"], description: "結合原有碳排計算系統，擴充並提早應對 HRDD 風險。", image: "images/ecologic.jpg" },
-                { id: 'p2', type: 'personal', title: "S-Quant", link: "https://ecoshane.github.io/s-quant/", tags: ["AI", "Social Impact"], description: "AI 驅動的社會績效量化平台。以參加 2026 Google Solution Challenge 為目標。", image: "images/s-quant.jpg" },
-                { id: 'p3', type: 'personal', title: "115年度 ESG 評鑑自評系統", link: "https://ecoshane.github.io/esgeva/115", tags: ["ESG", "Evaluation"], description: "提供給上市櫃公司填報人員練習。", image: "images/esg-eval.jpg" },
-                { id: 't1', type: 'team', title: "BlinkAI", link: "https://ecoshane.github.io/BlinkAI/", tags: ["AI", "Fan Engagement"], description: "為 BLACKPINK 粉絲互動參與而生的專精 AI 平台（客服後端已移除）。", image: "images/blinkai.jpg" },
-                { id: 't2', type: 'team', title: "Ecoshane Bank", link: "https://ecoshane.github.io/bank/", tags: ["FinTech", "Green Loan"], description: "將 HRDD 納入銀行綠色連結貸款之永續績效項目。", image: "images/ecoshane-bank.jpg" },
-                { id: 't3', type: 'team', title: "Ecoshane 永續家", link: "https://ecoshane.github.io/esg/", tags: ["ESG", "HRDD"], description: "提供量化 HRDD 的方法論。", image: "images/ecoshane-home.jpg" },
-                { id: 't4', type: 'team', title: "永續數據 AI 轉換平台", link: "https://ecoshane.github.io/esg/data.html", tags: ["AI", "Data"], description: "結合原有碳排計算系統，擴充並提早應對 HRDD 風險。", image: "images/ai-platform.jpg" },
-                { id: 't5', type: 'team', title: "搶票系統 API", link: "https://ecoshane.github.io/tixcraft/api.html", tags: ["API", "Microservices"], description: "瞭解微服務架構與 API 設計基礎。", image: "images/ticket-api.jpg" }
-            ];
 
             const filteredCertifications = activeCredentialTab === 'all' ? certifications : certifications.filter(c => c.category === activeCredentialTab);
             const filteredTrainings = activeCredentialTab === 'all' ? trainings : trainings.filter(t => t.category === activeCredentialTab);
             const filteredProjects = activeProjectTab === 'all' ? projects : projects.filter(p => p.type === activeProjectTab);
             const credentialTabs = [{ id: 'all', label: '全部' }, { id: 'AI', label: 'AI' }, { id: 'ESG', label: 'ESG' }, { id: 'Finance', label: '金融' }, { id: 'Tech', label: '資訊技術' }];
 
+            // Handle image error to show a fallback that looks good
+            const handleImageError = (e) => {
+                e.target.onerror = null; 
+                e.target.src = "https://placehold.co/600x400/f3f4f6/94a3b8?text=Project+Image";
+            };
+
             return (
                 <div className="min-h-screen bg-slate-50">
+                    {/* Nav */}
                     <nav className="sticky top-0 w-full bg-white/95 backdrop-blur-sm shadow-sm z-50 border-b border-purple-100">
                         <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-                            <div className="font-bold text-xl md:text-2xl text-purple-800 tracking-tight flex items-center">
-                                YIN, KOYING <span className="text-sm font-normal text-purple-600 ml-2">| AI x ESG</span>
+                            <div className="font-bold text-xl md:text-2xl text-purple-800 tracking-tight flex items-center cursor-pointer" onClick={() => window.scrollTo(0,0)}>
+                                YIN, KOYING <span className="text-sm font-normal text-purple-600 ml-2 border-l border-purple-200 pl-2">AI x ESG</span>
                             </div>
                             <div className="hidden md:flex gap-8 text-sm font-medium text-slate-600">
-                                <a href="#about" className="hover:text-purple-700 transition-colors">關於我</a>
-                                <a href="#credentials" className="hover:text-purple-700 transition-colors">專業資歷</a>
-                                <a href="#portfolio" className="hover:text-purple-700 transition-colors">專案作品</a>
-                                <a href="#contact" className="hover:text-purple-700 transition-colors">聯絡方式</a>
+                                <a href="#about" className="hover:text-purple-700 transition-colors py-1">關於我</a>
+                                <a href="#credentials" className="hover:text-purple-700 transition-colors py-1">專業資歷</a>
+                                <a href="#portfolio" className="hover:text-purple-700 transition-colors py-1">專案作品</a>
+                                <a href="#contact" className="hover:text-purple-700 transition-colors py-1">聯絡方式</a>
                             </div>
                         </div>
                     </nav>
 
+                    {/* Hero Section */}
                     <header id="about" className="relative pt-28 pb-16 px-4 bg-gradient-to-br from-purple-900 via-indigo-900 to-purple-800 text-white overflow-hidden">
                         <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-purple-800/50 to-transparent"></div>
                         <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl"></div>
+                        <div className="absolute top-10 right-10 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl"></div>
+                        
                         <div className="max-w-6xl mx-auto relative z-10">
                             <div className="flex flex-col md:flex-row items-stretch gap-12">
                                 <div className="flex-[1.5] flex flex-col justify-center text-center md:text-left space-y-6">
-                                    <h1 className="text-4xl md:text-6xl font-extrabold leading-tight tracking-tight">殷可盈 <br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-200 to-pink-300">YIN, KOYING</span></h1>
-                                    <div className="text-lg text-purple-100 leading-relaxed space-y-2 max-w-xl mx-auto md:mx-0"><p>專注於 AI 人工智慧與 ESG 永續發展的跨領域整合。</p><p className="opacity-90">致力於運用數據科學解決環境議題，為金融科技與綠色供應鏈創造價值。</p></div>
+                                    <h1 className="text-4xl md:text-6xl font-extrabold leading-tight tracking-tight">
+                                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-200 to-pink-300">
+                                            YIN, KOYING
+                                        </span>
+                                    </h1>
+                                    <div className="text-lg text-purple-100 leading-relaxed space-y-2 max-w-xl mx-auto md:mx-0">
+                                        <p>專注於 AI 人工智慧與 ESG 永續發展的跨領域整合。</p>
+                                        <p className="opacity-90">致力於運用數據科學解決環境議題，為金融科技與綠色供應鏈創造價值。</p>
+                                    </div>
                                 </div>
+                                
                                 <div className="hidden md:block w-px bg-gradient-to-b from-transparent via-purple-400/30 to-transparent"></div>
+                                
                                 <div className="flex-1 w-full md:w-auto flex flex-col gap-4">
                                     {/* Ecoshane Team Card */}
                                     <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-colors group cursor-default flex-1">
-                                        <div className="flex items-center gap-3 mb-2 text-purple-200"><UsersIcon size={20} className="group-hover:text-purple-300 transition-colors" /><span className="font-bold tracking-wider uppercase text-xs">The Team</span></div>
+                                        <div className="flex items-center gap-3 mb-2 text-purple-200">
+                                            <UsersIcon size={20} className="group-hover:text-purple-300 transition-colors" />
+                                            <span className="font-bold tracking-wider uppercase text-xs">The Team</span>
+                                        </div>
                                         <h2 className="text-xl md:text-2xl font-bold text-white mb-2">Ecoshane</h2>
                                         <p className="text-purple-100 text-sm leading-relaxed">我們是一群致力於 AI 賦能永續的專業團隊。與我並肩作戰，提供全方位的 ESG 數位轉型解決方案，讓永續不再只是口號。</p>
                                     </div>
                                     
                                     {/* TanJi Team Card */}
                                     <div className="bg-white/5 backdrop-blur-sm border border-emerald-400/30 rounded-2xl p-6 hover:bg-white/10 transition-colors group cursor-default flex-1">
-                                        <div className="flex items-center gap-3 mb-2 text-emerald-200"><Sprout size={20} className="group-hover:text-emerald-300 transition-colors" /><span className="font-bold tracking-wider uppercase text-xs">The Project</span></div>
+                                        <div className="flex items-center gap-3 mb-2 text-emerald-200">
+                                            <Sprout size={20} className="group-hover:text-emerald-300 transition-colors" />
+                                            <span className="font-bold tracking-wider uppercase text-xs">The Project</span>
+                                        </div>
                                         <h2 className="text-xl md:text-2xl font-bold text-white mb-2">碳吉 TanJi</h2>
                                         <p className="text-emerald-50 text-sm leading-relaxed">結合 GIS 微氣候風險快篩與低碳改造行政自動化的決策平台，讓社區氣候韌性看得見、算得出。</p>
                                     </div>
@@ -129,38 +165,71 @@
                         </div>
                     </header>
 
+                    {/* Credentials Section */}
                     <section id="credentials" className="py-20 bg-white">
                         <div className="max-w-6xl mx-auto px-4">
                             <div className="flex flex-col md:flex-row justify-between items-end mb-8 gap-6">
-                                <div><div className="flex items-center gap-3 mb-2"><div className="p-2 bg-purple-100 rounded-lg text-purple-700"><Award size={24} /></div><h2 className="text-3xl font-bold text-slate-800">專業資歷</h2></div><p className="text-slate-500 pl-14">Professional Credentials & Training</p></div>
+                                <div>
+                                    <div className="flex items-center gap-3 mb-2">
+                                        <div className="p-2 bg-purple-100 rounded-lg text-purple-700">
+                                            <Award size={24} />
+                                        </div>
+                                        <h2 className="text-3xl font-bold text-slate-800">專業資歷</h2>
+                                    </div>
+                                    <p className="text-slate-500 pl-14">Professional Credentials & Training</p>
+                                </div>
                                 <div className="flex flex-wrap gap-2 bg-slate-50 p-1 rounded-lg border border-slate-200">
-                                    {credentialTabs.map((tab) => (<button key={tab.id} onClick={() => setActiveCredentialTab(tab.id)} className={`px-3 py-1.5 rounded-md text-xs font-medium transition-all ${activeCredentialTab === tab.id ? 'bg-purple-600 text-white shadow-sm' : 'text-slate-600 hover:bg-slate-200'}`}>{tab.label}</button>))}
+                                    {credentialTabs.map((tab) => (
+                                        <button 
+                                            key={tab.id} 
+                                            onClick={() => setActiveCredentialTab(tab.id)} 
+                                            className={`px-3 py-1.5 rounded-md text-xs font-medium transition-all duration-200 ${
+                                                activeCredentialTab === tab.id 
+                                                ? 'bg-purple-600 text-white shadow-sm' 
+                                                : 'text-slate-600 hover:bg-slate-200'
+                                            }`}
+                                        >
+                                            {tab.label}
+                                        </button>
+                                    ))}
                                 </div>
                             </div>
                             
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                                {/* Certifications */}
                                 {filteredCertifications.length > 0 && (
                                     <div className="w-full animate-fadeIn">
-                                        <h3 className="text-sm font-bold text-slate-700 mb-3 flex items-center gap-2 border-b border-purple-100 pb-2"><CheckCircle size={16} className="text-purple-600" />專業證照</h3>
-                                        <div className="flex flex-col rounded-lg border border-slate-100 divide-y divide-slate-100 bg-white shadow-sm">
+                                        <h3 className="text-sm font-bold text-slate-700 mb-3 flex items-center gap-2 border-b border-purple-100 pb-2">
+                                            <CheckCircle size={16} className="text-purple-600" />
+                                            專業證照
+                                        </h3>
+                                        <div className="flex flex-col rounded-lg border border-slate-100 divide-y divide-slate-100 bg-white shadow-sm overflow-hidden">
                                             {filteredCertifications.map((cert) => (
-                                                <div key={cert.id} className="flex justify-between items-center px-4 py-2 hover:bg-purple-50/20 transition-colors">
-                                                    <span className="font-medium text-slate-700 text-xs">{cert.title}</span>
-                                                    <span className="text-[10px] text-slate-400 border border-slate-100 px-2 py-0.5 rounded-full whitespace-nowrap ml-2">{cert.issuer}</span>
+                                                <div key={cert.id} className="flex justify-between items-center px-4 py-3 hover:bg-purple-50/30 transition-colors group">
+                                                    <span className="font-medium text-slate-700 text-sm group-hover:text-purple-700 transition-colors">{cert.title}</span>
+                                                    <span className="text-[10px] text-slate-500 border border-slate-200 bg-slate-50 px-2 py-0.5 rounded-full whitespace-nowrap ml-2">
+                                                        {cert.issuer}
+                                                    </span>
                                                 </div>
                                             ))}
                                         </div>
                                     </div>
                                 )}
                                 
+                                {/* Training */}
                                 {filteredTrainings.length > 0 && (
-                                    <div className="w-full animate-fadeIn">
-                                        <h3 className="text-sm font-bold text-slate-700 mb-3 flex items-center gap-2 border-b border-purple-100 pb-2"><BookOpen size={16} className="text-purple-600" />專業培訓</h3>
-                                        <div className="flex flex-col rounded-lg border border-slate-100 divide-y divide-slate-100 bg-white shadow-sm">
+                                    <div className="w-full animate-fadeIn" style={{animationDelay: '0.1s'}}>
+                                        <h3 className="text-sm font-bold text-slate-700 mb-3 flex items-center gap-2 border-b border-purple-100 pb-2">
+                                            <BookOpen size={16} className="text-purple-600" />
+                                            專業培訓
+                                        </h3>
+                                        <div className="flex flex-col rounded-lg border border-slate-100 divide-y divide-slate-100 bg-white shadow-sm overflow-hidden">
                                             {filteredTrainings.map((train) => (
-                                                <div key={train.id} className="flex justify-between items-center px-4 py-2 hover:bg-purple-50/20 transition-colors">
-                                                    <span className="font-medium text-slate-700 text-xs">{train.title}</span>
-                                                    <span className="text-[10px] text-slate-400 border border-slate-100 px-2 py-0.5 rounded-full whitespace-nowrap ml-2">{train.organization}</span>
+                                                <div key={train.id} className="flex justify-between items-center px-4 py-3 hover:bg-purple-50/30 transition-colors group">
+                                                    <span className="font-medium text-slate-700 text-sm group-hover:text-purple-700 transition-colors">{train.title}</span>
+                                                    <span className="text-[10px] text-slate-500 border border-slate-200 bg-slate-50 px-2 py-0.5 rounded-full whitespace-nowrap ml-2">
+                                                        {train.organization}
+                                                    </span>
                                                 </div>
                                             ))}
                                         </div>
@@ -170,23 +239,64 @@
                         </div>
                     </section>
 
+                    {/* Portfolio Section */}
                     <section id="portfolio" className="py-20 bg-slate-50">
                         <div className="max-w-6xl mx-auto px-4">
                             <div className="flex flex-col md:flex-row justify-between items-end mb-10 gap-4">
-                                <div><div className="flex items-center gap-3 mb-2"><div className="p-2 bg-indigo-100 rounded-lg text-indigo-700"><Cpu size={24} /></div><h2 className="text-3xl font-bold text-slate-800">精選專案</h2></div><p className="text-slate-500 pl-14">結合 AI 技術與 ESG 指標的實務應用成果</p></div>
+                                <div>
+                                    <div className="flex items-center gap-3 mb-2">
+                                        <div className="p-2 bg-indigo-100 rounded-lg text-indigo-700">
+                                            <Cpu size={24} />
+                                        </div>
+                                        <h2 className="text-3xl font-bold text-slate-800">精選專案</h2>
+                                    </div>
+                                    <p className="text-slate-500 pl-14">結合 AI 技術與 ESG 指標的實務應用成果</p>
+                                </div>
                                 <div className="flex flex-wrap gap-2 bg-white p-1 rounded-lg shadow-sm border border-slate-200">
-                                    <button onClick={() => setActiveProjectTab('all')} className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all ${activeProjectTab === 'all' ? 'bg-purple-600 text-white shadow-sm' : 'text-slate-600 hover:bg-slate-100'}`}>全部</button>
-                                    <button onClick={() => setActiveProjectTab('personal')} className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all ${activeProjectTab === 'personal' ? 'bg-purple-600 text-white shadow-sm' : 'text-slate-600 hover:bg-slate-100'}`}><User size={14} /> 個人作品</button>
-                                    <button onClick={() => setActiveProjectTab('tanji')} className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all ${activeProjectTab === 'tanji' ? 'bg-emerald-600 text-white shadow-sm' : 'text-slate-600 hover:bg-slate-100'}`}><Sprout size={14} /> 碳吉 TanJi</button>
-                                    <button onClick={() => setActiveProjectTab('team')} className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all ${activeProjectTab === 'team' ? 'bg-purple-600 text-white shadow-sm' : 'text-slate-600 hover:bg-slate-100'}`}><UsersIcon size={14} /> Ecoshane 團隊</button>
+                                    <button 
+                                        onClick={() => setActiveProjectTab('all')} 
+                                        className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all ${activeProjectTab === 'all' ? 'bg-purple-600 text-white shadow-sm' : 'text-slate-600 hover:bg-slate-100'}`}
+                                    >
+                                        全部
+                                    </button>
+                                    <button 
+                                        onClick={() => setActiveProjectTab('personal')} 
+                                        className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all ${activeProjectTab === 'personal' ? 'bg-purple-600 text-white shadow-sm' : 'text-slate-600 hover:bg-slate-100'}`}
+                                    >
+                                        <User size={14} /> 個人作品
+                                    </button>
+                                    <button 
+                                        onClick={() => setActiveProjectTab('tanji')} 
+                                        className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all ${activeProjectTab === 'tanji' ? 'bg-emerald-600 text-white shadow-sm' : 'text-slate-600 hover:bg-slate-100'}`}
+                                    >
+                                        <Sprout size={14} /> 碳吉 TanJi
+                                    </button>
+                                    <button 
+                                        onClick={() => setActiveProjectTab('team')} 
+                                        className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all ${activeProjectTab === 'team' ? 'bg-purple-600 text-white shadow-sm' : 'text-slate-600 hover:bg-slate-100'}`}
+                                    >
+                                        <UsersIcon size={14} /> Ecoshane 團隊
+                                    </button>
                                 </div>
                             </div>
+                            
                             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 animate-fadeIn">
                                 {filteredProjects.map((project) => (
-                                    <a key={project.id} href={project.link} target="_blank" rel="noopener noreferrer" className="block bg-white rounded-xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
-                                        <div className="h-48 overflow-hidden relative">
-                                            <img src={project.image} onError={(e) => {e.target.onerror = null; e.target.src = "https://via.placeholder.com/400x300/f3f4f6/64748b?text=Project+Image"}} alt={project.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                                            <div className={`absolute top-3 right-3 backdrop-blur px-3 py-1 rounded-full text-xs font-bold shadow-sm ${
+                                    <a 
+                                        key={project.id} 
+                                        href={project.link} 
+                                        target="_blank" 
+                                        rel="noopener noreferrer" 
+                                        className="block bg-white rounded-xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col h-full"
+                                    >
+                                        <div className="h-48 overflow-hidden relative bg-slate-200">
+                                            <img 
+                                                src={project.image} 
+                                                onError={handleImageError} 
+                                                alt={project.title} 
+                                                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
+                                            />
+                                            <div className={`absolute top-3 right-3 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold shadow-sm ${
                                                 project.type === 'tanji' ? 'bg-emerald-100/90 text-emerald-800' :
                                                 project.type === 'personal' ? 'bg-purple-100/90 text-purple-800' : 
                                                 'bg-indigo-100/90 text-indigo-800'
@@ -194,15 +304,19 @@
                                                 {project.type === 'tanji' ? 'TanJi' : project.type === 'personal' ? 'Personal' : 'Team'}
                                             </div>
                                         </div>
-                                        <div className="p-6">
-                                            <h3 className={`text-lg font-bold text-slate-900 mb-2 transition-colors flex items-center gap-2 ${project.type === 'tanji' ? 'group-hover:text-emerald-700' : 'group-hover:text-purple-700'}`}>
+                                        <div className="p-6 flex flex-col flex-grow">
+                                            <h3 className={`text-lg font-bold text-slate-900 mb-2 transition-colors flex items-center justify-between gap-2 ${project.type === 'tanji' ? 'group-hover:text-emerald-700' : 'group-hover:text-purple-700'}`}>
                                                 {project.title}
-                                                <Mail size={14} className="opacity-0 group-hover:opacity-100 transition-opacity text-slate-400" />
+                                                <ExternalLink size={16} className="opacity-0 group-hover:opacity-100 transition-opacity text-slate-400" />
                                             </h3>
-                                            <p className="text-slate-600 text-sm mb-4 leading-relaxed line-clamp-2">{project.description}</p>
-                                            <div className="flex flex-wrap gap-2 pt-2">
+                                            <p className="text-slate-600 text-sm mb-4 leading-relaxed line-clamp-2 flex-grow">
+                                                {project.description}
+                                            </p>
+                                            <div className="flex flex-wrap gap-2 pt-2 border-t border-slate-50 mt-auto">
                                                 {project.tags.map(tag => (
-                                                    <span key={tag} className="text-xs px-2.5 py-1 bg-slate-50 text-slate-600 rounded-md border border-slate-200">{tag}</span>
+                                                    <span key={tag} className="text-xs px-2.5 py-1 bg-slate-50 text-slate-600 rounded-md border border-slate-200 font-medium">
+                                                        {tag}
+                                                    </span>
                                                 ))}
                                             </div>
                                         </div>
@@ -212,31 +326,44 @@
                         </div>
                     </section>
 
+                    {/* Contact Section */}
                     <section id="contact" className="py-16 bg-white border-t border-slate-100">
                         <div className="max-w-5xl mx-auto px-4">
-                            <div className="bg-gradient-to-r from-purple-900 to-indigo-900 rounded-2xl p-8 md:p-12 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-8">
-                                <div className="text-center md:text-left flex-1 w-full">
-                                    <h2 className="text-2xl font-bold mb-2">聯絡方式</h2><p className="text-purple-200 text-sm mb-6">歡迎金融機構與科技企業聯繫，討論 AI 與 ESG 相關合作機會。</p>
+                            <div className="bg-gradient-to-r from-purple-900 to-indigo-900 rounded-2xl p-8 md:p-12 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden">
+                                <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+                                
+                                <div className="text-center md:text-left flex-1 w-full relative z-10">
+                                    <h2 className="text-2xl font-bold mb-2">聯絡方式</h2>
+                                    <p className="text-purple-200 text-sm mb-6">歡迎金融機構與科技企業聯繫，討論 AI 與 ESG 相關合作機會。</p>
+                                    
                                     <div className="grid md:grid-cols-3 gap-4">
                                         <div className="flex items-center gap-3 bg-white/10 p-4 rounded-lg backdrop-blur-sm border border-white/10 hover:bg-white/20 transition-colors">
-                                            <div className="bg-white text-purple-900 p-2 rounded-full flex-shrink-0"><Mail size={16} /></div>
+                                            <div className="bg-white text-purple-900 p-2 rounded-full flex-shrink-0">
+                                                <Mail size={16} />
+                                            </div>
                                             <div className="text-left overflow-hidden min-w-0">
-                                                <p className="text-xs text-purple-300">個人聯繫</p>
-                                                <a href="mailto:yinkoying.yky@gmail.com" className="text-sm font-medium hover:text-white block truncate">yinkoying.yky@gmail.com</a>
+                                                <p className="text-xs text-purple-300 mb-0.5">個人聯繫</p>
+                                                <a href="mailto:yinkoying.yky@gmail.com" className="text-sm font-medium hover:text-white block truncate transition-colors">yinkoying.yky@gmail.com</a>
                                             </div>
                                         </div>
+                                        
                                         <div className="flex items-center gap-3 bg-white/10 p-4 rounded-lg backdrop-blur-sm border border-white/10 hover:bg-white/20 transition-colors">
-                                            <div className="bg-white text-purple-900 p-2 rounded-full flex-shrink-0"><UsersIcon size={16} /></div>
+                                            <div className="bg-white text-purple-900 p-2 rounded-full flex-shrink-0">
+                                                <UsersIcon size={16} />
+                                            </div>
                                             <div className="text-left overflow-hidden min-w-0">
-                                                <p className="text-xs text-purple-300">團隊業務/合作</p>
-                                                <a href="mailto:ecoshane.esg@gmail.com" className="text-sm font-medium hover:text-white block truncate">ecoshane.esg@gmail.com</a>
+                                                <p className="text-xs text-purple-300 mb-0.5">團隊業務/合作</p>
+                                                <a href="mailto:ecoshane.esg@gmail.com" className="text-sm font-medium hover:text-white block truncate transition-colors">ecoshane.esg@gmail.com</a>
                                             </div>
                                         </div>
+                                        
                                         <div className="flex items-center gap-3 bg-white/10 p-4 rounded-lg backdrop-blur-sm border border-emerald-400/20 hover:bg-emerald-900/40 transition-colors">
-                                            <div className="bg-emerald-100 text-emerald-800 p-2 rounded-full flex-shrink-0"><Sprout size={16} /></div>
+                                            <div className="bg-emerald-100 text-emerald-800 p-2 rounded-full flex-shrink-0">
+                                                <Sprout size={16} />
+                                            </div>
                                             <div className="text-left overflow-hidden min-w-0">
-                                                <p className="text-xs text-emerald-300">碳吉專案</p>
-                                                <a href="mailto:tanji2026@gmail.com" className="text-sm font-medium hover:text-white block truncate">tanji2026@gmail.com</a>
+                                                <p className="text-xs text-emerald-300 mb-0.5">碳吉專案</p>
+                                                <a href="mailto:tanji2026@gmail.com" className="text-sm font-medium hover:text-white block truncate transition-colors">tanji2026@gmail.com</a>
                                             </div>
                                         </div>
                                     </div>
@@ -245,10 +372,23 @@
                         </div>
                     </section>
 
+                    {/* Footer */}
                     <footer className="bg-slate-50 py-10 border-t border-slate-200">
                         <div className="max-w-6xl mx-auto px-4 text-center">
-                            <div className="mb-8 max-w-2xl mx-auto"><div className="inline-flex items-center justify-center p-3 bg-purple-50 rounded-full mb-4"><Palette size={20} className="text-purple-600" /></div><h4 className="text-sm font-bold text-purple-800 mb-2 uppercase tracking-wide">Why Purple?</h4><p className="text-slate-600 text-sm leading-relaxed">紫色融合了代表熱情與行動的紅色，以及象徵科技與智慧的藍色。<br/>這正代表著我如何運用理性的 AI 數據技術 (Blue)，去實踐對 ESG 永續發展的熱忱 (Red)。<br/>科技與人性的平衡，即是永續的起點。</p></div>
-                            <div className="w-12 h-1 bg-purple-200 rounded-full mx-auto mb-6"></div><p className="text-slate-500 text-sm font-medium">© 2026 YIN, KOYING. All rights reserved.</p><p className="text-slate-400 text-xs mt-1">Specialized in AI & ESG Solutions</p>
+                            <div className="mb-8 max-w-2xl mx-auto">
+                                <div className="inline-flex items-center justify-center p-3 bg-purple-50 rounded-full mb-4">
+                                    <Palette size={20} className="text-purple-600" />
+                                </div>
+                                <h4 className="text-sm font-bold text-purple-800 mb-2 uppercase tracking-wide">Why Purple?</h4>
+                                <p className="text-slate-600 text-sm leading-relaxed">
+                                    紫色融合了代表熱情與行動的紅色，以及象徵科技與智慧的藍色。<br/>
+                                    這正代表著我如何運用理性的 AI 數據技術 (Blue)，去實踐對 ESG 永續發展的熱忱 (Red)。<br/>
+                                    科技與人性的平衡，即是永續的起點。
+                                </p>
+                            </div>
+                            <div className="w-12 h-1 bg-purple-200 rounded-full mx-auto mb-6"></div>
+                            <p className="text-slate-500 text-sm font-medium">© 2026 YIN, KOYING. All rights reserved.</p>
+                            <p className="text-slate-400 text-xs mt-1">Specialized in AI & ESG Solutions</p>
                         </div>
                     </footer>
                 </div>

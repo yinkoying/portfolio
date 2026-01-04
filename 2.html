@@ -22,46 +22,14 @@
         ::-webkit-scrollbar-track { background: #f1f5f9; }
         ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
-
-        /* --- Print / PDF Export Styles --- */
-        @media print {
-            @page {
-                size: A4;
-                margin: 1cm;
-            }
-            body {
-                -webkit-print-color-adjust: exact !important; /* Force background colors */
-                print-color-adjust: exact !important;
-                background-color: white !important;
-            }
-            /* Hide interactive elements */
-            .no-print, nav button, nav a, .nav-links {
-                display: none !important;
-            }
-            /* Adjust Navbar for print */
-            nav {
-                position: static !important;
-                border-bottom: 2px solid #7e22ce !important;
-                padding-bottom: 10px;
-            }
-            /* Avoid breaking elements across pages */
-            .break-inside-avoid {
-                page-break-inside: avoid;
-            }
-            section {
-                break-inside: avoid;
-                page-break-inside: avoid;
-            }
-            /* Enhance contrast for print */
-            p, h1, h2, h3, h4, span, div {
-                text-shadow: none !important;
-            }
-        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
     <div id="root"></div>
     <script type="text/babel">
+        // --- 解構 React 變數，避免 'default' undefined 錯誤 ---
+        const { useState, useEffect } = React;
+        
         // --- Icons Components ---
         const Icon = ({ size = 24, className = "", children, onClick }) => (
             <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} onClick={onClick}>{children}</svg>
@@ -81,7 +49,6 @@
         const Sprout = (p) => <Icon {...p}><path d="M2 22h20"/><path d="M12 22v-9"/><path d="M15.183 5.183a5 5 0 0 1 3.536 8.536L12 20l-6.719-6.281a5 5 0 1 1 7.072-7.072 2.5 2.5 0 0 1 .83 1.536 2.5 2.5 0 0 1 .83-1.536Z"/></Icon>;
         const ExternalLink = (p) => <Icon {...p}><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></Icon>;
         const Globe = (p) => <Icon {...p}><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></Icon>;
-        const Download = (p) => <Icon {...p}><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></Icon>;
 
         // --- Data & Translations ---
         
@@ -119,8 +86,7 @@
                 team_card_desc: "我們是一群致力於 AI 賦能永續的專業團隊。與我並肩作戰，提供全方位的 ESG 數位轉型解決方案，讓永續不再只是口號。",
                 tanji_card_title: "碳吉 TanJi",
                 tanji_card_sub: "The Project",
-                tanji_card_desc: "結合 GIS 微氣候風險快篩與低碳改造行政自動化的決策平台，讓社區氣候韌性看得見、算得出。",
-                download_pdf: "下載 PDF"
+                tanji_card_desc: "結合 GIS 微氣候風險快篩與低碳改造行政自動化的決策平台，讓社區氣候韌性看得見、算得出。"
             },
             en: {
                 about: "About Me",
@@ -155,8 +121,7 @@
                 team_card_desc: "We are a professional team dedicated to AI-empowered sustainability. Join me in providing comprehensive ESG digital transformation solutions.",
                 tanji_card_title: "TanJi",
                 tanji_card_sub: "The Project",
-                tanji_card_desc: "A decision-making platform combining GIS micro-climate risk screening with automated low-carbon renovation administration, making community resilience visible and calculable.",
-                download_pdf: "Save as PDF"
+                tanji_card_desc: "A decision-making platform combining GIS micro-climate risk screening with automated low-carbon renovation administration, making community resilience visible and calculable."
             }
         };
 
@@ -187,6 +152,22 @@
         ];
 
         const projects = [
+            // --- 新增：SME SLL 專案 (置頂) ---
+            { 
+                id: 'f1', 
+                type: 'Finance', 
+                title: { zh: "中小企業永續連結貸款開發 (PMP)", en: "SME Sustainability Linked Loan (PMP)" }, 
+                // 暫時設為 #，下一步我們會把它改成開啟 Modal
+                link: "#", 
+                tags: ["FinTech", "Green Finance", "Product Planning", "Risk Mgmt"], 
+                description: { 
+                    zh: "模擬中信銀行法金產品開發流程。從商業論證、規章修訂、系統規格(SRS)到上市推廣(GTM)，完整實作 0 到 1 的產品生命週期管理。", 
+                    en: "Simulating Corporate Banking product development. From business case, regulation revision, SRS to GTM, fully implementing 0-to-1 product lifecycle management." 
+                }, 
+                // 模擬內部系統 Dashboard 的截圖 (深色專業風格)
+                image: "https://placehold.co/600x400/0f172a/e2e8f0?text=Internal+System+Dashboard%0A+%28Simulated%29" 
+            },
+            // --- 原有專案 ---
             { 
                 id: 'tj1', 
                 type: 'tanji', 
@@ -280,24 +261,21 @@
         ];
 
         const App = () => {
-            const [lang, setLang] = React.useState('zh');
-            const [activeCredentialTab, setActiveCredentialTab] = React.useState('all');
-            const [activeProjectTab, setActiveProjectTab] = React.useState('all');
+            const [lang, setLang] = useState('zh');
+            const [activeCredentialTab, setActiveCredentialTab] = useState('all');
+            const [activeProjectTab, setActiveProjectTab] = useState('all');
 
             const toggleLang = () => {
                 setLang(prev => prev === 'zh' ? 'en' : 'zh');
                 window.scrollTo(0, 0);
             };
 
-            // Print Functionality
-            const handlePrint = () => {
-                window.print();
-            };
-
             const t = uiText[lang];
 
             const filteredCertifications = activeCredentialTab === 'all' ? certifications : certifications.filter(c => c.category === activeCredentialTab);
             const filteredTrainings = activeCredentialTab === 'all' ? trainings : trainings.filter(t => t.category === activeCredentialTab);
+            
+            // 專案篩選邏輯：如果選 Finance，就只顯示 Finance；如果選 all，顯示全部
             const filteredProjects = activeProjectTab === 'all' ? projects : projects.filter(p => p.type === activeProjectTab);
             
             const credentialTabs = [
@@ -316,51 +294,41 @@
             return (
                 <div className="min-h-screen bg-slate-50">
                     {/* Nav */}
-                    <nav className="sticky top-0 w-full bg-white/95 backdrop-blur-sm shadow-sm z-50 border-b border-purple-100 print:relative print:border-none print:shadow-none">
+                    <nav className="sticky top-0 w-full bg-white/95 backdrop-blur-sm shadow-sm z-50 border-b border-purple-100">
                         <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
                             <div className="font-bold text-xl md:text-2xl text-purple-800 tracking-tight flex items-center cursor-pointer" onClick={() => window.scrollTo(0,0)}>
                                 YIN, KOYING <span className="text-sm font-normal text-purple-600 ml-2 border-l border-purple-200 pl-2">AI x ESG</span>
                             </div>
                             <div className="flex items-center gap-6">
-                                <div className="hidden md:flex gap-8 text-sm font-medium text-slate-600 nav-links">
+                                <div className="hidden md:flex gap-8 text-sm font-medium text-slate-600">
                                     <a href="#about" className="hover:text-purple-700 transition-colors py-1">{t.about}</a>
                                     <a href="#credentials" className="hover:text-purple-700 transition-colors py-1">{t.credentials}</a>
                                     <a href="#portfolio" className="hover:text-purple-700 transition-colors py-1">{t.portfolio}</a>
                                     <a href="#contact" className="hover:text-purple-700 transition-colors py-1">{t.contact}</a>
                                 </div>
-                                <div className="flex items-center gap-2">
-                                    <button 
-                                        onClick={handlePrint}
-                                        className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-purple-600 hover:bg-purple-700 text-white text-xs font-bold transition-all shadow-sm print:hidden"
-                                        title={t.download_pdf}
-                                    >
-                                        <Download size={14} />
-                                        <span className="hidden sm:inline">{t.download_pdf}</span>
-                                    </button>
-                                    <button 
-                                        onClick={toggleLang}
-                                        className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 text-xs font-bold transition-all border border-slate-200 print:hidden"
-                                        title="Switch Language"
-                                    >
-                                        <Globe size={14} />
-                                        <span>{lang === 'zh' ? 'EN' : '繁中'}</span>
-                                    </button>
-                                </div>
+                                <button 
+                                    onClick={toggleLang}
+                                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 text-xs font-bold transition-all border border-slate-200"
+                                    title="Switch Language"
+                                >
+                                    <Globe size={14} />
+                                    <span>{lang === 'zh' ? 'EN' : '繁中'}</span>
+                                </button>
                             </div>
                         </div>
                     </nav>
 
                     {/* Hero Section */}
-                    <header id="about" className="relative pt-28 pb-16 px-4 bg-gradient-to-br from-purple-900 via-indigo-900 to-purple-800 text-white overflow-hidden print:pt-10 print:pb-10">
+                    <header id="about" className="relative pt-28 pb-16 px-4 bg-gradient-to-br from-purple-900 via-indigo-900 to-purple-800 text-white overflow-hidden">
                         <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-purple-800/50 to-transparent"></div>
-                        <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl print:hidden"></div>
-                        <div className="absolute top-10 right-10 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl print:hidden"></div>
+                        <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl"></div>
+                        <div className="absolute top-10 right-10 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl"></div>
                         
                         <div className="max-w-6xl mx-auto relative z-10">
                             <div className="flex flex-col md:flex-row items-stretch gap-12">
                                 <div className="flex-[1.5] flex flex-col justify-center text-center md:text-left space-y-6">
                                     <h1 className="text-4xl md:text-6xl font-extrabold leading-tight tracking-tight">
-                                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-200 to-pink-300 print:text-purple-900">
+                                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-200 to-pink-300">
                                             {t.hero_title}
                                         </span>
                                     </h1>
@@ -370,11 +338,11 @@
                                     </div>
                                 </div>
                                 
-                                <div className="hidden md:block w-px bg-gradient-to-b from-transparent via-purple-400/30 to-transparent print:hidden"></div>
+                                <div className="hidden md:block w-px bg-gradient-to-b from-transparent via-purple-400/30 to-transparent"></div>
                                 
                                 <div className="flex-1 w-full md:w-auto flex flex-col gap-4">
                                     {/* Ecoshane Team Card */}
-                                    <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-colors group cursor-default flex-1 break-inside-avoid border-print">
+                                    <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-colors group cursor-default flex-1">
                                         <div className="flex items-center gap-3 mb-2 text-purple-200">
                                             <UsersIcon size={20} className="group-hover:text-purple-300 transition-colors" />
                                             <span className="font-bold tracking-wider uppercase text-xs">{t.team_card_sub}</span>
@@ -384,7 +352,7 @@
                                     </div>
                                     
                                     {/* TanJi Team Card */}
-                                    <div className="bg-white/5 backdrop-blur-sm border border-emerald-400/30 rounded-2xl p-6 hover:bg-white/10 transition-colors group cursor-default flex-1 break-inside-avoid border-print">
+                                    <div className="bg-white/5 backdrop-blur-sm border border-emerald-400/30 rounded-2xl p-6 hover:bg-white/10 transition-colors group cursor-default flex-1">
                                         <div className="flex items-center gap-3 mb-2 text-emerald-200">
                                             <Sprout size={20} className="group-hover:text-emerald-300 transition-colors" />
                                             <span className="font-bold tracking-wider uppercase text-xs">{t.tanji_card_sub}</span>
@@ -398,7 +366,7 @@
                     </header>
 
                     {/* Credentials Section */}
-                    <section id="credentials" className="py-20 bg-white print:py-10">
+                    <section id="credentials" className="py-20 bg-white">
                         <div className="max-w-6xl mx-auto px-4">
                             <div className="flex flex-col md:flex-row justify-between items-end mb-8 gap-6">
                                 <div>
@@ -410,7 +378,7 @@
                                     </div>
                                     <p className="text-slate-500 pl-14">{t.credentials_sub}</p>
                                 </div>
-                                <div className="flex flex-wrap gap-2 bg-slate-50 p-1 rounded-lg border border-slate-200 no-print">
+                                <div className="flex flex-wrap gap-2 bg-slate-50 p-1 rounded-lg border border-slate-200">
                                     {credentialTabs.map((tab) => (
                                         <button 
                                             key={tab.id} 
@@ -430,41 +398,41 @@
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
                                 {/* Certifications */}
                                 {filteredCertifications.length > 0 && (
-                                    <div className="w-full animate-fadeIn break-inside-avoid">
-                                        <h3 className="text-sm font-bold text-slate-700 mb-3 flex items-center gap-2 border-b border-purple-100 pb-2">
-                                            <CheckCircle size={16} className="text-purple-600" />
-                                            {t.certs_title}
-                                        </h3>
-                                        <div className="flex flex-col rounded-lg border border-slate-100 divide-y divide-slate-100 bg-white shadow-sm overflow-hidden">
-                                            {filteredCertifications.map((cert) => (
-                                                <div key={cert.id} className="flex justify-between items-center px-4 py-3 hover:bg-purple-50/30 transition-colors group">
-                                                    <span className="font-medium text-slate-700 text-sm group-hover:text-purple-700 transition-colors">{cert.title[lang]}</span>
-                                                    <span className="text-[10px] text-slate-500 border border-slate-200 bg-slate-50 px-2 py-0.5 rounded-full whitespace-nowrap ml-2">
-                                                        {cert.issuer[lang]}
-                                                    </span>
-                                                </div>
-                                            ))}
-                                        </div>
+                                    <div className="w-full animate-fadeIn">
+                                            <h3 className="text-sm font-bold text-slate-700 mb-3 flex items-center gap-2 border-b border-purple-100 pb-2">
+                                                <CheckCircle size={16} className="text-purple-600" />
+                                                {t.certs_title}
+                                            </h3>
+                                            <div className="flex flex-col rounded-lg border border-slate-100 divide-y divide-slate-100 bg-white shadow-sm overflow-hidden">
+                                                {filteredCertifications.map((cert) => (
+                                                    <div key={cert.id} className="flex justify-between items-center px-4 py-3 hover:bg-purple-50/30 transition-colors group">
+                                                        <span className="font-medium text-slate-700 text-sm group-hover:text-purple-700 transition-colors">{cert.title[lang]}</span>
+                                                        <span className="text-[10px] text-slate-500 border border-slate-200 bg-slate-50 px-2 py-0.5 rounded-full whitespace-nowrap ml-2">
+                                                            {cert.issuer[lang]}
+                                                        </span>
+                                                    </div>
+                                                ))}
+                                            </div>
                                     </div>
                                 )}
                                 
                                 {/* Training */}
                                 {filteredTrainings.length > 0 && (
-                                    <div className="w-full animate-fadeIn break-inside-avoid" style={{animationDelay: '0.1s'}}>
-                                        <h3 className="text-sm font-bold text-slate-700 mb-3 flex items-center gap-2 border-b border-purple-100 pb-2">
-                                            <BookOpen size={16} className="text-purple-600" />
-                                            {t.training_title}
-                                        </h3>
-                                        <div className="flex flex-col rounded-lg border border-slate-100 divide-y divide-slate-100 bg-white shadow-sm overflow-hidden">
-                                            {filteredTrainings.map((train) => (
-                                                <div key={train.id} className="flex justify-between items-center px-4 py-3 hover:bg-purple-50/30 transition-colors group">
-                                                    <span className="font-medium text-slate-700 text-sm group-hover:text-purple-700 transition-colors">{train.title[lang]}</span>
-                                                    <span className="text-[10px] text-slate-500 border border-slate-200 bg-slate-50 px-2 py-0.5 rounded-full whitespace-nowrap ml-2">
-                                                        {train.organization[lang]}
-                                                    </span>
-                                                </div>
-                                            ))}
-                                        </div>
+                                    <div className="w-full animate-fadeIn" style={{animationDelay: '0.1s'}}>
+                                            <h3 className="text-sm font-bold text-slate-700 mb-3 flex items-center gap-2 border-b border-purple-100 pb-2">
+                                                <BookOpen size={16} className="text-purple-600" />
+                                                {t.training_title}
+                                            </h3>
+                                            <div className="flex flex-col rounded-lg border border-slate-100 divide-y divide-slate-100 bg-white shadow-sm overflow-hidden">
+                                                {filteredTrainings.map((train) => (
+                                                    <div key={train.id} className="flex justify-between items-center px-4 py-3 hover:bg-purple-50/30 transition-colors group">
+                                                        <span className="font-medium text-slate-700 text-sm group-hover:text-purple-700 transition-colors">{train.title[lang]}</span>
+                                                        <span className="text-[10px] text-slate-500 border border-slate-200 bg-slate-50 px-2 py-0.5 rounded-full whitespace-nowrap ml-2">
+                                                            {train.organization[lang]}
+                                                        </span>
+                                                    </div>
+                                                ))}
+                                            </div>
                                     </div>
                                 )}
                             </div>
@@ -472,7 +440,7 @@
                     </section>
 
                     {/* Portfolio Section */}
-                    <section id="portfolio" className="py-20 bg-slate-50 print:py-10">
+                    <section id="portfolio" className="py-20 bg-slate-50">
                         <div className="max-w-6xl mx-auto px-4">
                             <div className="flex flex-col md:flex-row justify-between items-end mb-10 gap-4">
                                 <div>
@@ -484,13 +452,22 @@
                                     </div>
                                     <p className="text-slate-500 pl-14">{t.portfolio_sub}</p>
                                 </div>
-                                <div className="flex flex-wrap gap-2 bg-white p-1 rounded-lg shadow-sm border border-slate-200 no-print">
+                                <div className="flex flex-wrap gap-2 bg-white p-1 rounded-lg shadow-sm border border-slate-200">
                                     <button 
                                         onClick={() => setActiveProjectTab('all')} 
                                         className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all ${activeProjectTab === 'all' ? 'bg-purple-600 text-white shadow-sm' : 'text-slate-600 hover:bg-slate-100'}`}
                                     >
                                         {t.tab_all}
                                     </button>
+                                    
+                                    {/* Finance 按鈕 */}
+                                    <button 
+                                        onClick={() => setActiveProjectTab('Finance')} 
+                                        className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all ${activeProjectTab === 'Finance' ? 'bg-blue-800 text-white shadow-sm' : 'text-slate-600 hover:bg-slate-100'}`}
+                                    >
+                                        <TrendingUp size={14} /> {t.tab_finance}
+                                    </button>
+
                                     <button 
                                         onClick={() => setActiveProjectTab('personal')} 
                                         className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all ${activeProjectTab === 'personal' ? 'bg-purple-600 text-white shadow-sm' : 'text-slate-600 hover:bg-slate-100'}`}
@@ -517,9 +494,15 @@
                                     <a 
                                         key={project.id} 
                                         href={project.link} 
-                                        target="_blank" 
+                                        target={project.link === '#' ? '_self' : '_blank'} 
                                         rel="noopener noreferrer" 
-                                        className="block bg-white rounded-xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col h-full break-inside-avoid"
+                                        onClick={(e) => {
+                                            if (project.link === '#') {
+                                                e.preventDefault();
+                                                alert("Step 2: 專案詳情 Modal 準備中...");
+                                            }
+                                        }}
+                                        className="block bg-white rounded-xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col h-full"
                                     >
                                         <div className="h-48 overflow-hidden relative bg-slate-200">
                                             <img 
@@ -529,17 +512,21 @@
                                                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
                                             />
                                             <div className={`absolute top-3 right-3 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold shadow-sm ${
+                                                project.type === 'Finance' ? 'bg-blue-100/90 text-blue-900' :
                                                 project.type === 'tanji' ? 'bg-emerald-100/90 text-emerald-800' :
                                                 project.type === 'personal' ? 'bg-purple-100/90 text-purple-800' : 
                                                 'bg-indigo-100/90 text-indigo-800'
                                             }`}>
-                                                {project.type === 'tanji' ? 'TanJi' : project.type === 'personal' ? 'Personal' : 'Team'}
+                                                {project.type === 'tanji' ? 'TanJi' : project.type === 'personal' ? 'Personal' : project.type === 'Finance' ? 'Finance' : 'Team'}
                                             </div>
                                         </div>
                                         <div className="p-6 flex flex-col flex-grow">
-                                            <h3 className={`text-lg font-bold text-slate-900 mb-2 transition-colors flex items-center justify-between gap-2 ${project.type === 'tanji' ? 'group-hover:text-emerald-700' : 'group-hover:text-purple-700'}`}>
+                                            <h3 className={`text-lg font-bold text-slate-900 mb-2 transition-colors flex items-center justify-between gap-2 ${
+                                                project.type === 'Finance' ? 'group-hover:text-blue-800' :
+                                                project.type === 'tanji' ? 'group-hover:text-emerald-700' : 'group-hover:text-purple-700'
+                                            }`}>
                                                 {project.title[lang]}
-                                                <ExternalLink size={16} className="opacity-0 group-hover:opacity-100 transition-opacity text-slate-400 no-print" />
+                                                {project.link !== '#' && <ExternalLink size={16} className="opacity-0 group-hover:opacity-100 transition-opacity text-slate-400" />}
                                             </h3>
                                             <p className="text-slate-600 text-sm mb-4 leading-relaxed line-clamp-2 flex-grow">
                                                 {project.description[lang]}
@@ -559,10 +546,10 @@
                     </section>
 
                     {/* Contact Section */}
-                    <section id="contact" className="py-16 bg-white border-t border-slate-100 break-inside-avoid">
+                    <section id="contact" className="py-16 bg-white border-t border-slate-100">
                         <div className="max-w-5xl mx-auto px-4">
-                            <div className="bg-gradient-to-r from-purple-900 to-indigo-900 rounded-2xl p-8 md:p-12 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden print:bg-purple-900">
-                                <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 print:hidden"></div>
+                            <div className="bg-gradient-to-r from-purple-900 to-indigo-900 rounded-2xl p-8 md:p-12 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden">
+                                <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
                                 
                                 <div className="text-center md:text-left flex-1 w-full relative z-10">
                                     <h2 className="text-2xl font-bold mb-2">{t.contact_title}</h2>
@@ -605,7 +592,7 @@
                     </section>
 
                     {/* Footer */}
-                    <footer className="bg-slate-50 py-10 border-t border-slate-200 break-inside-avoid">
+                    <footer className="bg-slate-50 py-10 border-t border-slate-200">
                         <div className="max-w-6xl mx-auto px-4 text-center">
                             <div className="mb-8 max-w-2xl mx-auto">
                                 <div className="inline-flex items-center justify-center p-3 bg-purple-50 rounded-full mb-4">

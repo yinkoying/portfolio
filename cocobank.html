@@ -77,27 +77,29 @@
             bank: <path d="M3 21h18M5 21V7l8-4 8 4v14M8 10a2 2 0 1 0 4 0 2 2 0 1 0-4 0zM10 21v-4a2 2 0 1 1 4 0v4"/>
         };
 
+        // --- 專案階段與文件資料 (已設定好對應的檔案路徑) ---
+        // 請在 GitHub 專案根目錄下建立 "documents" 資料夾，並放入對應名稱的檔案
         const phases = [
             { id: 1, name: "啟動 (Initiating)", status: "Completed", date: "Mar 2026", docs: [
-                { code: "PMO-01", name: "專案章程 (Project Charter)", type: "PDF" },
-                { code: "PMO-02", name: "利害關係人登記表", type: "XLS" }
+                { code: "PMO-01", name: "專案章程 (Project Charter)", type: "PDF", file: "documents/PMO-01_Project_Charter.pdf" },
+                { code: "PMO-02", name: "利害關係人登記表", type: "XLS", file: "documents/PMO-02_Stakeholder_Register.xlsx" }
             ]},
             { id: 2, name: "規劃 (Planning)", status: "Completed", date: "Apr 2026", docs: [
-                { code: "PROD-02", name: "產品辦法細則 (Product Program)", type: "PDF" },
-                { code: "IT-01", name: "系統需求規格說明書 (SRS)", type: "DOC" }
+                { code: "PROD-02", name: "產品辦法細則 (Product Program)", type: "PDF", file: "documents/PROD-02_Product_Program.pdf" },
+                { code: "IT-01", name: "系統需求規格說明書 (SRS)", type: "DOC", file: "documents/IT-01_SRS.docx" }
             ]},
             { id: 3, name: "執行 (Executing)", status: "Completed", date: "May-Jun 2026", docs: [
-                { code: "RISK-01", name: "漂綠風險防範報告 (KYG)", type: "PDF" },
-                { code: "LEGAL-01", name: "借貸契約增補條款", type: "PDF" }
+                { code: "RISK-01", name: "漂綠風險防範報告 (KYG)", type: "PDF", file: "documents/RISK-01_Greenwashing_Risk_Report.pdf" },
+                { code: "LEGAL-01", name: "借貸契約增補條款", type: "PDF", file: "documents/LEGAL-01_Loan_Agreement_Amendment.pdf" }
             ]},
             { id: 4, name: "監控 (Monitoring)", status: "Completed", date: "Jun-Jul 2026", docs: [
-                { code: "IT-02", name: "UAT 測試驗收報告", type: "PDF" },
-                { code: "PILOT-01", name: "試點客戶回饋報告", type: "PPT" }
+                { code: "IT-02", name: "UAT 測試驗收報告", type: "PDF", file: "documents/IT-02_UAT_Report.pdf" },
+                { code: "PILOT-01", name: "試點客戶回饋報告", type: "PPT", file: "documents/PILOT-01_Pilot_Feedback.pptx" }
             ]},
             { id: 5, name: "上市/結案 (Closing)", status: "Released", date: "Aug 2026", docs: [
-                { code: "OPS-01", name: "標準作業程序 (SOP)", type: "PDF" },
-                { code: "MKT-01", name: "業務銷售懶人包", type: "JPG" },
-                { code: "PMO-06", name: "專案結案報告", type: "PPT" }
+                { code: "OPS-01", name: "標準作業程序 (SOP)", type: "PDF", file: "documents/OPS-01_SOP.pdf" },
+                { code: "MKT-01", name: "業務銷售懶人包", type: "JPG", file: "documents/MKT-01_Sales_Kit.jpg" },
+                { code: "PMO-06", name: "專案結案報告", type: "PPT", file: "documents/PMO-06_Project_Closure_Report.pptx" }
             ]}
         ];
 
@@ -110,6 +112,11 @@
         );
 
         function App() {
+            // 處理下載全部的邏輯 (這需要後端或打包，目前僅作提示)
+            const handleDownloadAll = () => {
+                alert("請確認 'documents' 資料夾已上傳至 GitHub，即可逐一下載文件。");
+            };
+
             return (
                 <div className="min-h-screen flex flex-col md:flex-row text-slate-800 bg-[#f1f5f9] font-sans">
                     
@@ -229,7 +236,7 @@
                                     <Icon path={icons.file} className="w-5 h-5 text-[#C5A065]" />
                                     專案階段與交付文件 (WBS Artifacts)
                                 </h3>
-                                <button className="text-xs bg-white border border-slate-300 px-3 py-1.5 rounded shadow-sm hover:bg-slate-50 text-slate-600 font-medium transition-colors">
+                                <button onClick={handleDownloadAll} className="text-xs bg-white border border-slate-300 px-3 py-1.5 rounded shadow-sm hover:bg-slate-50 text-slate-600 font-medium transition-colors">
                                     Download All (.zip)
                                 </button>
                             </div>
@@ -253,7 +260,14 @@
                                             {/* Documents Grid */}
                                             <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-4">
                                                 {phase.docs.map((doc, idx) => (
-                                                    <div key={idx} className="flex items-center gap-3 p-3 rounded-lg border border-slate-200 bg-white hover:border-[#C5A065] hover:shadow-md transition-all cursor-pointer group/doc">
+                                                    <a 
+                                                        key={idx} 
+                                                        href={doc.file} 
+                                                        download 
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        className="flex items-center gap-3 p-3 rounded-lg border border-slate-200 bg-white hover:border-[#C5A065] hover:shadow-md transition-all cursor-pointer group/doc"
+                                                    >
                                                         <div className={`w-10 h-10 rounded-lg flex items-center justify-center text-[10px] font-bold text-white shadow-sm
                                                             ${doc.type === 'PDF' ? 'bg-red-500' : 
                                                               doc.type === 'XLS' ? 'bg-green-600' : 
@@ -266,7 +280,7 @@
                                                             <div className="text-sm font-bold text-slate-700 truncate group-hover/doc:text-[#002D56] transition-colors">{doc.name}</div>
                                                         </div>
                                                         <Icon path={icons.download} className="w-4 h-4 text-slate-300 group-hover/doc:text-[#C5A065] transition-colors" />
-                                                    </div>
+                                                    </a>
                                                 ))}
                                             </div>
                                         </div>

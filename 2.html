@@ -116,22 +116,20 @@ const trainings = [
 ];
 
 const projects = [
-    // --- 新增：SME SLL 專案 (法金 PMP 作品) ---
+    // --- 新增：SME SLL 專案 ---
     { 
         id: 'f1', 
-        type: 'personal', // 歸類：個人作品
-        title: { zh: "中小企業永續連結貸款開發", en: "SME Sustainability Linked Loan" }, // 移除 PMP 括號
-        // 請確認您的 GitHub Pages 已部署此路徑
+        type: 'personal', // 歸類到個人作品
+        title: { zh: "中小企業永續連結貸款開發", en: "SME Sustainability Linked Loan" }, 
+        // 連結到您的 GitHub Pages 專案頁
         link: "https://yinkoying.github.io/cocobank/pmp", 
         tags: ["FinTech", "Green Finance", "Product Planning", "Risk Mgmt"], 
         description: { 
-            zh: "【模擬專案：可可商業銀行】隸屬法金事業群，由企金商品部發起。從商業論證、規章修訂、系統規格(SRS)到上市推廣(GTM)，完整實作 0 到 1 的產品生命週期管理。", 
+            zh: "【模擬專案：可可商業銀行】隸屬法金事業群，由企金商品部發起。模擬法金產品開發流程：從商業論證、規章修訂、系統規格(SRS)到上市推廣(GTM)，完整實作 0 到 1 的產品生命週期管理。", 
             en: "【Simulated Project: Coco Bank】Corporate Banking Product Dept. (Wholesale Banking). From business case, regulation revision, SRS to GTM, fully implementing 0-to-1 product lifecycle management." 
         }, 
-        // 請將截圖重新命名為 sme-dashboard.jpg 並放入 images 資料夾
-        // 這裡暫時用佔位圖，您替換圖片後請將下行註解掉並啟用真實路徑
-        // image: "images/sme-dashboard.jpg" 
-        image: "https://placehold.co/600x400/0f172a/e2e8f0?text=SME+SLL+Dashboard+%28Screenshot%29" 
+        // 圖片設為您的截圖檔名，請確保 images 資料夾中有此檔案
+        image: "images/sme-dashboard.jpg" 
     },
     // --- 原有專案 ---
     { 
@@ -241,7 +239,7 @@ export default function App() {
     const filteredCertifications = activeCredentialTab === 'all' ? certifications : certifications.filter(c => c.category === activeCredentialTab);
     const filteredTrainings = activeCredentialTab === 'all' ? trainings : trainings.filter(t => t.category === activeCredentialTab);
     
-    // 專案篩選邏輯
+    // 專案篩選邏輯：如果選 Finance，就只顯示 Finance；如果選 all，顯示全部
     const filteredProjects = activeProjectTab === 'all' ? projects : projects.filter(p => p.type === activeProjectTab);
     
     const credentialTabs = [

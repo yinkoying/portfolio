@@ -27,6 +27,9 @@
 <body class="bg-slate-50 text-slate-800">
     <div id="root"></div>
     <script type="text/babel">
+        // --- 解構 React 變數 ---
+        const { useState, useEffect } = React;
+        
         // --- Icons Components ---
         const Icon = ({ size = 24, className = "", children, onClick }) => (
             <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} onClick={onClick}>{children}</svg>
@@ -61,8 +64,6 @@
                 certs_title: "專業證照",
                 training_title: "專業培訓",
                 tab_all: "全部",
-                tab_finance: "金融",
-                tab_tech: "資訊技術",
                 tab_personal: "個人作品",
                 tab_tanji: "碳吉 TanJi",
                 tab_team: "Ecoshane 團隊",
@@ -96,8 +97,6 @@
                 certs_title: "Certifications",
                 training_title: "Professional Training",
                 tab_all: "All",
-                tab_finance: "Finance",
-                tab_tech: "Tech",
                 tab_personal: "Personal",
                 tab_tanji: "TanJi Project",
                 tab_team: "Team Ecoshane",
@@ -149,6 +148,22 @@
         ];
 
         const projects = [
+            // --- 新增：SME SLL 專案 (法金 PMP 作品) ---
+            { 
+                id: 'f1', 
+                type: 'personal', 
+                title: { zh: "中小企業永續連結貸款開發", en: "SME Sustainability Linked Loan" }, 
+                // 連結指向 GitHub Pages 的戰情室頁面
+                link: "https://yinkoying.github.io/cocobank/pmp", 
+                tags: ["FinTech", "Green Finance", "Product Planning", "Risk Mgmt"], 
+                description: { 
+                    zh: "【模擬專案：可可商業銀行】隸屬法金事業群，由企金商品部發起。從商業論證、規章修訂、系統規格(SRS)到上市推廣(GTM)，完整實作 0 到 1 的產品生命週期管理。", 
+                    en: "【Simulated Project: Coco Bank】Corporate Banking Product Dept. (Wholesale Banking). From business case, regulation revision, SRS to GTM, fully implementing 0-to-1 product lifecycle management." 
+                }, 
+                // 圖片路徑：請確保您在 GitHub 的 images 資料夾中有此圖片
+                image: "images/sme-dashboard.jpg" 
+            },
+            // --- 原有專案 ---
             { 
                 id: 'tj1', 
                 type: 'tanji', 
@@ -242,9 +257,9 @@
         ];
 
         const App = () => {
-            const [lang, setLang] = React.useState('zh');
-            const [activeCredentialTab, setActiveCredentialTab] = React.useState('all');
-            const [activeProjectTab, setActiveProjectTab] = React.useState('all');
+            const [lang, setLang] = useState('zh');
+            const [activeCredentialTab, setActiveCredentialTab] = useState('all');
+            const [activeProjectTab, setActiveProjectTab] = useState('all');
 
             const toggleLang = () => {
                 setLang(prev => prev === 'zh' ? 'en' : 'zh');
@@ -255,6 +270,8 @@
 
             const filteredCertifications = activeCredentialTab === 'all' ? certifications : certifications.filter(c => c.category === activeCredentialTab);
             const filteredTrainings = activeCredentialTab === 'all' ? trainings : trainings.filter(t => t.category === activeCredentialTab);
+            
+            // 專案篩選邏輯
             const filteredProjects = activeProjectTab === 'all' ? projects : projects.filter(p => p.type === activeProjectTab);
             
             const credentialTabs = [
@@ -271,7 +288,7 @@
             };
 
             return (
-                <div className="min-h-screen bg-slate-50">
+                <div className="min-h-screen bg-slate-50 font-sans">
                     {/* Nav */}
                     <nav className="sticky top-0 w-full bg-white/95 backdrop-blur-sm shadow-sm z-50 border-b border-purple-100">
                         <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
@@ -378,40 +395,40 @@
                                 {/* Certifications */}
                                 {filteredCertifications.length > 0 && (
                                     <div className="w-full animate-fadeIn">
-                                        <h3 className="text-sm font-bold text-slate-700 mb-3 flex items-center gap-2 border-b border-purple-100 pb-2">
-                                            <CheckCircle size={16} className="text-purple-600" />
-                                            {t.certs_title}
-                                        </h3>
-                                        <div className="flex flex-col rounded-lg border border-slate-100 divide-y divide-slate-100 bg-white shadow-sm overflow-hidden">
-                                            {filteredCertifications.map((cert) => (
-                                                <div key={cert.id} className="flex justify-between items-center px-4 py-3 hover:bg-purple-50/30 transition-colors group">
-                                                    <span className="font-medium text-slate-700 text-sm group-hover:text-purple-700 transition-colors">{cert.title[lang]}</span>
-                                                    <span className="text-[10px] text-slate-500 border border-slate-200 bg-slate-50 px-2 py-0.5 rounded-full whitespace-nowrap ml-2">
-                                                        {cert.issuer[lang]}
-                                                    </span>
-                                                </div>
-                                            ))}
-                                        </div>
+                                            <h3 className="text-sm font-bold text-slate-700 mb-3 flex items-center gap-2 border-b border-purple-100 pb-2">
+                                                <CheckCircle size={16} className="text-purple-600" />
+                                                {t.certs_title}
+                                            </h3>
+                                            <div className="flex flex-col rounded-lg border border-slate-100 divide-y divide-slate-100 bg-white shadow-sm overflow-hidden">
+                                                {filteredCertifications.map((cert) => (
+                                                    <div key={cert.id} className="flex justify-between items-center px-4 py-3 hover:bg-purple-50/30 transition-colors group">
+                                                        <span className="font-medium text-slate-700 text-sm group-hover:text-purple-700 transition-colors">{cert.title[lang]}</span>
+                                                        <span className="text-[10px] text-slate-500 border border-slate-200 bg-slate-50 px-2 py-0.5 rounded-full whitespace-nowrap ml-2">
+                                                            {cert.issuer[lang]}
+                                                        </span>
+                                                    </div>
+                                                ))}
+                                            </div>
                                     </div>
                                 )}
                                 
                                 {/* Training */}
                                 {filteredTrainings.length > 0 && (
                                     <div className="w-full animate-fadeIn" style={{animationDelay: '0.1s'}}>
-                                        <h3 className="text-sm font-bold text-slate-700 mb-3 flex items-center gap-2 border-b border-purple-100 pb-2">
-                                            <BookOpen size={16} className="text-purple-600" />
-                                            {t.training_title}
-                                        </h3>
-                                        <div className="flex flex-col rounded-lg border border-slate-100 divide-y divide-slate-100 bg-white shadow-sm overflow-hidden">
-                                            {filteredTrainings.map((train) => (
-                                                <div key={train.id} className="flex justify-between items-center px-4 py-3 hover:bg-purple-50/30 transition-colors group">
-                                                    <span className="font-medium text-slate-700 text-sm group-hover:text-purple-700 transition-colors">{train.title[lang]}</span>
-                                                    <span className="text-[10px] text-slate-500 border border-slate-200 bg-slate-50 px-2 py-0.5 rounded-full whitespace-nowrap ml-2">
-                                                        {train.organization[lang]}
-                                                    </span>
-                                                </div>
-                                            ))}
-                                        </div>
+                                            <h3 className="text-sm font-bold text-slate-700 mb-3 flex items-center gap-2 border-b border-purple-100 pb-2">
+                                                <BookOpen size={16} className="text-purple-600" />
+                                                {t.training_title}
+                                            </h3>
+                                            <div className="flex flex-col rounded-lg border border-slate-100 divide-y divide-slate-100 bg-white shadow-sm overflow-hidden">
+                                                {filteredTrainings.map((train) => (
+                                                    <div key={train.id} className="flex justify-between items-center px-4 py-3 hover:bg-purple-50/30 transition-colors group">
+                                                        <span className="font-medium text-slate-700 text-sm group-hover:text-purple-700 transition-colors">{train.title[lang]}</span>
+                                                        <span className="text-[10px] text-slate-500 border border-slate-200 bg-slate-50 px-2 py-0.5 rounded-full whitespace-nowrap ml-2">
+                                                            {train.organization[lang]}
+                                                        </span>
+                                                    </div>
+                                                ))}
+                                            </div>
                                     </div>
                                 )}
                             </div>
@@ -438,6 +455,7 @@
                                     >
                                         {t.tab_all}
                                     </button>
+                                    
                                     <button 
                                         onClick={() => setActiveProjectTab('personal')} 
                                         className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all ${activeProjectTab === 'personal' ? 'bg-purple-600 text-white shadow-sm' : 'text-slate-600 hover:bg-slate-100'}`}
@@ -464,7 +482,7 @@
                                     <a 
                                         key={project.id} 
                                         href={project.link} 
-                                        target="_blank" 
+                                        target={project.link === '#' ? '_self' : '_blank'} 
                                         rel="noopener noreferrer" 
                                         className="block bg-white rounded-xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col h-full"
                                     >
@@ -476,17 +494,21 @@
                                                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
                                             />
                                             <div className={`absolute top-3 right-3 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold shadow-sm ${
+                                                project.type === 'Finance' ? 'bg-blue-100/90 text-blue-900' :
                                                 project.type === 'tanji' ? 'bg-emerald-100/90 text-emerald-800' :
                                                 project.type === 'personal' ? 'bg-purple-100/90 text-purple-800' : 
                                                 'bg-indigo-100/90 text-indigo-800'
                                             }`}>
-                                                {project.type === 'tanji' ? 'TanJi' : project.type === 'personal' ? 'Personal' : 'Team'}
+                                                {project.type === 'tanji' ? 'TanJi' : project.type === 'personal' ? 'Personal' : project.type === 'Finance' ? 'Finance' : 'Team'}
                                             </div>
                                         </div>
                                         <div className="p-6 flex flex-col flex-grow">
-                                            <h3 className={`text-lg font-bold text-slate-900 mb-2 transition-colors flex items-center justify-between gap-2 ${project.type === 'tanji' ? 'group-hover:text-emerald-700' : 'group-hover:text-purple-700'}`}>
+                                            <h3 className={`text-lg font-bold text-slate-900 mb-2 transition-colors flex items-center justify-between gap-2 ${
+                                                project.type === 'Finance' ? 'group-hover:text-blue-800' :
+                                                project.type === 'tanji' ? 'group-hover:text-emerald-700' : 'group-hover:text-purple-700'
+                                            }`}>
                                                 {project.title[lang]}
-                                                <ExternalLink size={16} className="opacity-0 group-hover:opacity-100 transition-opacity text-slate-400" />
+                                                {project.link !== '#' && <ExternalLink size={16} className="opacity-0 group-hover:opacity-100 transition-opacity text-slate-400" />}
                                             </h3>
                                             <p className="text-slate-600 text-sm mb-4 leading-relaxed line-clamp-2 flex-grow">
                                                 {project.description[lang]}

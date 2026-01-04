@@ -155,14 +155,14 @@
             // --- 新增：SME SLL 專案 (置頂) ---
             { 
                 id: 'f1', 
-                type: 'Finance', 
-                title: { zh: "中小企業永續連結貸款開發 (PMP)", en: "SME Sustainability Linked Loan (PMP)" }, 
+                type: 'personal', // 更改為 personal
+                title: { zh: "中小企業永續連結貸款開發", en: "SME Sustainability Linked Loan" }, // 移除 (PMP)
                 // 暫時設為 #，下一步我們會把它改成開啟 Modal
                 link: "#", 
                 tags: ["FinTech", "Green Finance", "Product Planning", "Risk Mgmt"], 
                 description: { 
-                    zh: "模擬中信銀行法金產品開發流程。從商業論證、規章修訂、系統規格(SRS)到上市推廣(GTM)，完整實作 0 到 1 的產品生命週期管理。", 
-                    en: "Simulating Corporate Banking product development. From business case, regulation revision, SRS to GTM, fully implementing 0-to-1 product lifecycle management." 
+                    zh: "【模擬專案：可可商業銀行】擔任企金商品部 PM。模擬法金產品開發流程：從商業論證、規章修訂、系統規格(SRS)到上市推廣(GTM)，完整實作 0 到 1 的產品生命週期管理。", 
+                    en: "【Simulated Project: Coco Bank】Acted as PM in Corporate Banking Product Dept. Simulated wholesale banking product development: from business case, regulation revision, SRS to GTM, fully implementing 0-to-1 product lifecycle management." 
                 }, 
                 // 模擬內部系統 Dashboard 的截圖 (深色專業風格)
                 image: "https://placehold.co/600x400/0f172a/e2e8f0?text=Internal+System+Dashboard%0A+%28Simulated%29" 
@@ -460,13 +460,7 @@
                                         {t.tab_all}
                                     </button>
                                     
-                                    {/* Finance 按鈕 */}
-                                    <button 
-                                        onClick={() => setActiveProjectTab('Finance')} 
-                                        className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all ${activeProjectTab === 'Finance' ? 'bg-blue-800 text-white shadow-sm' : 'text-slate-600 hover:bg-slate-100'}`}
-                                    >
-                                        <TrendingUp size={14} /> {t.tab_finance}
-                                    </button>
+                                    {/* Finance 按鈕已移除，歸類至個人作品 */}
 
                                     <button 
                                         onClick={() => setActiveProjectTab('personal')} 

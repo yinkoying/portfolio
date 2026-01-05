@@ -67,6 +67,9 @@
                 tab_personal: "個人作品",
                 tab_tanji: "碳吉 TanJi",
                 tab_team: "Ecoshane 團隊",
+                tab_finance: "金融", // Added
+                tab_pm: "專案管理", // Added
+                tab_tech: "資訊科技", // Ensure this exists
                 contact_title: "聯絡方式",
                 contact_desc: "歡迎金融機構與科技企業聯繫，討論 AI 與 ESG 相關合作機會。",
                 contact_personal: "個人聯繫",
@@ -100,6 +103,9 @@
                 tab_personal: "Personal",
                 tab_tanji: "TanJi Project",
                 tab_team: "Team Ecoshane",
+                tab_finance: "Finance", // Added
+                tab_pm: "Project Mgmt", // Added
+                tab_tech: "Tech", // Ensure this exists
                 contact_title: "Contact",
                 contact_desc: "Open to discussing AI & ESG collaboration opportunities with financial institutions and tech companies.",
                 contact_personal: "Personal Inquiry",
@@ -144,7 +150,9 @@
             { id: 6, title: { zh: "Google Cloud 學程結業證書", en: "Google Cloud Program Certificate" }, organization: { zh: "Google Cloud", en: "Google Cloud" }, category: "Tech" },
             { id: 7, title: { zh: "臺北大學 GDSC 程式開發社團", en: "NTPU GDSC Developer Club" }, organization: { zh: "臺北大學", en: "NTPU" }, category: "Tech" },
             { id: 8, title: { zh: "Python 大數據資料分析實戰班", en: "Python Big Data Analysis Bootcamp" }, organization: { zh: "勞動部產業人才投資", en: "MOL Investment" }, category: "Tech" },
-            { id: 9, title: { zh: "AI 人工智慧人才養成基礎班", en: "AI Talent Development Basic Class" }, organization: { zh: "勞動部產業人才投資", en: "MOL Investment" }, category: "AI" }
+            { id: 9, title: { zh: "AI 人工智慧人才養成基礎班", en: "AI Talent Development Basic Class" }, organization: { zh: "勞動部產業人才投資", en: "MOL Investment" }, category: "AI" },
+            // Added new training
+            { id: 10, title: { zh: "PMP 專案管理人才實務班", en: "PMP Project Management Practice" }, organization: { zh: "勞動部產業人才投資", en: "MOL Investment" }, category: "PM" }
         ];
 
         const projects = [
@@ -279,6 +287,7 @@
                 { id: 'AI', label: 'AI' }, 
                 { id: 'ESG', label: 'ESG' }, 
                 { id: 'Finance', label: t.tab_finance }, 
+                { id: 'PM', label: t.tab_pm }, 
                 { id: 'Tech', label: t.tab_tech }
             ];
 

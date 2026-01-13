@@ -67,9 +67,9 @@
                 tab_personal: "個人作品",
                 tab_tanji: "碳吉 TanJi",
                 tab_team: "Ecoshane 團隊",
-                tab_finance: "金融", // Added
-                tab_pm: "專案管理", // Added
-                tab_tech: "資訊科技", // Ensure this exists
+                tab_finance: "金融",
+                tab_pm: "專案管理",
+                tab_tech: "資訊科技",
                 contact_title: "聯絡方式",
                 contact_desc: "歡迎金融機構與科技企業聯繫，討論 AI 與 ESG 相關合作機會。",
                 contact_personal: "個人聯繫",
@@ -103,9 +103,9 @@
                 tab_personal: "Personal",
                 tab_tanji: "TanJi Project",
                 tab_team: "Team Ecoshane",
-                tab_finance: "Finance", // Added
-                tab_pm: "Project Mgmt", // Added
-                tab_tech: "Tech", // Ensure this exists
+                tab_finance: "Finance",
+                tab_pm: "Project Mgmt",
+                tab_tech: "Tech",
                 contact_title: "Contact",
                 contact_desc: "Open to discussing AI & ESG collaboration opportunities with financial institutions and tech companies.",
                 contact_personal: "Personal Inquiry",
@@ -139,7 +139,6 @@
             { id: 9, title: { zh: "Azure AI-900", en: "Azure AI-900" }, issuer: { zh: "Azure", en: "Azure" }, category: "AI" },
             { id: 10, title: { zh: "TQC Microsoft Office 專業級", en: "TQC Microsoft Office Professional" }, issuer: { zh: "TQC", en: "TQC" }, category: "Tech" },
             { id: 11, title: { zh: "TQC 資訊科技 Python 專業級", en: "TQC IT Python Professional" }, issuer: { zh: "TQC", en: "TQC" }, category: "Tech" },
-            // Added Low-Carbon Community Planner certification
             { id: 12, title: { zh: "新北市低碳社區規劃師", en: "New Taipei City Low-Carbon Community Planner" }, issuer: { zh: "新北市環保局", en: "NTPC EPB" }, category: "ESG" }
         ];
 
@@ -153,25 +152,22 @@
             { id: 7, title: { zh: "臺北大學 GDSC 程式開發社團", en: "NTPU GDSC Developer Club" }, organization: { zh: "臺北大學", en: "NTPU" }, category: "Tech" },
             { id: 8, title: { zh: "Python 大數據資料分析實戰班", en: "Python Big Data Analysis Bootcamp" }, organization: { zh: "勞動部產業人才投資", en: "MOL Investment" }, category: "Tech" },
             { id: 9, title: { zh: "AI 人工智慧人才養成基礎班", en: "AI Talent Development Basic Class" }, organization: { zh: "勞動部產業人才投資", en: "MOL Investment" }, category: "AI" },
-            // Added new training
             { id: 10, title: { zh: "PMP 專案管理人才實務班", en: "PMP Project Management Practice" }, organization: { zh: "勞動部產業人才投資", en: "MOL Investment" }, category: "PM" }
         ];
 
         const projects = [
-            // --- 新增：SME SLL 專案 (法金 PMP 作品) ---
+             // --- 新增：115年度 CCUS 創意教案 (最新) ---
             { 
-                id: 'f1', 
-                type: 'personal', 
-                title: { zh: "中小企業永續連結貸款開發", en: "SME Sustainability Linked Loan" }, 
-                // 連結指向 GitHub Pages 的戰情室頁面
-                link: "https://yinkoying.github.io/cocobank/pmp", 
-                tags: ["FinTech", "Green Finance", "Product Planning", "Risk Mgmt"], 
+                id: 'tj3', 
+                type: 'tanji', 
+                title: { zh: "碳吉：CCUS 淨零決策模擬器", en: "TanJi: CCUS Net Zero Simulator" }, 
+                link: "https://tanji2026.github.io/ccus/", 
+                tags: ["EdTech", "CCUS", "Gamification", "AI"], 
                 description: { 
-                    zh: "【模擬專案：可可商業銀行】隸屬法金事業群，由企金商品部發起。從商業論證、規章修訂、系統規格(SRS)到上市推廣(GTM)，完整實作 0 到 1 的產品生命週期管理。", 
-                    en: "【Simulated Project: Coco Bank】Corporate Banking Product Dept. (Wholesale Banking). From business case, regulation revision, SRS to GTM, fully implementing 0-to-1 product lifecycle management." 
+                    zh: "【115年 CCUS 創意教案】自行開發之多人連線網頁模擬器。運用 Firebase 與 AI 技術，建置「角色分權」與「即時戰情室」，將嚴肅的負碳技術轉化為互動策略遊戲。", 
+                    en: "【115 CCUS Creative Lesson Plan】Self-developed multiplayer web simulator. Uses Firebase and AI to build 'role-based locking' and 'real-time war room', transforming negative carbon tech into an interactive strategy game." 
                 }, 
-                // 圖片路徑：請確保您在 GitHub 的 images 資料夾中有此圖片
-                image: "images/sme-dashboard.jpg" 
+                image: "images/tanji-ccus.jpg" 
             },
             // --- 原有專案 ---
             { 
@@ -200,6 +196,19 @@
                 tags: ["ESG", "Carbon Calc"], 
                 description: { zh: "結合原有碳排計算系統，擴充並提早應對 HRDD 風險。", en: "Integrates with existing carbon calculation systems to expand and proactively address HRDD risks." }, 
                 image: "images/ecologic.jpg" 
+            },
+            // --- 移至此處：SME SLL 專案 ---
+            { 
+                id: 'f1', 
+                type: 'personal', 
+                title: { zh: "中小企業永續連結貸款開發", en: "SME Sustainability Linked Loan" }, 
+                link: "https://yinkoying.github.io/cocobank/pmp", 
+                tags: ["FinTech", "Green Finance", "Product Planning", "Risk Mgmt"], 
+                description: { 
+                    zh: "【模擬專案：可可商業銀行】隸屬法金事業群，由企金商品部發起。從商業論證、規章修訂、系統規格(SRS)到上市推廣(GTM)，完整實作 0 到 1 的產品生命週期管理。", 
+                    en: "【Simulated Project: Coco Bank】Corporate Banking Product Dept. (Wholesale Banking). From business case, regulation revision, SRS to GTM, fully implementing 0-to-1 product lifecycle management." 
+                }, 
+                image: "images/sme-dashboard.jpg" 
             },
             { 
                 id: 'p2', 

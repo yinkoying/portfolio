@@ -17,7 +17,6 @@
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         .animate-fadeIn { animation: fadeIn 0.5s ease-out forwards; }
         
-        /* Custom scrollbar */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #f1f5f9; }
         ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
@@ -27,10 +26,8 @@
 <body class="bg-slate-50 text-slate-800">
     <div id="root"></div>
     <script type="text/babel">
-        // --- 解構 React 變數 ---
         const { useState, useEffect } = React;
         
-        // --- Icons Components ---
         const Icon = ({ size = 24, className = "", children, onClick }) => (
             <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} onClick={onClick}>{children}</svg>
         );
@@ -50,8 +47,6 @@
         const ExternalLink = (p) => <Icon {...p}><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></Icon>;
         const Globe = (p) => <Icon {...p}><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></Icon>;
 
-        // --- Data & Translations ---
-        
         const uiText = {
             zh: {
                 about: "關於我",
@@ -151,12 +146,11 @@
             { id: 7, title: { zh: "臺北大學 GDSC 程式開發社團", en: "NTPU GDSC Developer Club" }, organization: { zh: "Google & 臺北大學", en: "Google & NTPU" }, category: "Tech" },
             { id: 8, title: { zh: "Python 大數據資料分析實戰班", en: "Python Big Data Analysis Bootcamp" }, organization: { zh: "勞動部產業人才投資", en: "MOL Investment" }, category: "Tech" },
             { id: 9, title: { zh: "AI 人工智慧人才養成基礎班", en: "AI Talent Development Basic Class" }, organization: { zh: "勞動部產業人才投資", en: "MOL Investment" }, category: "AI" },
-            { id: 10, title: { zh: "新北市低碳社區規劃師", en: "New Taipei City Low-Carbon Community Planner" }, organization: { zh: "新北市環保局", en: "NTPC EPB" }, category: "ESG" }
+            { id: 10, title: { zh: "新北市低碳社區規劃師", en: "New Taipei City Low-Carbon Community Planner" }, organization: { zh: "新北市環保局", en: "NTPC EPB" }, category: "ESG" },
             { id: 11, title: { zh: "PMP 專案管理人才實務班", en: "PMP Project Management Practice" }, organization: { zh: "勞動部產業人才投資", en: "MOL Investment" }, category: "PM" }
         ];
 
         const projects = [
-             // --- 新增：115年度 CCUS 創意教案 (最新) ---
             { 
                 id: 'tj3', 
                 type: 'tanji', 
@@ -169,7 +163,6 @@
                 }, 
                 image: "images/tanji-ccus.jpg" 
             },
-            // --- 原有專案 ---
             { 
                 id: 'tj1', 
                 type: 'tanji', 
@@ -197,7 +190,6 @@
                 description: { zh: "結合原有碳排計算系統，擴充並提早應對 HRDD 風險。", en: "Integrates with existing carbon calculation systems to expand and proactively address HRDD risks." }, 
                 image: "images/ecologic.jpg" 
             },
-            // --- 移至此處：SME SLL 專案 ---
             { 
                 id: 'f1', 
                 type: 'personal', 
@@ -290,7 +282,6 @@
             const filteredCertifications = activeCredentialTab === 'all' ? certifications : certifications.filter(c => c.category === activeCredentialTab);
             const filteredTrainings = activeCredentialTab === 'all' ? trainings : trainings.filter(t => t.category === activeCredentialTab);
             
-            // 專案篩選邏輯
             const filteredProjects = activeProjectTab === 'all' ? projects : projects.filter(p => p.type === activeProjectTab);
             
             const credentialTabs = [
@@ -309,7 +300,6 @@
 
             return (
                 <div className="min-h-screen bg-slate-50 font-sans">
-                    {/* Nav */}
                     <nav className="sticky top-0 w-full bg-white/95 backdrop-blur-sm shadow-sm z-50 border-b border-purple-100">
                         <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
                             <div className="font-bold text-xl md:text-2xl text-purple-800 tracking-tight flex items-center cursor-pointer" onClick={() => window.scrollTo(0,0)}>
@@ -334,7 +324,6 @@
                         </div>
                     </nav>
 
-                    {/* Hero Section */}
                     <header id="about" className="relative pt-28 pb-16 px-4 bg-gradient-to-br from-purple-900 via-indigo-900 to-purple-800 text-white overflow-hidden">
                         <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-purple-800/50 to-transparent"></div>
                         <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl"></div>
@@ -357,7 +346,6 @@
                                 <div className="hidden md:block w-px bg-gradient-to-b from-transparent via-purple-400/30 to-transparent"></div>
                                 
                                 <div className="flex-1 w-full md:w-auto flex flex-col gap-4">
-                                    {/* Ecoshane Team Card */}
                                     <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-colors group cursor-default flex-1">
                                         <div className="flex items-center gap-3 mb-2 text-purple-200">
                                             <UsersIcon size={20} className="group-hover:text-purple-300 transition-colors" />
@@ -367,7 +355,6 @@
                                         <p className="text-purple-100 text-sm leading-relaxed">{t.team_card_desc}</p>
                                     </div>
                                     
-                                    {/* TanJi Team Card */}
                                     <div className="bg-white/5 backdrop-blur-sm border border-emerald-400/30 rounded-2xl p-6 hover:bg-white/10 transition-colors group cursor-default flex-1">
                                         <div className="flex items-center gap-3 mb-2 text-emerald-200">
                                             <Sprout size={20} className="group-hover:text-emerald-300 transition-colors" />
@@ -381,7 +368,6 @@
                         </div>
                     </header>
 
-                    {/* Credentials Section */}
                     <section id="credentials" className="py-20 bg-white">
                         <div className="max-w-6xl mx-auto px-4">
                             <div className="flex flex-col md:flex-row justify-between items-end mb-8 gap-6">
@@ -412,7 +398,6 @@
                             </div>
                             
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-                                {/* Certifications */}
                                 {filteredCertifications.length > 0 && (
                                     <div className="w-full animate-fadeIn">
                                             <h3 className="text-sm font-bold text-slate-700 mb-3 flex items-center gap-2 border-b border-purple-100 pb-2">
@@ -432,7 +417,6 @@
                                     </div>
                                 )}
                                 
-                                {/* Training */}
                                 {filteredTrainings.length > 0 && (
                                     <div className="w-full animate-fadeIn" style={{animationDelay: '0.1s'}}>
                                             <h3 className="text-sm font-bold text-slate-700 mb-3 flex items-center gap-2 border-b border-purple-100 pb-2">
@@ -455,7 +439,6 @@
                         </div>
                     </section>
 
-                    {/* Portfolio Section */}
                     <section id="portfolio" className="py-20 bg-slate-50">
                         <div className="max-w-6xl mx-auto px-4">
                             <div className="flex flex-col md:flex-row justify-between items-end mb-10 gap-4">
@@ -547,7 +530,6 @@
                         </div>
                     </section>
 
-                    {/* Contact Section */}
                     <section id="contact" className="py-16 bg-white border-t border-slate-100">
                         <div className="max-w-5xl mx-auto px-4">
                             <div className="bg-gradient-to-r from-purple-900 to-indigo-900 rounded-2xl p-8 md:p-12 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden">
@@ -593,7 +575,6 @@
                         </div>
                     </section>
 
-                    {/* Footer */}
                     <footer className="bg-slate-50 py-10 border-t border-slate-200">
                         <div className="max-w-6xl mx-auto px-4 text-center">
                             <div className="mb-8 max-w-2xl mx-auto">

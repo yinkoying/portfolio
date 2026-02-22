@@ -17,7 +17,6 @@
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         .animate-fadeIn { animation: fadeIn 0.5s ease-out forwards; }
         
-        /* Custom scrollbar */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #f1f5f9; }
         ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
@@ -27,38 +26,37 @@
 <body class="bg-slate-50 text-slate-800">
     <div id="root"></div>
     <script type="text/babel">
-        // --- 解構 React 變數 ---
         const { useState, useEffect } = React;
         
-        // --- Icons Components ---
         const Icon = ({ size = 24, className = "", children, onClick }) => (
             <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} onClick={onClick}>{children}</svg>
         );
         const Leaf = (p) => <Icon {...p}><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 5.2 6.1A7 7 0 0 1 11 20z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></Icon>;
         const Cpu = (p) => <Icon {...p}><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1V4"/><path d="M15 1V4"/><path d="M9 20V23"/><path d="M15 20V23"/><path d="M20 9H23"/><path d="M20 14H23"/><path d="M1 9H4"/><path d="M1 14H4"/></Icon>;
         const Award = (p) => <Icon {...p}><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></Icon>;
+        const Trophy = (p) => <Icon {...p}><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></Icon>;
+        const Star = (p) => <Icon {...p}><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></Icon>;
+        const Rocket = (p) => <Icon {...p}><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></Icon>;
         const Mail = (p) => <Icon {...p}><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></Icon>;
-        const Database = (p) => <Icon {...p}><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></Icon>;
-        const TrendingUp = (p) => <Icon {...p}><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></Icon>;
         const UsersIcon = (p) => <Icon {...p}><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></Icon>;
         const BookOpen = (p) => <Icon {...p}><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></Icon>;
         const CheckCircle = (p) => <Icon {...p}><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></Icon>;
-        const Code = (p) => <Icon {...p}><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></Icon>;
         const User = (p) => <Icon {...p}><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></Icon>;
         const Palette = (p) => <Icon {...p}><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></Icon>;
         const Sprout = (p) => <Icon {...p}><path d="M2 22h20"/><path d="M12 22v-9"/><path d="M15.183 5.183a5 5 0 0 1 3.536 8.536L12 20l-6.719-6.281a5 5 0 1 1 7.072-7.072 2.5 2.5 0 0 1 .83 1.536 2.5 2.5 0 0 1 .83-1.536Z"/></Icon>;
         const ExternalLink = (p) => <Icon {...p}><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></Icon>;
         const Globe = (p) => <Icon {...p}><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></Icon>;
+        const ArrowRight = (p) => <Icon {...p}><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></Icon>;
 
-        // --- Data & Translations ---
-        
         const uiText = {
             zh: {
                 about: "關於我",
                 credentials: "專業資歷",
+                awards: "得獎紀錄",
                 portfolio: "專案作品",
                 contact: "聯絡方式",
                 credentials_sub: "Professional Credentials & Training",
+                awards_sub: "專業領域的肯定與榮譽",
                 portfolio_sub: "結合 AI 技術與 ESG 指標的實務應用成果",
                 portfolio_title: "精選專案",
                 certs_title: "專業證照",
@@ -84,17 +82,20 @@
                 hero_desc_2: "致力於運用數據科學解決環境議題，為金融科技與綠色供應鏈創造價值。",
                 team_card_title: "Ecoshane",
                 team_card_sub: "The Team",
-                team_card_desc: "我們是一群致力於 AI 賦能永續的專業團隊。與我並肩作戰，提供全方位的 ESG 數位轉型解決方案，讓永續不再只是口號。",
+                team_card_desc: "我們是一群致力於 AI 賦能永續的專業團隊。提供全方位的 ESG 數位轉型解決方案，讓永續不再只是口號。",
                 tanji_card_title: "碳吉 TanJi",
                 tanji_card_sub: "The Project",
-                tanji_card_desc: "結合 GIS 微氣候風險快篩與低碳改造行政自動化的決策平台，讓社區氣候韌性看得見、算得出。"
+                tanji_card_desc: "結合 GIS 微氣候風險快篩與低碳改造行政減負的決策平台，讓社區氣候韌性看得見、算得出。",
+                view_project: "查看專案"
             },
             en: {
                 about: "About Me",
                 credentials: "Credentials",
+                awards: "Awards",
                 portfolio: "Portfolio",
                 contact: "Contact",
                 credentials_sub: "Professional Credentials & Training",
+                awards_sub: "Recognitions and Honors in Professional Fields",
                 portfolio_sub: "Practical applications combining AI technology and ESG metrics",
                 portfolio_title: "Selected Projects",
                 certs_title: "Certifications",
@@ -123,7 +124,8 @@
                 team_card_desc: "We are a professional team dedicated to AI-empowered sustainability. Join me in providing comprehensive ESG digital transformation solutions.",
                 tanji_card_title: "TanJi",
                 tanji_card_sub: "The Project",
-                tanji_card_desc: "A decision-making platform combining GIS micro-climate risk screening with automated low-carbon renovation administration, making community resilience visible and calculable."
+                tanji_card_desc: "A decision-making platform combining GIS micro-climate risk screening with automated low-carbon renovation administration, making community resilience visible and calculable.",
+                view_project: "View Project"
             }
         };
 
@@ -139,7 +141,6 @@
             { id: 9, title: { zh: "Azure AI-900", en: "Azure AI-900" }, issuer: { zh: "Azure", en: "Azure" }, category: "AI" },
             { id: 10, title: { zh: "TQC Microsoft Office 專業級", en: "TQC Microsoft Office Professional" }, issuer: { zh: "TQC", en: "TQC" }, category: "Tech" },
             { id: 11, title: { zh: "TQC 資訊科技 Python 專業級", en: "TQC IT Python Professional" }, issuer: { zh: "TQC", en: "TQC" }, category: "Tech" },
-            { id: 12, title: { zh: "新北市低碳社區規劃師", en: "New Taipei City Low-Carbon Community Planner" }, issuer: { zh: "新北市環保局", en: "NTPC EPB" }, category: "ESG" }
         ];
 
         const trainings = [
@@ -149,14 +150,42 @@
             { id: 4, title: { zh: "環境部 環境教育人員訓練", en: "Environmental Education Personnel Training" }, organization: { zh: "環境部 (中央大學)", en: "MOENV (NCU)" }, category: "ESG" },
             { id: 5, title: { zh: "環境部 淨零綠領人才培育課程", en: "Net Zero Green Collar Talent Training" }, organization: { zh: "環境部 (中央大學)", en: "MOENV (NCU)" }, category: "ESG" },
             { id: 6, title: { zh: "Google Cloud 學程結業證書", en: "Google Cloud Program Certificate" }, organization: { zh: "Google Cloud", en: "Google Cloud" }, category: "Tech" },
-            { id: 7, title: { zh: "臺北大學 GDSC 程式開發社團", en: "NTPU GDSC Developer Club" }, organization: { zh: "臺北大學", en: "NTPU" }, category: "Tech" },
+            { id: 7, title: { zh: "臺北大學 GDSC 程式開發社團", en: "NTPU GDSC Developer Club" }, organization: { zh: "Google & 臺北大學", en: "Google & NTPU" }, category: "Tech" },
             { id: 8, title: { zh: "Python 大數據資料分析實戰班", en: "Python Big Data Analysis Bootcamp" }, organization: { zh: "勞動部產業人才投資", en: "MOL Investment" }, category: "Tech" },
             { id: 9, title: { zh: "AI 人工智慧人才養成基礎班", en: "AI Talent Development Basic Class" }, organization: { zh: "勞動部產業人才投資", en: "MOL Investment" }, category: "AI" },
-            { id: 10, title: { zh: "PMP 專案管理人才實務班", en: "PMP Project Management Practice" }, organization: { zh: "勞動部產業人才投資", en: "MOL Investment" }, category: "PM" }
+            { id: 10, title: { zh: "新北市低碳社區規劃師", en: "New Taipei City Low-Carbon Community Planner" }, organization: { zh: "新北市環保局", en: "NTPC EPB" }, category: "ESG" },
+            { id: 11, title: { zh: "PMP 專案管理人才實務班", en: "PMP Project Management Practice" }, organization: { zh: "勞動部產業人才投資", en: "MOL Investment" }, category: "PM" }
+        ];
+
+        // 這是為您新增的 Awards 獎項資料，加入了 status 狀態以自動切換樣式
+        const awardsData = [
+            { 
+                id: 2, 
+                status: 'finalist',
+                year: "2026", 
+                title: { zh: "115年度 氣候變遷創意實作競賽 決賽入圍", en: "Finalist, Climate Change Creative Practice Competition" }, 
+                issuer: { zh: "教育部", en: "MOE" }, 
+                description: { 
+                    zh: "【決賽進行中】以「碳吉：社區微氣候韌性決策平台」晉級全國決賽。提出結合 GIS 風險快篩與 NbS 自然解方的社區氣候韌性方案。", 
+                    en: "[Finals Ongoing] Advanced to the national finals with 'TanJi: Micro-climate Resilience Platform'. Proposed community resilience solutions combining GIS and NbS." 
+                }, 
+                projectLink: "https://tanji2026.github.io/nbs/" 
+            },
+            { 
+                id: 3, 
+                status: 'finalist',
+                year: "2026", 
+                title: { zh: "第六屆 永續生活實驗室獎 決賽入圍", en: "Finalist, 6th Living Lab Project Awards" }, 
+                issuer: { zh: "中鼎教育基金會 (CTCI EF)", en: "CTCI EF / TAISE" }, 
+                description: { 
+                    zh: "【決賽預備中】以「碳吉：低碳改造讓社區碳吉」專案挑戰。開發針對管委會的數位助理，解決社區低碳改造時複雜法規與行政痛點。", 
+                    en: "[Preparing for Finals] Challenging with 'TanJi: Low-Carbon Renovation' project, developing a digital assistant for community management committees." 
+                }, 
+                projectLink: "https://tanji2026.github.io/livinglab/" 
+            }
         ];
 
         const projects = [
-             // --- 新增：115年度 CCUS 創意教案 (最新) ---
             { 
                 id: 'tj3', 
                 type: 'tanji', 
@@ -169,7 +198,6 @@
                 }, 
                 image: "images/tanji-ccus.jpg" 
             },
-            // --- 原有專案 ---
             { 
                 id: 'tj1', 
                 type: 'tanji', 
@@ -197,7 +225,6 @@
                 description: { zh: "結合原有碳排計算系統，擴充並提早應對 HRDD 風險。", en: "Integrates with existing carbon calculation systems to expand and proactively address HRDD risks." }, 
                 image: "images/ecologic.jpg" 
             },
-            // --- 移至此處：SME SLL 專案 ---
             { 
                 id: 'f1', 
                 type: 'personal', 
@@ -282,7 +309,6 @@
 
             const toggleLang = () => {
                 setLang(prev => prev === 'zh' ? 'en' : 'zh');
-                window.scrollTo(0, 0);
             };
 
             const t = uiText[lang];
@@ -290,7 +316,6 @@
             const filteredCertifications = activeCredentialTab === 'all' ? certifications : certifications.filter(c => c.category === activeCredentialTab);
             const filteredTrainings = activeCredentialTab === 'all' ? trainings : trainings.filter(t => t.category === activeCredentialTab);
             
-            // 專案篩選邏輯
             const filteredProjects = activeProjectTab === 'all' ? projects : projects.filter(p => p.type === activeProjectTab);
             
             const credentialTabs = [
@@ -309,7 +334,6 @@
 
             return (
                 <div className="min-h-screen bg-slate-50 font-sans">
-                    {/* Nav */}
                     <nav className="sticky top-0 w-full bg-white/95 backdrop-blur-sm shadow-sm z-50 border-b border-purple-100">
                         <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
                             <div className="font-bold text-xl md:text-2xl text-purple-800 tracking-tight flex items-center cursor-pointer" onClick={() => window.scrollTo(0,0)}>
@@ -319,6 +343,7 @@
                                 <div className="hidden md:flex gap-8 text-sm font-medium text-slate-600">
                                     <a href="#about" className="hover:text-purple-700 transition-colors py-1">{t.about}</a>
                                     <a href="#credentials" className="hover:text-purple-700 transition-colors py-1">{t.credentials}</a>
+                                    <a href="#awards" className="hover:text-amber-600 transition-colors py-1">{t.awards}</a>
                                     <a href="#portfolio" className="hover:text-purple-700 transition-colors py-1">{t.portfolio}</a>
                                     <a href="#contact" className="hover:text-purple-700 transition-colors py-1">{t.contact}</a>
                                 </div>
@@ -334,7 +359,6 @@
                         </div>
                     </nav>
 
-                    {/* Hero Section */}
                     <header id="about" className="relative pt-28 pb-16 px-4 bg-gradient-to-br from-purple-900 via-indigo-900 to-purple-800 text-white overflow-hidden">
                         <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-purple-800/50 to-transparent"></div>
                         <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl"></div>
@@ -357,7 +381,6 @@
                                 <div className="hidden md:block w-px bg-gradient-to-b from-transparent via-purple-400/30 to-transparent"></div>
                                 
                                 <div className="flex-1 w-full md:w-auto flex flex-col gap-4">
-                                    {/* Ecoshane Team Card */}
                                     <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-colors group cursor-default flex-1">
                                         <div className="flex items-center gap-3 mb-2 text-purple-200">
                                             <UsersIcon size={20} className="group-hover:text-purple-300 transition-colors" />
@@ -367,7 +390,6 @@
                                         <p className="text-purple-100 text-sm leading-relaxed">{t.team_card_desc}</p>
                                     </div>
                                     
-                                    {/* TanJi Team Card */}
                                     <div className="bg-white/5 backdrop-blur-sm border border-emerald-400/30 rounded-2xl p-6 hover:bg-white/10 transition-colors group cursor-default flex-1">
                                         <div className="flex items-center gap-3 mb-2 text-emerald-200">
                                             <Sprout size={20} className="group-hover:text-emerald-300 transition-colors" />
@@ -381,7 +403,6 @@
                         </div>
                     </header>
 
-                    {/* Credentials Section */}
                     <section id="credentials" className="py-20 bg-white">
                         <div className="max-w-6xl mx-auto px-4">
                             <div className="flex flex-col md:flex-row justify-between items-end mb-8 gap-6">
@@ -412,7 +433,6 @@
                             </div>
                             
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-                                {/* Certifications */}
                                 {filteredCertifications.length > 0 && (
                                     <div className="w-full animate-fadeIn">
                                             <h3 className="text-sm font-bold text-slate-700 mb-3 flex items-center gap-2 border-b border-purple-100 pb-2">
@@ -432,7 +452,6 @@
                                     </div>
                                 )}
                                 
-                                {/* Training */}
                                 {filteredTrainings.length > 0 && (
                                     <div className="w-full animate-fadeIn" style={{animationDelay: '0.1s'}}>
                                             <h3 className="text-sm font-bold text-slate-700 mb-3 flex items-center gap-2 border-b border-purple-100 pb-2">
@@ -455,7 +474,81 @@
                         </div>
                     </section>
 
-                    {/* Portfolio Section */}
+                    {/* --- 新增：Awards 得獎紀錄區塊 --- */}
+                    <section id="awards" className="py-20 bg-gradient-to-b from-white to-slate-50 relative border-t border-slate-100 overflow-hidden">
+                        {/* 背景點綴 */}
+                        <div className="absolute top-10 right-0 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl pointer-events-none"></div>
+                        <div className="absolute bottom-10 left-0 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl pointer-events-none"></div>
+
+                        <div className="max-w-4xl mx-auto px-4 relative z-10">
+                            <div className="text-center mb-12">
+                                <div className="inline-flex items-center justify-center p-3 bg-gradient-to-br from-amber-100 to-orange-100 rounded-2xl text-amber-600 shadow-sm border border-amber-200/50 mb-4">
+                                    <Trophy size={32} />
+                                </div>
+                                <h2 className="text-3xl font-bold text-slate-800 mb-2">{t.awards}</h2>
+                                <p className="text-slate-500">{t.awards_sub}</p>
+                            </div>
+
+                            <div className="space-y-6">
+                                {awardsData.map((award, index) => {
+                                    const isWinner = award.status === 'winner';
+                                    const sideBorderClass = isWinner ? "from-amber-300 to-amber-500" : "from-blue-400 to-indigo-500";
+                                    const pillBgClass = isWinner ? "bg-amber-50 text-amber-700 border-amber-100" : "bg-blue-50 text-blue-700 border-blue-100";
+                                    const iconClass = isWinner ? "text-amber-500" : "text-blue-500 animate-pulse";
+                                    const titleHoverClass = isWinner ? "group-hover:text-amber-700" : "group-hover:text-indigo-700";
+                                    const IconComponent = isWinner ? Star : Rocket;
+
+                                    return (
+                                        <div 
+                                            key={award.id} 
+                                            className="bg-white rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition-all duration-300 p-6 md:p-8 flex flex-col md:flex-row gap-6 relative group overflow-hidden"
+                                        >
+                                            {/* 側邊裝飾線：依據狀態改變顏色 */}
+                                            <div className={`absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b ${sideBorderClass} transform origin-left scale-y-0 group-hover:scale-y-100 transition-transform duration-300`}></div>
+
+                                            {/* 左側：年份與勳章 */}
+                                            <div className="flex md:flex-col items-center md:items-start gap-4 md:w-32 flex-shrink-0">
+                                                <div className={`px-3 py-1 rounded-full text-sm font-bold border flex items-center gap-1.5 ${pillBgClass}`}>
+                                                    <IconComponent size={14} className={iconClass} />
+                                                    {award.year}
+                                                </div>
+                                                <span className="text-xs font-medium text-slate-400 uppercase tracking-wider hidden md:block border-t border-slate-100 pt-3 w-full">
+                                                    {award.issuer[lang]}
+                                                </span>
+                                            </div>
+
+                                            {/* 右側：詳細內容 */}
+                                            <div className="flex-grow">
+                                                <h3 className={`text-xl font-bold text-slate-800 mb-2 transition-colors ${titleHoverClass}`}>
+                                                    {award.title[lang]}
+                                                </h3>
+                                                <span className="text-xs font-medium text-slate-500 mb-3 block md:hidden">
+                                                    Awarded by: {award.issuer[lang]}
+                                                </span>
+                                                <p className="text-slate-600 text-sm leading-relaxed mb-4">
+                                                    {award.description[lang]}
+                                                </p>
+
+                                                {/* 如果有關聯專案，顯示按鈕 */}
+                                                {award.projectLink && (
+                                                    <a 
+                                                        href={award.projectLink} 
+                                                        target="_blank" 
+                                                        rel="noopener noreferrer"
+                                                        className="inline-flex items-center gap-1.5 text-xs font-bold text-purple-600 hover:text-purple-800 bg-purple-50 hover:bg-purple-100 px-3 py-1.5 rounded-lg transition-colors"
+                                                    >
+                                                        {t.view_project} <ArrowRight size={14} />
+                                                    </a>
+                                                )}
+                                            </div>
+                                        </div>
+                                    );
+                                })}
+                            </div>
+                        </div>
+                    </section>
+                    {/* --- 新增區塊結束 --- */}
+
                     <section id="portfolio" className="py-20 bg-slate-50">
                         <div className="max-w-6xl mx-auto px-4">
                             <div className="flex flex-col md:flex-row justify-between items-end mb-10 gap-4">
@@ -547,7 +640,6 @@
                         </div>
                     </section>
 
-                    {/* Contact Section */}
                     <section id="contact" className="py-16 bg-white border-t border-slate-100">
                         <div className="max-w-5xl mx-auto px-4">
                             <div className="bg-gradient-to-r from-purple-900 to-indigo-900 rounded-2xl p-8 md:p-12 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden">
@@ -593,7 +685,6 @@
                         </div>
                     </section>
 
-                    {/* Footer */}
                     <footer className="bg-slate-50 py-10 border-t border-slate-200">
                         <div className="max-w-6xl mx-auto px-4 text-center">
                             <div className="mb-8 max-w-2xl mx-auto">

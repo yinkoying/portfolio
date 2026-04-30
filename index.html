@@ -70,7 +70,8 @@
                 tab_tech: "資訊科技",
                 contact_title: "聯絡方式",
                 contact_personal: "個人聯繫",
-                contact_tanji: "碳吉團隊",
+                contact_business: "團隊業務/合作",
+                contact_tanji: "碳吉專案",
                 why_purple_title: "Why Purple?",
                 why_purple_desc: "紫色融合了代表熱情與行動的紅色，以及象徵科技與智慧的藍色。這正代表著我如何運用理性的 AI 數據技術 (Blue)，去實踐對 ESG 永續發展的熱忱 (Red)。科技與人性的平衡，即是永續的起點。",
                 rights: "© 2026 YIN, KOYING. All rights reserved.",
@@ -80,10 +81,10 @@
                 hero_desc_2: "致力於運用數據科學解決環境議題，為金融科技與綠色供應鏈創造價值。",
                 team_card_title: "Ecoshane",
                 team_card_sub: "The Team",
-                team_card_desc: "我們是一群致力於 AI 賦能永續的專業團隊。提供全方位的 ESG 數位轉型解決方案，讓永續不再只是口號。",
+                team_card_desc: "我們是一群致力於 AI 賦能永續的學生團隊。提供全方位的 ESG 數位轉型解決方案，讓永續不再只是口號。",
                 tanji_card_title: "碳吉 TanJi",
                 tanji_card_sub: "The Project",
-                tanji_card_desc: "結合 GIS 微氣候風險快篩與低碳改造行政減負的決策平台，讓社區氣候韌性看得見、算得出。",
+                tanji_card_desc: "全方位的氣候科技與永續創新專案。涵蓋綠色金融、碳排管理、社區韌性與互動教育，用科技讓永續觸手可及。",
                 view_project: "查看專案"
             },
             en: {
@@ -107,7 +108,8 @@
                 tab_tech: "Tech",
                 contact_title: "Contact",
                 contact_personal: "Personal Inquiry",
-                contact_tanji: "TanJi Team",
+                contact_business: "Business / Partnership",
+                contact_tanji: "TanJi Project",
                 why_purple_title: "Why Purple?",
                 why_purple_desc: "Purple blends the red of passion and action with the blue of technology and wisdom. It represents how I apply rational AI data technology (Blue) to practice enthusiasm for ESG sustainability (Red). The balance between technology and humanity is the starting point of sustainability.",
                 rights: "© 2026 YIN, KOYING. All rights reserved.",
@@ -117,10 +119,10 @@
                 hero_desc_2: "Dedicated to applying data science to solve environmental issues, creating value for FinTech and Green Supply Chains.",
                 team_card_title: "Ecoshane",
                 team_card_sub: "The Team",
-                team_card_desc: "We are a professional team dedicated to AI-empowered sustainability. Join me in providing comprehensive ESG digital transformation solutions.",
+                team_card_desc: "We are a student team dedicated to AI-empowered sustainability. Providing comprehensive ESG digital transformation solutions.",
                 tanji_card_title: "TanJi",
                 tanji_card_sub: "The Project",
-                tanji_card_desc: "A decision-making platform combining GIS micro-climate risk screening with automated low-carbon renovation administration, making community resilience visible and calculable.",
+                tanji_card_desc: "A comprehensive climate tech and sustainability innovation project. Covering green finance, carbon management, community resilience, and interactive education, making sustainability accessible through technology.",
                 view_project: "View Project"
             }
         };
@@ -149,7 +151,7 @@
             { id: 4, title: { zh: "環境部 環境教育人員訓練", en: "Environmental Education Personnel Training" }, organization: { zh: "環境部 (中央大學)", en: "MOENV (NCU)" }, category: "ESG" },
             { id: 12, title: { zh: "溫室氣體盤查作業查驗人員", en: "GHG Inventory Verification Personnel" }, organization: { zh: "環境部 (國環院)", en: "MOENV (NEMAC)" }, category: "ESG" },
             { id: 5, title: { zh: "環境部 淨零綠領人才培育課程", en: "Net Zero Green Collar Talent Training" }, organization: { zh: "環境部 (中央大學)", en: "MOENV (NCU)" }, category: "ESG" },
-            { id: 13, title: { zh: "環境部 淨零綠領人才培育課程 資源循環", en: "Net Zero Green Collar Talent Training - Resource Circulation" }, organization: { zh: "環境部 (臺灣師範大學)", en: "MOENV (NTNU)" }, category: "ESG" },
+            { id: 13, title: { zh: "環境部 淨零綠領人才培育課程 資源循環", en: "Net Zero Green Collar Talent Training - Resource Circulation" }, organization: { zh: "環境部 (臺師大)", en: "MOENV (NTNU)" }, category: "ESG" },
             { id: 10, title: { zh: "新北市低碳社區規劃師", en: "New Taipei City Low-Carbon Community Planner" }, organization: { zh: "新北市環保局", en: "NTPC EPB" }, category: "ESG" },
             { id: 6, title: { zh: "Google Cloud 學程結業證書", en: "Google Cloud Program Certificate" }, organization: { zh: "Google Cloud", en: "Google Cloud" }, category: "Tech" },
             { id: 7, title: { zh: "臺北大學 GDSC 程式開發社團", en: "NTPU GDSC Developer Club" }, organization: { zh: "Google & 臺北大學", en: "Google & NTPU" }, category: "Tech" },
@@ -724,7 +726,7 @@
                                 <div className="text-center md:text-left flex-1 w-full relative z-10">
                                     <h2 className="text-2xl font-bold mb-6">{t.contact_title}</h2>
                                     
-                                    <div className="grid md:grid-cols-2 gap-4 max-w-2xl">
+                                    <div className="grid md:grid-cols-3 gap-4">
                                         <div className="flex items-center gap-3 bg-white/10 p-4 rounded-lg backdrop-blur-sm border border-white/10 hover:bg-white/20 transition-colors">
                                             <div className="bg-white text-purple-900 p-2 rounded-full flex-shrink-0">
                                                 <Mail size={16} />
@@ -732,6 +734,16 @@
                                             <div className="text-left overflow-hidden min-w-0">
                                                 <p className="text-xs text-purple-300 mb-0.5">{t.contact_personal}</p>
                                                 <a href="mailto:yinkoying.yky@gmail.com" className="text-sm font-medium hover:text-white block truncate transition-colors">yinkoying.yky@gmail.com</a>
+                                            </div>
+                                        </div>
+
+                                        <div className="flex items-center gap-3 bg-white/10 p-4 rounded-lg backdrop-blur-sm border border-white/10 hover:bg-white/20 transition-colors">
+                                            <div className="bg-white text-purple-900 p-2 rounded-full flex-shrink-0">
+                                                <UsersIcon size={16} />
+                                            </div>
+                                            <div className="text-left overflow-hidden min-w-0">
+                                                <p className="text-xs text-purple-300 mb-0.5">{t.contact_business}</p>
+                                                <a href="mailto:ecoshane.esg@gmail.com" className="text-sm font-medium hover:text-white block truncate transition-colors">ecoshane.esg@gmail.com</a>
                                             </div>
                                         </div>
                                         

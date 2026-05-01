@@ -16,7 +16,6 @@
         .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         .animate-fadeIn { animation: fadeIn 0.5s ease-out forwards; }
-        
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #f1f5f9; }
         ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
@@ -47,83 +46,37 @@
         const ExternalLink = (p) => <Icon {...p}><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></Icon>;
         const Globe = (p) => <Icon {...p}><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></Icon>;
         const ArrowRight = (p) => <Icon {...p}><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></Icon>;
+        const ChevronLeft = (p) => <Icon {...p}><polyline points="15 18 9 12 15 6"/></Icon>;
+        const ChevronRight = (p) => <Icon {...p}><polyline points="9 18 15 12 9 6"/></Icon>;
 
         const uiText = {
             zh: {
-                about: "關於我",
-                credentials: "專業資歷",
-                awards: "得獎紀錄",
-                portfolio: "專案作品",
-                contact: "聯絡方式",
-                credentials_sub: "Professional Credentials & Training",
-                awards_sub: "專業領域的肯定與榮譽",
-                portfolio_sub: "結合 AI 技術與 ESG 指標的實務應用成果",
-                portfolio_title: "精選專案",
-                certs_title: "專業證照",
-                training_title: "專業培訓",
-                tab_all: "全部",
-                tab_personal: "個人作品",
-                tab_tanji: "碳吉 TanJi",
-                tab_team: "Ecoshane 團隊",
-                tab_finance: "金融",
-                tab_pm: "專案管理",
-                tab_tech: "資訊科技",
-                contact_title: "聯絡方式",
-                contact_personal: "個人聯繫",
-                contact_business: "團隊業務/合作",
-                contact_tanji: "碳吉專案",
-                why_purple_title: "Why Purple?",
-                why_purple_desc: "紫色融合了代表熱情與行動的紅色，以及象徵科技與智慧的藍色。這正代表著我如何運用理性的 AI 數據技術 (Blue)，去實踐對 ESG 永續發展的熱忱 (Red)。科技與人性的平衡，即是永續的起點。",
-                rights: "© 2026 YIN, KOYING. All rights reserved.",
-                specialized: "Specialized in AI & ESG Solutions",
-                hero_title: "YIN, KOYING",
-                hero_desc_1: "專注於 AI 人工智慧與 ESG 永續發展的跨領域整合。",
-                hero_desc_2: "致力於運用數據科學解決環境議題，為金融科技與綠色供應鏈創造價值。",
-                team_card_title: "Ecoshane",
-                team_card_sub: "The Team",
-                team_card_desc: "我們是一群致力於 AI 賦能永續的學生團隊。提供全方位的 ESG 數位轉型解決方案，讓永續不再只是口號。",
-                tanji_card_title: "碳吉 TanJi",
-                tanji_card_sub: "The Project",
-                tanji_card_desc: "全方位的氣候科技與永續創新專案。涵蓋綠色金融、碳排管理、社區韌性與互動教育，用科技讓永續觸手可及。",
-                view_project: "查看專案"
+                about: "關於我", credentials: "專業資歷", awards: "得獎紀錄", portfolio: "專案作品", contact: "聯絡方式",
+                credentials_sub: "Professional Credentials & Training", awards_sub: "專業領域的肯定與榮譽", portfolio_sub: "結合 AI 技術與 ESG 指標的實務應用成果",
+                portfolio_title: "精選專案", certs_title: "專業證照", training_title: "專業培訓",
+                tab_all: "全部", tab_personal: "個人作品", tab_tanji: "碳吉 TanJi", tab_team: "Ecoshane 團隊", tab_finance: "金融", tab_pm: "專案管理", tab_tech: "資訊科技",
+                contact_title: "聯絡方式", contact_personal: "個人聯繫", contact_business: "團隊業務/合作", contact_tanji: "碳吉專案",
+                why_purple_title: "Why Purple?", why_purple_desc: "紫色融合了代表熱情與行動的紅色，以及象徵科技與智慧的藍色。這正代表著我如何運用理性的 AI 數據技術 (Blue)，去實踐對 ESG 永續發展的熱忱 (Red)。科技與人性的平衡，即是永續的起點。",
+                rights: "© 2026 YIN, KOYING. All rights reserved.", specialized: "Specialized in AI & ESG Solutions",
+                hero_title: "YIN, KOYING", hero_desc_1: "專注於 AI 人工智慧與 ESG 永續發展的跨領域整合。", hero_desc_2: "致力於運用數據科學解決環境議題，為金融科技與綠色供應鏈創造價值。",
+                team_card_title: "Ecoshane", team_card_sub: "The Team", team_card_desc: "我們是一群致力於 AI 賦能永續的學生團隊。提供全方位的 ESG 數位轉型解決方案，讓永續不再只是口號。",
+                tanji_card_title: "碳吉 TanJi", tanji_card_sub: "The Project", tanji_card_desc: "全方位的氣候科技與永續創新專案。涵蓋綠色金融、碳排管理、社區韌性與互動教育，用科技讓永續觸手可及。", view_project: "查看專案",
+                pagination_prev: "上一頁", pagination_next: "下一頁",
+                timeline_label: "賽程進度"
             },
             en: {
-                about: "About Me",
-                credentials: "Credentials",
-                awards: "Awards",
-                portfolio: "Portfolio",
-                contact: "Contact",
-                credentials_sub: "Professional Credentials & Training",
-                awards_sub: "Recognitions and Honors in Professional Fields",
-                portfolio_sub: "Practical applications combining AI technology and ESG metrics",
-                portfolio_title: "Selected Projects",
-                certs_title: "Certifications",
-                training_title: "Professional Training",
-                tab_all: "All",
-                tab_personal: "Personal",
-                tab_tanji: "TanJi Project",
-                tab_team: "Team Ecoshane",
-                tab_finance: "Finance",
-                tab_pm: "Project Mgmt",
-                tab_tech: "Tech",
-                contact_title: "Contact",
-                contact_personal: "Personal Inquiry",
-                contact_business: "Business / Partnership",
-                contact_tanji: "TanJi Project",
-                why_purple_title: "Why Purple?",
-                why_purple_desc: "Purple blends the red of passion and action with the blue of technology and wisdom. It represents how I apply rational AI data technology (Blue) to practice enthusiasm for ESG sustainability (Red). The balance between technology and humanity is the starting point of sustainability.",
-                rights: "© 2026 YIN, KOYING. All rights reserved.",
-                specialized: "Specialized in AI & ESG Solutions",
-                hero_title: "YIN, KOYING",
-                hero_desc_1: "Focusing on the cross-disciplinary integration of AI and ESG sustainable development.",
-                hero_desc_2: "Dedicated to applying data science to solve environmental issues, creating value for FinTech and Green Supply Chains.",
-                team_card_title: "Ecoshane",
-                team_card_sub: "The Team",
-                team_card_desc: "We are a student team dedicated to AI-empowered sustainability. Providing comprehensive ESG digital transformation solutions.",
-                tanji_card_title: "TanJi",
-                tanji_card_sub: "The Project",
-                tanji_card_desc: "A comprehensive climate tech and sustainability innovation project. Covering green finance, carbon management, community resilience, and interactive education, making sustainability accessible through technology.",
-                view_project: "View Project"
+                about: "About Me", credentials: "Credentials", awards: "Awards", portfolio: "Portfolio", contact: "Contact",
+                credentials_sub: "Professional Credentials & Training", awards_sub: "Recognitions and Honors in Professional Fields", portfolio_sub: "Practical applications combining AI technology and ESG metrics",
+                portfolio_title: "Selected Projects", certs_title: "Certifications", training_title: "Professional Training",
+                tab_all: "All", tab_personal: "Personal", tab_tanji: "TanJi Project", tab_team: "Team Ecoshane", tab_finance: "Finance", tab_pm: "Project Mgmt", tab_tech: "Tech",
+                contact_title: "Contact", contact_personal: "Personal Inquiry", contact_business: "Business / Partnership", contact_tanji: "TanJi Project",
+                why_purple_title: "Why Purple?", why_purple_desc: "Purple blends the red of passion and action with the blue of technology and wisdom. It represents how I apply rational AI data technology (Blue) to practice enthusiasm for ESG sustainability (Red). The balance between technology and humanity is the starting point of sustainability.",
+                rights: "© 2026 YIN, KOYING. All rights reserved.", specialized: "Specialized in AI & ESG Solutions",
+                hero_title: "YIN, KOYING", hero_desc_1: "Focusing on the cross-disciplinary integration of AI and ESG sustainable development.", hero_desc_2: "Dedicated to applying data science to solve environmental issues, creating value for FinTech and Green Supply Chains.",
+                team_card_title: "Ecoshane", team_card_sub: "The Team", team_card_desc: "We are a student team dedicated to AI-empowered sustainability. Providing comprehensive ESG digital transformation solutions.",
+                tanji_card_title: "TanJi", tanji_card_sub: "The Project", tanji_card_desc: "A comprehensive climate tech and sustainability innovation project. Covering green finance, carbon management, community resilience, and interactive education, making sustainability accessible through technology.", view_project: "View Project",
+                pagination_prev: "Prev", pagination_next: "Next",
+                timeline_label: "Timeline"
             }
         };
 
@@ -162,9 +115,7 @@
 
         const awardsData = [
             { 
-                id: 2, 
-                status: 'finalist',
-                year: "2026", 
+                id: 2, status: 'finalist', year: "2026", 
                 title: { zh: "115年度 氣候變遷創意實作競賽", en: "Climate Change Creative Practice Competition" }, 
                 issuer: { zh: "教育部", en: "MOE" }, 
                 description: { 
@@ -173,15 +124,13 @@
                 }, 
                 projectLink: "https://tanji2026.github.io/nbs/",
                 timeline: [
-                    { date: "2026.01", event: { zh: "初審企劃書投遞", en: "Proposal Submission" }, status: 'done' },
-                    { date: "2026.02.13", event: { zh: "晉級全國決賽", en: "Advanced to Finals" }, status: 'current', link: "https://climatechange.moe.edu.tw/Content/Images/news/ede0127096174f389b9f382fc0e6f390.png" },
-                    { date: "2026.05.25", event: { zh: "決賽暨頒獎典禮", en: "Finals & Award Ceremony" }, status: 'pending' }
+                    { date: "2026.01", event: { zh: "初審投遞", en: "Proposal" }, status: 'done' },
+                    { date: "2026.02.13", event: { zh: "晉級決賽", en: "Finals" }, status: 'current', link: "https://climatechange.moe.edu.tw/Content/Images/news/ede0127096174f389b9f382fc0e6f390.png" },
+                    { date: "2026.05.25", event: { zh: "頒獎", en: "Awards" }, status: 'pending' }
                 ]
             },
             { 
-                id: 3, 
-                status: 'finalist',
-                year: "2026", 
+                id: 3, status: 'finalist', year: "2026", 
                 title: { zh: "2026 IASE 影響力創新獎", en: "2026 IASE Impact Innovation Award" }, 
                 issuer: { zh: "IASE", en: "IASE" }, 
                 description: { 
@@ -190,147 +139,107 @@
                 }, 
                 projectLink: "https://tanji2026.github.io/sanxia/",
                 timeline: [
-                    { date: "2026.03", event: { zh: "初審企劃書投遞", en: "Proposal Submission" }, status: 'done' },
-                    { date: "2026.04.30", event: { zh: "入圍【類別D】青年人才影響力類", en: "Shortlisted [Category D] Youth Talent Impact" }, status: 'current', link: "https://iase.tw/announcements/shortlist-2026/" }
+                    { date: "2026.03", event: { zh: "初審投遞", en: "Proposal" }, status: 'done' },
+                    { date: "2026.04.30", event: { zh: "入圍【青年人才】", en: "Shortlisted" }, status: 'current', link: "https://iase.tw/announcements/shortlist-2026/" }
                 ]
             }
         ];
 
         const projects = [
             { 
-                id: 'tj5', 
-                type: 'tanji', 
-                title: { zh: "三峽職人：手路尋蹤", en: "Sanxia Artisan Quest" }, 
-                link: "https://tanji2026.github.io/sanxia/", 
+                id: 'tj5', type: 'tanji', 
+                title: { zh: "三峽職人：手路尋蹤", en: "Sanxia Artisan Quest" }, link: "https://tanji2026.github.io/sanxia/", 
                 tags: ["Gamification", "Local Revitalization", "Cultural Heritage", "MBTI"], 
-                description: { 
-                    zh: "結合MBTI與在地職人的互動式網頁測驗。透過五感問答為玩家分析專屬職人屬性，並引導至三峽老街的實體工作室進行線下體驗，推動地方創生。", 
-                    en: "An interactive web test combining MBTI and local artisans. It analyzes players' artisan attributes through sensory questions and guides them to physical workshops in Sanxia Old Street for offline experiences, promoting regional revitalization." 
-                }, 
+                description: { zh: "結合MBTI與在地職人的互動式網頁測驗。透過五感問答為玩家分析專屬職人屬性，並引導至三峽老街的實體工作室進行線下體驗，推動地方創生。", en: "An interactive web test combining MBTI and local artisans. It analyzes players' artisan attributes through sensory questions and guides them to physical workshops in Sanxia Old Street for offline experiences, promoting regional revitalization." }, 
                 image: "images/sanxia.jpg" 
             },
             { 
-                id: 'tj4', 
-                type: 'tanji', 
-                title: { zh: "碳吉：企業綠色融資暨碳管理平台", en: "TanJi: Green Financing & Carbon Mgmt Platform" }, 
-                link: "https://yinkoying.github.io/smartcarbon/", 
+                id: 'tj4', type: 'tanji', 
+                title: { zh: "碳吉：企業綠色融資暨碳管理平台", en: "TanJi: Green Financing & Carbon Mgmt Platform" }, link: "https://yinkoying.github.io/smartcarbon/", 
                 tags: ["AWS Cloud", "FinTech", "Carbon Calc", "PoC"], 
-                description: { 
-                    zh: "專為企業設計的綠色融資與碳排管理儀表板 (PoC 模擬環境)。特色為深度整合 AWS 雲端服務 (Lambda & DynamoDB)，實現即時碳排運算與歷史清冊數據庫管理。", 
-                    en: "A green financing and carbon management dashboard (PoC). Deeply integrates AWS cloud services (Lambda & DynamoDB) for real-time calculation and database management." 
-                }, 
+                description: { zh: "專為企業設計的綠色融資與碳排管理儀表板 (PoC 模擬環境)。特色為深度整合 AWS 雲端服務 (Lambda & DynamoDB)，實現即時碳排運算與歷史清冊數據庫管理。", en: "A green financing and carbon management dashboard (PoC). Deeply integrates AWS cloud services (Lambda & DynamoDB) for real-time calculation and database management." }, 
                 image: "images/smartcarbon.jpg" 
             },
             { 
-                id: 'tj3', 
-                type: 'tanji', 
-                title: { zh: "碳吉：CCUS 淨零決策模擬器", en: "TanJi: CCUS Net Zero Simulator" }, 
-                link: "https://tanji2026.github.io/ccus/", 
+                id: 'tj3', type: 'tanji', 
+                title: { zh: "碳吉：CCUS 淨零決策模擬器", en: "TanJi: CCUS Net Zero Simulator" }, link: "https://tanji2026.github.io/ccus/", 
                 tags: ["EdTech", "CCUS", "Gamification", "AI"], 
-                description: { 
-                    zh: "【115年 CCUS 創意教案】自行開發之多人連線網頁模擬器。運用 Firebase 與 AI 技術，建置「角色分權」與「即時戰情室」，將嚴肅的負碳技術轉化為互動策略遊戲。", 
-                    en: "【2026 CCUS Creative Lesson Plan】Self-developed multiplayer web simulator. Uses Firebase and AI to build 'role-based locking' and 'real-time war room', transforming negative carbon tech into an interactive strategy game." 
-                }, 
+                description: { zh: "自行開發之多人連線網頁模擬器。運用 Firebase 與 AI 技術，建置「角色分權」與「即時戰情室」，將嚴肅的負碳技術轉化為互動策略遊戲。", en: "Self-developed multiplayer web simulator. Uses Firebase and AI to build 'role-based locking' and 'real-time war room', transforming negative carbon tech into an interactive strategy game." }, 
                 image: "images/tanji-ccus.jpg" 
             },
             { 
-                id: 'tj1', 
-                type: 'tanji', 
-                title: { zh: "碳吉：社區微氣候韌性決策平台", en: "TanJi: Micro-climate Resilience Platform" }, 
-                link: "https://tanji2026.github.io/nbs/", 
+                id: 'tj1', type: 'tanji', 
+                title: { zh: "碳吉：社區微氣候韌性決策平台", en: "TanJi: Micro-climate Resilience Platform" }, link: "https://tanji2026.github.io/nbs/", 
                 tags: ["Climate Tech", "GIS", "NbS"], 
                 description: { zh: "結合 GIS 風險快篩與 NbS 自然解方選物的決策平台。能指認熱點、模擬降溫效益，協助社區落實氣候韌性。", en: "A decision platform combining GIS risk screening and NbS selection. It identifies hotspots and simulates cooling benefits to help communities implement climate resilience." }, 
                 image: "images/tanji-nbs.jpg" 
             },
             { 
-                id: 'tj2', 
-                type: 'tanji', 
-                title: { zh: "碳吉：低碳改造讓社區碳吉", en: "TanJi: Low-Carbon Renovation" }, 
-                link: "https://tanji2026.github.io/livinglab/", 
+                id: 'tj2', type: 'tanji', 
+                title: { zh: "碳吉：低碳改造讓社區碳吉", en: "TanJi: Low-Carbon Renovation" }, link: "https://tanji2026.github.io/livinglab/", 
                 tags: ["GovTech", "PLM", "Admin Automation"], 
                 description: { zh: "針對管委會開發的數位助理。具備「智慧自評」與「文件自動生成」引擎，解決複雜法規痛點，一鍵產出申請書。", en: "A digital assistant for management committees. Features 'Smart Self-Assessment' and 'Auto-Doc Generation' engines to solve complex regulatory pain points." }, 
                 image: "images/tanji-admin.jpg" 
             },
             { 
-                id: 'p1', 
-                type: 'personal', 
-                title: { zh: "EcoLogic 專案", en: "EcoLogic Project" }, 
-                link: "https://ecoshane.github.io/ecologic/", 
+                id: 'f1', type: 'personal', 
+                title: { zh: "中小企業永續連結貸款開發", en: "SME Sustainability Linked Loan" }, link: "https://yinkoying.github.io/cocobank/pmp", 
+                tags: ["FinTech", "Green Finance", "Product Planning", "Risk Mgmt"], 
+                description: { zh: "【模擬專案：可可商業銀行】從商業論證、規章修訂、系統規格(SRS)到上市推廣(GTM)，完整實作 0 到 1 的產品生命週期管理。", en: "【Simulated Project: Coco Bank】From business case, regulation revision, SRS to GTM, fully implementing 0-to-1 product lifecycle management." }, 
+                image: "images/sme-dashboard.jpg" 
+            },
+            { 
+                id: 'p1', type: 'personal', 
+                title: { zh: "EcoLogic 專案", en: "EcoLogic Project" }, link: "https://ecoshane.github.io/ecologic/", 
                 tags: ["ESG", "Carbon Calc"], 
                 description: { zh: "結合原有碳排計算系統，擴充並提早應對 HRDD 風險。", en: "Integrates with existing carbon calculation systems to expand and proactively address HRDD risks." }, 
                 image: "images/ecologic.jpg" 
             },
             { 
-                id: 'f1', 
-                type: 'personal', 
-                title: { zh: "中小企業永續連結貸款開發", en: "SME Sustainability Linked Loan" }, 
-                link: "https://yinkoying.github.io/cocobank/pmp", 
-                tags: ["FinTech", "Green Finance", "Product Planning", "Risk Mgmt"], 
-                description: { 
-                    zh: "【模擬專案：可可商業銀行】隸屬法金事業群，由企金商品部發起。從商業論證、規章修訂、系統規格(SRS)到上市推廣(GTM)，完整實作 0 到 1 的產品生命週期管理。", 
-                    en: "【Simulated Project: Coco Bank】Corporate Banking Product Dept. (Wholesale Banking). From business case, regulation revision, SRS to GTM, fully implementing 0-to-1 product lifecycle management." 
-                }, 
-                image: "images/sme-dashboard.jpg" 
-            },
-            { 
-                id: 'p2', 
-                type: 'personal', 
-                title: { zh: "S-Quant", en: "S-Quant" }, 
-                link: "https://ecoshane.github.io/s-quant/", 
+                id: 'p2', type: 'personal', 
+                title: { zh: "S-Quant", en: "S-Quant" }, link: "https://ecoshane.github.io/s-quant/", 
                 tags: ["AI", "Social Impact"], 
                 description: { zh: "AI 驅動的社會績效量化平台。以參加 2026 Google Solution Challenge 為目標。", en: "AI-driven social performance quantification platform. Targeted for the 2026 Google Solution Challenge." }, 
                 image: "images/s-quant.jpg" 
             },
             { 
-                id: 'p3', 
-                type: 'personal', 
-                title: { zh: "115年度 ESG 評鑑自評系統", en: "2026 ESG Evaluation System" }, 
-                link: "https://ecoshane.github.io/esgeva/115", 
+                id: 'p3', type: 'personal', 
+                title: { zh: "115年度 ESG 評鑑自評系統", en: "2026 ESG Evaluation System" }, link: "https://ecoshane.github.io/esgeva/115", 
                 tags: ["ESG", "Evaluation"], 
                 description: { zh: "提供給上市櫃公司填報人員練習。", en: "A practice platform for listed company reporting personnel." }, 
                 image: "images/esg-eval.jpg" 
             },
             { 
-                id: 't1', 
-                type: 'team', 
-                title: { zh: "BlinkAI", en: "BlinkAI" }, 
-                link: "https://ecoshane.github.io/BlinkAI/", 
+                id: 't1', type: 'team', 
+                title: { zh: "BlinkAI", en: "BlinkAI" }, link: "https://ecoshane.github.io/BlinkAI/", 
                 tags: ["AI", "Fan Engagement"], 
-                description: { zh: "為 BLACKPINK 粉絲互動參與而生的專精 AI 平台（客服後端已移除）。", en: "Specialized AI platform for BLACKPINK fan engagement (backend service removed)." }, 
+                description: { zh: "為 BLACKPINK 粉絲互動參與而生的專精 AI 平台。", en: "Specialized AI platform for BLACKPINK fan engagement." }, 
                 image: "images/blinkai.jpg" 
             },
             { 
-                id: 't2', 
-                type: 'team', 
-                title: { zh: "Ecoshane Bank", en: "Ecoshane Bank" }, 
-                link: "https://ecoshane.github.io/bank/", 
+                id: 't2', type: 'team', 
+                title: { zh: "Ecoshane Bank", en: "Ecoshane Bank" }, link: "https://ecoshane.github.io/bank/", 
                 tags: ["FinTech", "Green Loan"], 
                 description: { zh: "將 HRDD 納入銀行綠色連結貸款之永續績效項目。", en: "Incorporating HRDD into sustainability performance indicators for bank green-linked loans." }, 
                 image: "images/ecoshane-bank.jpg" 
             },
             { 
-                id: 't3', 
-                type: 'team', 
-                title: { zh: "Ecoshane 永續家", en: "Ecoshane Home" }, 
-                link: "https://ecoshane.github.io/esg/", 
+                id: 't3', type: 'team', 
+                title: { zh: "Ecoshane 永續家", en: "Ecoshane Home" }, link: "https://ecoshane.github.io/esg/", 
                 tags: ["ESG", "HRDD"], 
                 description: { zh: "提供量化 HRDD 的方法論。", en: "Providing methodology for quantifying HRDD." }, 
                 image: "images/ecoshane-home.jpg" 
             },
             { 
-                id: 't4', 
-                type: 'team', 
-                title: { zh: "永續數據 AI 轉換平台", en: "ESG Data AI Platform" }, 
-                link: "https://ecoshane.github.io/esg/data.html", 
+                id: 't4', type: 'team', 
+                title: { zh: "永續數據 AI 轉換平台", en: "ESG Data AI Platform" }, link: "https://ecoshane.github.io/esg/data.html", 
                 tags: ["AI", "Data"], 
                 description: { zh: "結合原有碳排計算系統，擴充並提早應對 HRDD 風險。", en: "Integrates with existing carbon calculation systems to expand and proactively address HRDD risks." }, 
                 image: "images/ai-platform.jpg" 
             },
             { 
-                id: 't5', 
-                type: 'team', 
-                title: { zh: "搶票系統 API", en: "Ticketing System API" }, 
-                link: "https://ecoshane.github.io/tixcraft/api.html", 
+                id: 't5', type: 'team', 
+                title: { zh: "搶票系統 API", en: "Ticketing System API" }, link: "https://ecoshane.github.io/tixcraft/api.html", 
                 tags: ["API", "Microservices"], 
                 description: { zh: "瞭解微服務架構與 API 設計基礎。", en: "Understanding microservices architecture and API design fundamentals." }, 
                 image: "images/ticket-api.jpg" 
@@ -341,6 +250,8 @@
             const [lang, setLang] = useState('zh');
             const [activeCredentialTab, setActiveCredentialTab] = useState('all');
             const [activeProjectTab, setActiveProjectTab] = useState('all');
+            const [currentPage, setCurrentPage] = useState(1);
+            const projectsPerPage = 6;
 
             const toggleLang = () => {
                 setLang(prev => prev === 'zh' ? 'en' : 'zh');
@@ -353,6 +264,17 @@
             
             const filteredProjects = activeProjectTab === 'all' ? projects : projects.filter(p => p.type === activeProjectTab);
             
+            useEffect(() => {
+                setCurrentPage(1);
+            }, [activeProjectTab]);
+
+            const indexOfLastProject = currentPage * projectsPerPage;
+            const indexOfFirstProject = indexOfLastProject - projectsPerPage;
+            const currentProjects = filteredProjects.slice(indexOfFirstProject, indexOfLastProject);
+            const totalPages = Math.ceil(filteredProjects.length / projectsPerPage);
+
+            const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
             const credentialTabs = [
                 { id: 'all', label: t.tab_all }, 
                 { id: 'AI', label: 'AI' }, 
@@ -415,8 +337,8 @@
                                 
                                 <div className="hidden md:block w-px bg-gradient-to-b from-transparent via-purple-400/30 to-transparent"></div>
                                 
-                                <div className="flex-1 w-full md:w-auto flex flex-col gap-4">
-                                    <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-colors group cursor-default flex-1">
+                                <div className="flex-1 w-full md:w-auto flex flex-col gap-5">
+                                    <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-5 hover:bg-white/10 transition-colors group cursor-default flex-1">
                                         <div className="flex items-center gap-3 mb-2 text-purple-200">
                                             <UsersIcon size={20} className="group-hover:text-purple-300 transition-colors" />
                                             <span className="font-bold tracking-wider uppercase text-xs">{t.team_card_sub}</span>
@@ -425,20 +347,23 @@
                                         <p className="text-purple-100 text-sm leading-relaxed">{t.team_card_desc}</p>
                                     </div>
                                     
-                                    <div className="bg-white/5 backdrop-blur-sm border border-emerald-400/30 rounded-2xl p-6 hover:bg-white/10 transition-colors group cursor-default flex-1">
-                                        <div className="flex items-center gap-3 mb-2 text-emerald-200">
-                                            <Sprout size={20} className="group-hover:text-emerald-300 transition-colors" />
-                                            <span className="font-bold tracking-wider uppercase text-xs">{t.tanji_card_sub}</span>
+                                    <a href="https://tanji2026.github.io/official/" target="_blank" rel="noopener noreferrer" className="block bg-white/5 backdrop-blur-sm border border-emerald-400/30 rounded-2xl p-5 hover:bg-white/10 hover:border-emerald-400/50 transition-colors group cursor-pointer flex-1">
+                                        <div className="flex items-center justify-between mb-2">
+                                            <div className="flex items-center gap-3 text-emerald-200">
+                                                <Sprout size={20} className="group-hover:text-emerald-300 transition-colors" />
+                                                <span className="font-bold tracking-wider uppercase text-xs">{t.tanji_card_sub}</span>
+                                            </div>
+                                            <ExternalLink size={16} className="text-emerald-400 opacity-50 group-hover:opacity-100 transition-opacity" />
                                         </div>
                                         <h2 className="text-xl md:text-2xl font-bold text-white mb-2">{t.tanji_card_title}</h2>
                                         <p className="text-emerald-50 text-sm leading-relaxed">{t.tanji_card_desc}</p>
-                                    </div>
+                                    </a>
                                 </div>
                             </div>
                         </div>
                     </header>
 
-                    <section id="credentials" className="py-20 bg-white">
+                    <section id="credentials" className="py-16 bg-white border-t border-slate-100">
                         <div className="max-w-6xl mx-auto px-4">
                             <div className="flex flex-col md:flex-row justify-between items-end mb-8 gap-6">
                                 <div>
@@ -470,60 +395,59 @@
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
                                 {filteredCertifications.length > 0 && (
                                     <div className="w-full animate-fadeIn">
-                                            <h3 className="text-sm font-bold text-slate-700 mb-3 flex items-center gap-2 border-b border-purple-100 pb-2">
-                                                <CheckCircle size={16} className="text-purple-600" />
-                                                {t.certs_title}
-                                            </h3>
-                                            <div className="flex flex-col rounded-lg border border-slate-100 divide-y divide-slate-100 bg-white shadow-sm overflow-hidden">
-                                                {filteredCertifications.map((cert) => (
-                                                    <div key={cert.id} className="flex justify-between items-center px-4 py-3 hover:bg-purple-50/30 transition-colors group">
-                                                        <span className="font-medium text-slate-700 text-sm group-hover:text-purple-700 transition-colors">{cert.title[lang]}</span>
-                                                        <span className="text-[10px] text-slate-500 border border-slate-200 bg-slate-50 px-2 py-0.5 rounded-full whitespace-nowrap ml-2">
-                                                            {cert.issuer[lang]}
-                                                        </span>
-                                                    </div>
-                                                ))}
-                                            </div>
+                                        <h3 className="text-sm font-bold text-slate-700 mb-4 flex items-center gap-2 border-b border-purple-100 pb-2">
+                                            <CheckCircle size={16} className="text-purple-600" />
+                                            {t.certs_title}
+                                        </h3>
+                                        <div className="flex flex-wrap gap-2">
+                                            {filteredCertifications.map((cert) => (
+                                                <div key={cert.id} className="inline-flex flex-col bg-white border border-slate-200 rounded-lg p-2.5 shadow-sm hover:border-purple-300 hover:shadow-md transition-all group w-[calc(50%-0.25rem)] sm:w-auto sm:flex-1 sm:min-w-[200px]">
+                                                    <span className="text-[10px] text-slate-400 uppercase tracking-wider mb-1 font-bold">{cert.issuer[lang]}</span>
+                                                    <span className="font-medium text-slate-700 text-sm group-hover:text-purple-700 transition-colors leading-tight">{cert.title[lang]}</span>
+                                                </div>
+                                            ))}
+                                        </div>
                                     </div>
                                 )}
                                 
                                 {filteredTrainings.length > 0 && (
                                     <div className="w-full animate-fadeIn" style={{animationDelay: '0.1s'}}>
-                                            <h3 className="text-sm font-bold text-slate-700 mb-3 flex items-center gap-2 border-b border-purple-100 pb-2">
-                                                <BookOpen size={16} className="text-purple-600" />
-                                                {t.training_title}
-                                            </h3>
-                                            <div className="flex flex-col rounded-lg border border-slate-100 divide-y divide-slate-100 bg-white shadow-sm overflow-hidden">
-                                                {filteredTrainings.map((train) => (
-                                                    <div key={train.id} className="flex justify-between items-center px-4 py-3 hover:bg-purple-50/30 transition-colors group">
-                                                        <span className="font-medium text-slate-700 text-sm group-hover:text-purple-700 transition-colors">{train.title[lang]}</span>
-                                                        <span className="text-[10px] text-slate-500 border border-slate-200 bg-slate-50 px-2 py-0.5 rounded-full whitespace-nowrap ml-2">
-                                                            {train.organization[lang]}
-                                                        </span>
-                                                    </div>
-                                                ))}
-                                            </div>
+                                        <h3 className="text-sm font-bold text-slate-700 mb-4 flex items-center gap-2 border-b border-purple-100 pb-2">
+                                            <BookOpen size={16} className="text-purple-600" />
+                                            {t.training_title}
+                                        </h3>
+                                        <div className="flex flex-wrap gap-2">
+                                            {filteredTrainings.map((train) => (
+                                                <div key={train.id} className="inline-flex flex-col bg-slate-50 border border-slate-100 rounded-lg p-2.5 hover:bg-white hover:border-purple-200 hover:shadow-sm transition-all group w-full sm:w-[calc(50%-0.25rem)]">
+                                                    <span className="text-[10px] text-slate-500 mb-1 font-medium">{train.organization[lang]}</span>
+                                                    <span className="font-medium text-slate-700 text-sm group-hover:text-purple-700 transition-colors leading-tight">{train.title[lang]}</span>
+                                                </div>
+                                            ))}
+                                        </div>
                                     </div>
                                 )}
                             </div>
                         </div>
                     </section>
 
-                    <section id="awards" className="py-20 bg-gradient-to-b from-white to-slate-50 relative border-t border-slate-100 overflow-hidden">
+                    <section id="awards" className="py-16 bg-gradient-to-b from-slate-50 to-white relative border-t border-slate-100 overflow-hidden">
                         <div className="absolute top-10 right-0 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl pointer-events-none"></div>
-                        <div className="absolute bottom-10 left-0 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl pointer-events-none"></div>
 
-                        <div className="max-w-4xl mx-auto px-4 relative z-10">
-                            <div className="text-center mb-12">
-                                <div className="inline-flex items-center justify-center p-3 bg-gradient-to-br from-amber-100 to-orange-100 rounded-2xl text-amber-600 shadow-sm border border-amber-200/50 mb-4">
-                                    <Trophy size={32} />
+                        <div className="max-w-6xl mx-auto px-4 relative z-10">
+                            <div className="flex flex-col md:flex-row justify-between items-end mb-8 gap-6">
+                                <div>
+                                    <div className="flex items-center gap-3 mb-2">
+                                        <div className="p-2 bg-amber-100 rounded-lg text-amber-600">
+                                            <Trophy size={24} />
+                                        </div>
+                                        <h2 className="text-3xl font-bold text-slate-800">{t.awards}</h2>
+                                    </div>
+                                    <p className="text-slate-500 pl-14">{t.awards_sub}</p>
                                 </div>
-                                <h2 className="text-3xl font-bold text-slate-800 mb-2">{t.awards}</h2>
-                                <p className="text-slate-500">{t.awards_sub}</p>
                             </div>
 
-                            <div className="space-y-6">
-                                {awardsData.map((award, index) => {
+                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                                {awardsData.map((award) => {
                                     const isWinner = award.status === 'winner';
                                     const sideBorderClass = isWinner ? "from-amber-300 to-amber-500" : "from-blue-400 to-indigo-500";
                                     const pillBgClass = isWinner ? "bg-amber-50 text-amber-700 border-amber-100" : "bg-blue-50 text-blue-700 border-blue-100";
@@ -532,54 +456,34 @@
                                     const IconComponent = isWinner ? Star : Rocket;
 
                                     return (
-                                        <div 
-                                            key={award.id} 
-                                            className="bg-white rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition-all duration-300 p-6 md:p-8 flex flex-col md:flex-row gap-6 relative group overflow-hidden"
-                                        >
+                                        <div key={award.id} className="bg-white rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition-all duration-300 p-5 md:p-6 flex flex-col relative group overflow-hidden h-full">
                                             <div className={`absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b ${sideBorderClass} transform origin-left scale-y-0 group-hover:scale-y-100 transition-transform duration-300`}></div>
 
-                                            <div className="flex md:flex-col items-center md:items-start gap-4 md:w-32 flex-shrink-0">
-                                                <div className={`px-3 py-1 rounded-full text-sm font-bold border flex items-center gap-1.5 ${pillBgClass}`}>
+                                            <div className="flex justify-between items-start gap-4 mb-4">
+                                                <div className={`px-2.5 py-1 rounded-full text-[11px] font-bold border flex items-center gap-1.5 w-fit ${pillBgClass}`}>
                                                     <IconComponent size={14} className={iconClass} />
                                                     {award.year}
                                                 </div>
-                                                <span className="text-xs font-medium text-slate-400 uppercase tracking-wider hidden md:block border-t border-slate-100 pt-3 w-full">
+                                                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider bg-slate-50 px-2.5 py-1 rounded-md border border-slate-100">
                                                     {award.issuer[lang]}
                                                 </span>
                                             </div>
 
-                                            <div className="flex-grow flex flex-col lg:flex-row gap-6 lg:gap-8">
-                                                <div className="flex-1 flex flex-col">
-                                                    <h3 className={`text-xl font-bold text-slate-800 mb-2 transition-colors ${titleHoverClass}`}>
-                                                        {award.title[lang]}
-                                                    </h3>
-                                                    <span className="text-xs font-medium text-slate-500 mb-3 block md:hidden">
-                                                        Awarded by: {award.issuer[lang]}
-                                                    </span>
-                                                    <p className="text-slate-600 text-sm leading-relaxed mb-4">
-                                                        {award.description[lang]}
-                                                    </p>
+                                            <h3 className={`text-lg font-bold text-slate-800 mb-2 transition-colors ${titleHoverClass}`}>
+                                                {award.title[lang]}
+                                            </h3>
+                                            
+                                            <p className="text-slate-600 text-[13px] leading-relaxed mb-5 flex-grow">
+                                                {award.description[lang]}
+                                            </p>
 
-                                                    <div className="mt-auto pt-2">
-                                                        {award.projectLink && (
-                                                            <a 
-                                                                href={award.projectLink} 
-                                                                target="_blank" 
-                                                                rel="noopener noreferrer"
-                                                                className="inline-flex items-center gap-1.5 text-xs font-bold text-purple-600 hover:text-purple-800 bg-purple-50 hover:bg-purple-100 px-3 py-1.5 rounded-lg transition-colors"
-                                                            >
-                                                                {t.view_project} <ArrowRight size={14} />
-                                                            </a>
-                                                        )}
-                                                    </div>
-                                                </div>
-
+                                            <div className="pt-4 border-t border-slate-100 mt-auto flex justify-between items-end">
                                                 {award.timeline && (
-                                                    <div className="lg:w-48 xl:w-56 flex-shrink-0 pt-4 lg:pt-0 border-t lg:border-t-0 lg:border-l border-slate-100 lg:pl-6">
-                                                        <h4 className="text-[11px] font-bold text-slate-400 mb-4 uppercase tracking-wider flex items-center gap-1.5">
-                                                            {lang === 'zh' ? '賽程進度' : 'Timeline'}
+                                                    <div className="flex-1">
+                                                        <h4 className="text-[10px] font-bold text-slate-400 mb-3 uppercase tracking-wider flex items-center gap-1.5">
+                                                            {t.timeline_label}
                                                         </h4>
-                                                        <div className="relative border-l-2 border-slate-100 ml-1.5 space-y-4 pb-1">
+                                                        <div className="relative border-l-2 border-slate-100 ml-1.5 space-y-3 pb-1">
                                                             {award.timeline.map((step, idx) => {
                                                                 const isDone = step.status === 'done';
                                                                 const isCurrent = step.status === 'current';
@@ -599,15 +503,15 @@
 
                                                                 return (
                                                                     <div key={idx} className="relative pl-4">
-                                                                        <div className={`absolute w-3 h-3 rounded-full border-2 -left-[7px] top-1 ${dotClass}`}>
+                                                                        <div className={`absolute w-2.5 h-2.5 rounded-full border-2 -left-[6px] top-1 ${dotClass}`}>
                                                                             {isCurrent && <div className={`absolute inset-0 rounded-full animate-ping opacity-50 ${isWinner ? 'bg-amber-500' : 'bg-blue-500'}`}></div>}
                                                                         </div>
-                                                                        <div className={`text-[11px] ${dateClass} mb-0.5 leading-none`}>{step.date}</div>
-                                                                        <div className={`text-sm ${textClass} leading-snug`}>
+                                                                        <div className={`text-[10px] ${dateClass} mb-0.5 leading-none`}>{step.date}</div>
+                                                                        <div className={`text-[11px] ${textClass} leading-snug`}>
                                                                             {step.link ? (
                                                                                 <a href={step.link} target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity inline-flex items-center gap-1 underline underline-offset-2">
                                                                                     {step.event[lang]}
-                                                                                    <ExternalLink size={12} className="inline" />
+                                                                                    <ExternalLink size={10} className="inline" />
                                                                                 </a>
                                                                             ) : (
                                                                                 step.event[lang]
@@ -619,6 +523,12 @@
                                                         </div>
                                                     </div>
                                                 )}
+                                                
+                                                {award.projectLink && (
+                                                    <a href={award.projectLink} target="_blank" rel="noopener noreferrer" className="flex-shrink-0 inline-flex items-center gap-1 text-[11px] font-bold text-purple-600 hover:text-purple-800 bg-purple-50 hover:bg-purple-100 px-2.5 py-1.5 rounded-lg transition-colors ml-2 mb-1">
+                                                        {t.view_project} <ArrowRight size={12} />
+                                                    </a>
+                                                )}
                                             </div>
                                         </div>
                                     );
@@ -627,9 +537,9 @@
                         </div>
                     </section>
 
-                    <section id="portfolio" className="py-20 bg-slate-50">
+                    <section id="portfolio" className="py-10 bg-slate-50">
                         <div className="max-w-6xl mx-auto px-4">
-                            <div className="flex flex-col md:flex-row justify-between items-end mb-10 gap-4">
+                            <div className="flex flex-col md:flex-row justify-between items-end mb-6 gap-4">
                                 <div>
                                     <div className="flex items-center gap-3 mb-2">
                                         <div className="p-2 bg-indigo-100 rounded-lg text-indigo-700">
@@ -640,51 +550,27 @@
                                     <p className="text-slate-500 pl-14">{t.portfolio_sub}</p>
                                 </div>
                                 <div className="flex flex-wrap gap-2 bg-white p-1 rounded-lg shadow-sm border border-slate-200">
-                                    <button 
-                                        onClick={() => setActiveProjectTab('all')} 
-                                        className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all ${activeProjectTab === 'all' ? 'bg-purple-600 text-white shadow-sm' : 'text-slate-600 hover:bg-slate-100'}`}
-                                    >
+                                    <button onClick={() => setActiveProjectTab('all')} className={`flex items-center gap-2 px-3 py-1.5 rounded-md text-sm font-medium transition-all ${activeProjectTab === 'all' ? 'bg-purple-600 text-white shadow-sm' : 'text-slate-600 hover:bg-slate-100'}`}>
                                         {t.tab_all}
                                     </button>
-                                    
-                                    <button 
-                                        onClick={() => setActiveProjectTab('personal')} 
-                                        className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all ${activeProjectTab === 'personal' ? 'bg-purple-600 text-white shadow-sm' : 'text-slate-600 hover:bg-slate-100'}`}
-                                    >
+                                    <button onClick={() => setActiveProjectTab('personal')} className={`flex items-center gap-2 px-3 py-1.5 rounded-md text-sm font-medium transition-all ${activeProjectTab === 'personal' ? 'bg-purple-600 text-white shadow-sm' : 'text-slate-600 hover:bg-slate-100'}`}>
                                         <User size={14} /> {t.tab_personal}
                                     </button>
-                                    <button 
-                                        onClick={() => setActiveProjectTab('tanji')} 
-                                        className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all ${activeProjectTab === 'tanji' ? 'bg-emerald-600 text-white shadow-sm' : 'text-slate-600 hover:bg-slate-100'}`}
-                                    >
+                                    <button onClick={() => setActiveProjectTab('tanji')} className={`flex items-center gap-2 px-3 py-1.5 rounded-md text-sm font-medium transition-all ${activeProjectTab === 'tanji' ? 'bg-emerald-600 text-white shadow-sm' : 'text-slate-600 hover:bg-slate-100'}`}>
                                         <Sprout size={14} /> {t.tab_tanji}
                                     </button>
-                                    <button 
-                                        onClick={() => setActiveProjectTab('team')} 
-                                        className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all ${activeProjectTab === 'team' ? 'bg-purple-600 text-white shadow-sm' : 'text-slate-600 hover:bg-slate-100'}`}
-                                    >
+                                    <button onClick={() => setActiveProjectTab('team')} className={`flex items-center gap-2 px-3 py-1.5 rounded-md text-sm font-medium transition-all ${activeProjectTab === 'team' ? 'bg-purple-600 text-white shadow-sm' : 'text-slate-600 hover:bg-slate-100'}`}>
                                         <UsersIcon size={14} /> {t.tab_team}
                                     </button>
                                 </div>
                             </div>
                             
-                            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 animate-fadeIn">
-                                {filteredProjects.map((project) => (
-                                    <a 
-                                        key={project.id} 
-                                        href={project.link} 
-                                        target={project.link === '#' ? '_self' : '_blank'} 
-                                        rel="noopener noreferrer" 
-                                        className="block bg-white rounded-xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col h-full"
-                                    >
-                                        <div className="h-48 overflow-hidden relative bg-slate-200">
-                                            <img 
-                                                src={project.image} 
-                                                onError={handleImageError} 
-                                                alt={project.title[lang]} 
-                                                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
-                                            />
-                                            <div className={`absolute top-3 right-3 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold shadow-sm ${
+                            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 animate-fadeIn min-h-[420px] content-start">
+                                {currentProjects.map((project) => (
+                                    <a key={project.id} href={project.link} target={project.link === '#' ? '_self' : '_blank'} rel="noopener noreferrer" className="block bg-white rounded-xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col h-full">
+                                        <div className="h-28 overflow-hidden relative bg-slate-200 shrink-0">
+                                            <img src={project.image} onError={handleImageError} alt={project.title[lang]} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                                            <div className={`absolute top-3 right-3 backdrop-blur-md px-2.5 py-0.5 rounded-full text-[10px] font-bold shadow-sm ${
                                                 project.type === 'Finance' ? 'bg-blue-100/90 text-blue-900' :
                                                 project.type === 'tanji' ? 'bg-emerald-100/90 text-emerald-800' :
                                                 project.type === 'personal' ? 'bg-purple-100/90 text-purple-800' : 
@@ -693,34 +579,71 @@
                                                 {project.type === 'tanji' ? 'TanJi' : project.type === 'personal' ? 'Personal' : project.type === 'Finance' ? 'Finance' : 'Team'}
                                             </div>
                                         </div>
-                                        <div className="p-6 flex flex-col flex-grow">
-                                            <h3 className={`text-lg font-bold text-slate-900 mb-2 transition-colors flex items-center justify-between gap-2 ${
+                                        <div className="p-3.5 flex flex-col flex-grow">
+                                            <h3 className={`text-sm font-bold text-slate-900 mb-1 transition-colors flex items-center justify-between gap-2 ${
                                                 project.type === 'Finance' ? 'group-hover:text-blue-800' :
                                                 project.type === 'tanji' ? 'group-hover:text-emerald-700' : 'group-hover:text-purple-700'
                                             }`}>
-                                                {project.title[lang]}
-                                                {project.link !== '#' && <ExternalLink size={16} className="opacity-0 group-hover:opacity-100 transition-opacity text-slate-400" />}
+                                                <span className="truncate">{project.title[lang]}</span>
+                                                {project.link !== '#' && <ExternalLink size={14} className="flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity text-slate-400" />}
                                             </h3>
-                                            <p className="text-slate-600 text-sm mb-4 leading-relaxed line-clamp-2 flex-grow">
+                                            <p className="text-slate-600 text-[11px] mb-2 leading-normal line-clamp-2 flex-grow">
                                                 {project.description[lang]}
                                             </p>
-                                            <div className="flex flex-wrap gap-2 pt-2 border-t border-slate-50 mt-auto">
-                                                {project.tags.map(tag => (
-                                                    <span key={tag} className="text-xs px-2.5 py-1 bg-slate-50 text-slate-600 rounded-md border border-slate-200 font-medium">
+                                            <div className="flex flex-wrap gap-1.5 pt-1.5 border-t border-slate-50 mt-auto">
+                                                {project.tags.slice(0,3).map(tag => (
+                                                    <span key={tag} className="text-[10px] px-2 py-0.5 bg-slate-50 text-slate-500 rounded border border-slate-100 font-medium">
                                                         {tag}
                                                     </span>
                                                 ))}
+                                                {project.tags.length > 3 && <span className="text-[10px] px-2 py-0.5 text-slate-400">+{project.tags.length - 3}</span>}
                                             </div>
                                         </div>
                                     </a>
                                 ))}
                             </div>
+
+                            {totalPages > 1 && (
+                                <div className="flex justify-center items-center mt-5 gap-2">
+                                    <button 
+                                        onClick={() => paginate(currentPage - 1)} 
+                                        disabled={currentPage === 1}
+                                        className={`p-2 rounded-lg flex items-center gap-1 text-sm font-medium transition-colors ${currentPage === 1 ? 'text-slate-300 cursor-not-allowed' : 'text-slate-600 hover:bg-slate-200 bg-white border border-slate-200 shadow-sm'}`}
+                                    >
+                                        <ChevronLeft size={16} /> <span className="hidden sm:inline">{t.pagination_prev}</span>
+                                    </button>
+                                    
+                                    <div className="flex items-center gap-1 bg-white border border-slate-200 rounded-lg p-1 shadow-sm">
+                                        {Array.from({ length: totalPages }, (_, i) => i + 1).map(number => (
+                                            <button
+                                                key={number}
+                                                onClick={() => paginate(number)}
+                                                className={`w-8 h-8 rounded-md flex items-center justify-center text-sm font-bold transition-colors ${
+                                                    currentPage === number 
+                                                    ? 'bg-purple-100 text-purple-700' 
+                                                    : 'text-slate-500 hover:bg-slate-50'
+                                                }`}
+                                            >
+                                                {number}
+                                            </button>
+                                        ))}
+                                    </div>
+
+                                    <button 
+                                        onClick={() => paginate(currentPage + 1)} 
+                                        disabled={currentPage === totalPages}
+                                        className={`p-2 rounded-lg flex items-center gap-1 text-sm font-medium transition-colors ${currentPage === totalPages ? 'text-slate-300 cursor-not-allowed' : 'text-slate-600 hover:bg-slate-200 bg-white border border-slate-200 shadow-sm'}`}
+                                    >
+                                        <span className="hidden sm:inline">{t.pagination_next}</span> <ChevronRight size={16} />
+                                    </button>
+                                </div>
+                            )}
                         </div>
                     </section>
 
-                    <section id="contact" className="py-16 bg-white border-t border-slate-100">
+                    <section id="contact" className="py-12 bg-white border-t border-slate-100">
                         <div className="max-w-5xl mx-auto px-4">
-                            <div className="bg-gradient-to-r from-purple-900 to-indigo-900 rounded-2xl p-8 md:p-12 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden">
+                            <div className="bg-gradient-to-r from-purple-900 to-indigo-900 rounded-2xl p-8 md:p-10 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden">
                                 <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
                                 
                                 <div className="text-center md:text-left flex-1 w-full relative z-10">
@@ -728,9 +651,7 @@
                                     
                                     <div className="grid md:grid-cols-3 gap-4">
                                         <div className="flex items-center gap-3 bg-white/10 p-4 rounded-lg backdrop-blur-sm border border-white/10 hover:bg-white/20 transition-colors">
-                                            <div className="bg-white text-purple-900 p-2 rounded-full flex-shrink-0">
-                                                <Mail size={16} />
-                                            </div>
+                                            <div className="bg-white text-purple-900 p-2 rounded-full flex-shrink-0"><Mail size={16} /></div>
                                             <div className="text-left overflow-hidden min-w-0">
                                                 <p className="text-xs text-purple-300 mb-0.5">{t.contact_personal}</p>
                                                 <a href="mailto:yinkoying.yky@gmail.com" className="text-sm font-medium hover:text-white block truncate transition-colors">yinkoying.yky@gmail.com</a>
@@ -738,9 +659,7 @@
                                         </div>
 
                                         <div className="flex items-center gap-3 bg-white/10 p-4 rounded-lg backdrop-blur-sm border border-white/10 hover:bg-white/20 transition-colors">
-                                            <div className="bg-white text-purple-900 p-2 rounded-full flex-shrink-0">
-                                                <UsersIcon size={16} />
-                                            </div>
+                                            <div className="bg-white text-purple-900 p-2 rounded-full flex-shrink-0"><UsersIcon size={16} /></div>
                                             <div className="text-left overflow-hidden min-w-0">
                                                 <p className="text-xs text-purple-300 mb-0.5">{t.contact_business}</p>
                                                 <a href="mailto:ecoshane.esg@gmail.com" className="text-sm font-medium hover:text-white block truncate transition-colors">ecoshane.esg@gmail.com</a>
@@ -748,9 +667,7 @@
                                         </div>
                                         
                                         <div className="flex items-center gap-3 bg-white/10 p-4 rounded-lg backdrop-blur-sm border border-emerald-400/20 hover:bg-emerald-900/40 transition-colors">
-                                            <div className="bg-emerald-100 text-emerald-800 p-2 rounded-full flex-shrink-0">
-                                                <Sprout size={16} />
-                                            </div>
+                                            <div className="bg-emerald-100 text-emerald-800 p-2 rounded-full flex-shrink-0"><Sprout size={16} /></div>
                                             <div className="text-left overflow-hidden min-w-0">
                                                 <p className="text-xs text-emerald-300 mb-0.5">{t.contact_tanji}</p>
                                                 <a href="mailto:tanji2026@gmail.com" className="text-sm font-medium hover:text-white block truncate transition-colors">tanji2026@gmail.com</a>
@@ -764,18 +681,18 @@
 
                     <footer className="bg-slate-50 py-10 border-t border-slate-200">
                         <div className="max-w-6xl mx-auto px-4 text-center">
-                            <div className="mb-8 max-w-2xl mx-auto">
-                                <div className="inline-flex items-center justify-center p-3 bg-purple-50 rounded-full mb-4">
-                                    <Palette size={20} className="text-purple-600" />
+                            <div className="mb-6 max-w-2xl mx-auto">
+                                <div className="inline-flex items-center justify-center p-2.5 bg-purple-50 rounded-full mb-3">
+                                    <Palette size={18} className="text-purple-600" />
                                 </div>
-                                <h4 className="text-sm font-bold text-purple-800 mb-2 uppercase tracking-wide">{t.why_purple_title}</h4>
-                                <p className="text-slate-600 text-sm leading-relaxed">
+                                <h4 className="text-xs font-bold text-purple-800 mb-2 uppercase tracking-wide">{t.why_purple_title}</h4>
+                                <p className="text-slate-600 text-xs leading-relaxed max-w-lg mx-auto">
                                     {t.why_purple_desc}
                                 </p>
                             </div>
-                            <div className="w-12 h-1 bg-purple-200 rounded-full mx-auto mb-6"></div>
-                            <p className="text-slate-500 text-sm font-medium">{t.rights}</p>
-                            <p className="text-slate-400 text-xs mt-1">{t.specialized}</p>
+                            <div className="w-8 h-1 bg-purple-200 rounded-full mx-auto mb-4"></div>
+                            <p className="text-slate-500 text-xs font-medium">{t.rights}</p>
+                            <p className="text-slate-400 text-[10px] mt-1">{t.specialized}</p>
                         </div>
                     </footer>
                 </div>

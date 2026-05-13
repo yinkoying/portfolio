@@ -56,7 +56,7 @@
                 portfolio_title: "精選專案", certs_title: "專業證照", training_title: "專業培訓",
                 tab_all: "全部", tab_personal: "個人作品", tab_tanji: "碳吉 TanJi", tab_team: "Ecoshane 團隊", tab_finance: "金融", tab_pm: "專案管理", tab_tech: "資訊科技",
                 contact_title: "聯絡方式", contact_personal: "個人聯繫", contact_business: "團隊業務/合作", contact_tanji: "碳吉專案",
-                why_purple_title: "Why Purple?", why_purple_desc: "紫色融合了代表熱情與行動的紅色，以及象徵科技與智慧的藍色。這正代表著我如何運用理性的 AI 數據技術 (Blue)，去實踐對 ESG 永續發展的熱忱 (Red)。科技與人性的平衡，即是永續的起點。",
+                why_purple_title: "Why Purple?", why_purple_desc: "紫色融合了代表熱情與行動的紅色，以及象徵科技與智慧的藍色。代表我如何運用理性的 AI 數據技術 (Blue)，去實踐對 ESG 永續發展的熱忱 (Red)。科技與人性的平衡，即是永續的起點。",
                 rights: "© 2026 YIN, KOYING. All rights reserved.", specialized: "Specialized in AI & ESG Solutions",
                 hero_title: "YIN, KOYING", hero_desc_1: "專注於 AI 人工智慧與 ESG 永續發展的跨領域整合。", hero_desc_2: "致力於運用數據科學解決環境議題，為金融科技與綠色供應鏈創造價值。",
                 team_card_title: "Ecoshane", team_card_sub: "The Team", team_card_desc: "我們是一群致力於 AI 賦能永續的學生團隊。提供全方位的 ESG 數位轉型解決方案，讓永續不再只是口號。",
@@ -141,6 +141,20 @@
                 timeline: [
                     { date: "2026.03", event: { zh: "初審投遞", en: "Proposal" }, status: 'done' },
                     { date: "2026.04.30", event: { zh: "入圍【青年人才】", en: "Shortlisted" }, status: 'current', link: "https://iase.tw/announcements/shortlist-2026/" }
+                ]
+            },
+            { 
+                id: 4, status: 'finalist', year: "2026", 
+                title: { zh: "2026 Impact Star 青年影響力啟動賽", en: "2026 Impact Star Youth Influence Competition" }, 
+                issuer: { zh: "新北青年局", en: "NTPC Youth Dept." }, 
+                description: { 
+                    zh: "【晉級複賽】三峽職人：手路尋蹤。這是一款結合職人性格測驗與在地文化的互動式網頁遊戲，透過五感問答分析玩家專屬屬性，並引導至三峽老街實體工作室解鎖任務，藉由數位體驗促進地方創生。", 
+                    en: "[Semi-Finalist] Sanxia Artisan Quest. An interactive web experience combining personality tests with local culture, guiding players to real-world workshops in Sanxia Old Street to promote regional revitalization through digital engagement." 
+                }, 
+                projectLink: "https://tanji2026.github.io/sanxia/",
+                timeline: [
+                    { date: "2026.04", event: { zh: "初審投遞", en: "Proposal" }, status: 'done' },
+                    { date: "2026.05.08", event: { zh: "晉級複賽", en: "Semi-Finals" }, status: 'current', link: "https://drive.google.com/file/d/1IEV6rc2cathzh_51frk2b8W5rAFr-161/view" }
                 ]
             }
         ];
@@ -291,6 +305,7 @@
 
             return (
                 <div className="min-h-screen bg-slate-50 font-sans">
+                    {}
                     <nav className="sticky top-0 w-full bg-white/95 backdrop-blur-sm shadow-sm z-50 border-b border-purple-100">
                         <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
                             <div className="font-bold text-xl md:text-2xl text-purple-800 tracking-tight flex items-center cursor-pointer" onClick={() => window.scrollTo(0,0)}>
@@ -316,6 +331,7 @@
                         </div>
                     </nav>
 
+                    {}
                     <header id="about" className="relative pt-28 pb-16 px-4 bg-gradient-to-br from-purple-900 via-indigo-900 to-purple-800 text-white overflow-hidden">
                         <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-purple-800/50 to-transparent"></div>
                         <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl"></div>
@@ -363,6 +379,7 @@
                         </div>
                     </header>
 
+                    {}
                     <section id="credentials" className="py-16 bg-white border-t border-slate-100">
                         <div className="max-w-6xl mx-auto px-4">
                             <div className="flex flex-col md:flex-row justify-between items-end mb-8 gap-6">
@@ -430,6 +447,7 @@
                         </div>
                     </section>
 
+                    {}
                     <section id="awards" className="py-16 bg-gradient-to-b from-slate-50 to-white relative border-t border-slate-100 overflow-hidden">
                         <div className="absolute top-10 right-0 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl pointer-events-none"></div>
 
@@ -477,16 +495,21 @@
                                                 {award.description[lang]}
                                             </p>
 
-                                            <div className="pt-4 border-t border-slate-100 mt-auto flex justify-between items-end">
+                                            <div className="pt-4 border-t border-slate-100 mt-auto flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4">
                                                 {award.timeline && (
-                                                    <div className="flex-1">
+                                                    <div className="flex-1 w-full overflow-hidden">
                                                         <h4 className="text-[10px] font-bold text-slate-400 mb-3 uppercase tracking-wider flex items-center gap-1.5">
                                                             {t.timeline_label}
                                                         </h4>
-                                                        <div className="relative border-l-2 border-slate-100 ml-1.5 space-y-3 pb-1">
+                                                        {}
+                                                        <div className="flex items-start relative mt-2 pt-2">
+                                                            {/* Horizontal Line connecting dots */}
+                                                            <div className="absolute top-[3px] left-2 right-2 h-0.5 bg-slate-100 -z-10"></div>
+                                                            
                                                             {award.timeline.map((step, idx) => {
                                                                 const isDone = step.status === 'done';
                                                                 const isCurrent = step.status === 'current';
+                                                                const isLast = idx === award.timeline.length - 1;
                                                                 
                                                                 let dotClass = "bg-slate-200 border-white";
                                                                 let textClass = "text-slate-400";
@@ -502,20 +525,35 @@
                                                                 }
 
                                                                 return (
-                                                                    <div key={idx} className="relative pl-4">
-                                                                        <div className={`absolute w-2.5 h-2.5 rounded-full border-2 -left-[6px] top-1 ${dotClass}`}>
-                                                                            {isCurrent && <div className={`absolute inset-0 rounded-full animate-ping opacity-50 ${isWinner ? 'bg-amber-500' : 'bg-blue-500'}`}></div>}
+                                                                    <div key={idx} className={`relative flex flex-col items-center flex-1 px-1 text-center ${!isLast ? 'min-w-[70px]' : ''}`}>
+                                                                        {/* Active connector line from previous done/current step to this one if it's done or current */}
+                                                                        {idx > 0 && (isDone || isCurrent) && (
+                                                                            <div className={`absolute top-[3px] right-[50%] left-[-50%] h-0.5 -z-10 ${isWinner ? 'bg-amber-300' : 'bg-indigo-300'}`}></div>
+                                                                        )}
+                                                                        
+                                                                        {/* Dot */}
+                                                                        <div className={`w-2.5 h-2.5 rounded-full border-2 mb-1.5 shrink-0 z-10 bg-white relative`}>
+                                                                            <div className={`absolute -inset-[2px] rounded-full border-2 ${dotClass}`}></div>
+                                                                            {isCurrent && <div className={`absolute -inset-[2px] rounded-full animate-ping opacity-50 ${isWinner ? 'bg-amber-500' : 'bg-blue-500'}`}></div>}
                                                                         </div>
-                                                                        <div className={`text-[10px] ${dateClass} mb-0.5 leading-none`}>{step.date}</div>
-                                                                        <div className={`text-[11px] ${textClass} leading-snug`}>
-                                                                            {step.link ? (
-                                                                                <a href={step.link} target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity inline-flex items-center gap-1 underline underline-offset-2">
-                                                                                    {step.event[lang]}
-                                                                                    <ExternalLink size={10} className="inline" />
-                                                                                </a>
-                                                                            ) : (
-                                                                                step.event[lang]
-                                                                            )}
+                                                                        
+                                                                        {/* Content */}
+                                                                        <div className="flex flex-col items-center justify-start max-w-full">
+                                                                            <div className={`text-[9px] sm:text-[10px] ${dateClass} mb-0.5 leading-none whitespace-nowrap`}>
+                                                                                {step.date}
+                                                                            </div>
+                                                                            <div className={`text-[10px] sm:text-[11px] ${textClass} leading-tight line-clamp-2 min-h-[2.5em] flex items-start justify-center w-full`}>
+                                                                                {step.link ? (
+                                                                                    <a href={step.link} target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity inline-flex items-center justify-center gap-0.5 group/link">
+                                                                                        <span className="underline decoration-slate-300 group-hover/link:decoration-current underline-offset-2 break-all max-w-[80px] sm:max-w-none text-center">
+                                                                                            {step.event[lang]}
+                                                                                        </span>
+                                                                                        <ExternalLink size={10} className="inline shrink-0" />
+                                                                                    </a>
+                                                                                ) : (
+                                                                                    <span className="break-words text-center">{step.event[lang]}</span>
+                                                                                )}
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 );
@@ -525,7 +563,7 @@
                                                 )}
                                                 
                                                 {award.projectLink && (
-                                                    <a href={award.projectLink} target="_blank" rel="noopener noreferrer" className="flex-shrink-0 inline-flex items-center gap-1 text-[11px] font-bold text-purple-600 hover:text-purple-800 bg-purple-50 hover:bg-purple-100 px-2.5 py-1.5 rounded-lg transition-colors ml-2 mb-1">
+                                                    <a href={award.projectLink} target="_blank" rel="noopener noreferrer" className="flex-shrink-0 inline-flex items-center justify-center gap-1 text-[11px] font-bold text-purple-600 hover:text-purple-800 bg-purple-50 hover:bg-purple-100 px-3 py-2 rounded-lg transition-colors sm:mb-1 w-full sm:w-auto">
                                                         {t.view_project} <ArrowRight size={12} />
                                                     </a>
                                                 )}
@@ -537,6 +575,7 @@
                         </div>
                     </section>
 
+                    {}
                     <section id="portfolio" className="py-10 bg-slate-50">
                         <div className="max-w-6xl mx-auto px-4">
                             <div className="flex flex-col md:flex-row justify-between items-end mb-6 gap-4">
@@ -641,6 +680,7 @@
                         </div>
                     </section>
 
+                    {}
                     <section id="contact" className="py-12 bg-white border-t border-slate-100">
                         <div className="max-w-5xl mx-auto px-4">
                             <div className="bg-gradient-to-r from-purple-900 to-indigo-900 rounded-2xl p-8 md:p-10 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden">

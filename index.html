@@ -10,6 +10,7 @@
     <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.4/babel.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
     <style>
         html { scroll-behavior: smooth; }
         body { font-family: 'Noto Sans', 'Noto Sans TC', sans-serif; }
@@ -114,6 +115,25 @@
         ];
 
         const awardsData = [
+            { 
+                id: 5, status: 'winner', year: "2026", 
+                title: { zh: "第二屆 CCUS 創意教案徵選活動", en: "2nd CCUS Creative Lesson Plan Selection" }, 
+                issuer: { zh: "中央大學 / CCUS科學教育推廣計畫", en: "National Central University / CCUS Science Education Promotion Program" }, 
+                description: { 
+                    zh: "【榮獲 優等獎】以「碳吉：CCUS 淨零決策模擬器」榮獲優等獎肯定。方案兼具創新教學理念、課程實踐價值及推廣潛力，藉由角色分權與即時互動遊戲設計，成功轉化嚴肅的碳捕捉、利用與封存（CCUS）技術為沉浸式教案。", 
+                    en: "[Won Excellence Award] Honored with the Excellence Award for 'TanJi: CCUS Net Zero Simulator' in the 2nd CCUS Creative Lesson Plan Selection. The curriculum features outstanding teaching concepts and potential." 
+                }, 
+                projectLink: "https://tanji2026.github.io/ccus/",
+                timeline: [
+                    { date: "2026.04", event: { zh: "教案投稿", en: "Proposal Submitted" }, status: 'done' },
+                    { 
+                        date: "2026.06.22", 
+                        event: { zh: "榮獲優等獎", en: "Won Excellence Award" }, 
+                        status: 'current', 
+                        link: "https://ccsu.erigance.com/%e5%85%a8%e9%83%a8%e6%95%99%e6%a1%88/115-%e5%b9%b4%e5%ba%a6%e7%ac%ac%e4%ba%8c%e5%b1%86-ccus-%e5%89%b5%e6%84%8f%e6%95%99%e6%a1%88%e5%be%b5%e9%81%b8%e6%b4%bb%e5%8b%95-%e7%8d%b2%e7%8d%8e%e7%b5%90%e6%9e%9c%e5%85%ac%e5%91%8a/" 
+                    }
+                ]
+            },
             { 
                 id: 2, status: 'winner', year: "2026", 
                 title: { zh: "115年度 氣候變遷創意實作競賽", en: "Climate Change Creative Practice Competition" }, 
@@ -379,7 +399,7 @@
                         </div>
                     </header>
 
-                    {/* Credentials & Training Section */}
+                    {}
                     <section id="credentials" className="py-16 bg-white border-t border-slate-100">
                         <div className="max-w-6xl mx-auto px-4">
                             <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-8 gap-6">
@@ -447,7 +467,7 @@
                         </div>
                     </section>
 
-                    {/* Awards Section */}
+                    {}
                     <section id="awards" className="py-16 bg-gradient-to-b from-slate-50 to-white relative border-t border-slate-100 overflow-hidden">
                         <div className="absolute top-10 right-0 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl pointer-events-none"></div>
 
@@ -555,7 +575,7 @@
                         </div>
                     </section>
 
-                    {/* Portfolio / Projects Section */}
+                    {}
                     <section id="portfolio" className="py-16 bg-slate-50">
                         <div className="max-w-6xl mx-auto px-4">
                             <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-6 gap-4">
@@ -622,6 +642,7 @@
                                 ))}
                             </div>
 
+                            {}
                             {totalPages > 1 && (
                                 <div className="flex justify-center items-center mt-10 gap-2">
                                     <button 
@@ -660,7 +681,7 @@
                         </div>
                     </section>
 
-                    {/* Contact Section */}
+                    {}
                     <section id="contact" className="py-12 bg-white border-t border-slate-100">
                         <div className="max-w-5xl mx-auto px-4">
                             <div className="bg-gradient-to-r from-purple-950 to-indigo-950 rounded-2xl p-6 md:p-10 text-white shadow-xl flex flex-col items-center justify-between gap-8 relative overflow-hidden">
@@ -719,6 +740,7 @@
                 </div>
             );
         };
+        
         const root = ReactDOM.createRoot(document.getElementById('root'));
         root.render(<App />);
     </script>

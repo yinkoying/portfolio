@@ -10,11 +10,11 @@
     <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.4/babel.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
-    
     <style>
         html { scroll-behavior: smooth; }
         body { font-family: 'Noto Sans', 'Noto Sans TC', sans-serif; }
         .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        .line-clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         .animate-fadeIn { animation: fadeIn 0.5s ease-out forwards; }
         ::-webkit-scrollbar { width: 8px; }
@@ -49,12 +49,15 @@
         const ArrowRight = (p) => <Icon {...p}><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></Icon>;
         const ChevronLeft = (p) => <Icon {...p}><polyline points="15 18 9 12 15 6"/></Icon>;
         const ChevronRight = (p) => <Icon {...p}><polyline points="9 18 15 12 9 6"/></Icon>;
+        const Compass = (p) => <Icon {...p}><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></Icon>;
+        const MapPin = (p) => <Icon {...p}><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></Icon>;
+        const CalendarIcon = (p) => <Icon {...p}><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></Icon>;
 
         const uiText = {
             zh: {
-                about: "關於我", credentials: "專業資歷", awards: "得獎紀錄", portfolio: "專案作品", contact: "聯絡方式",
-                credentials_sub: "Professional Credentials & Training", awards_sub: "專業領域的肯定與榮譽", portfolio_sub: "結合 AI 技術與 ESG 指標的實務應用成果",
-                portfolio_title: "精選專案", certs_title: "專業證照", training_title: "專業培訓",
+                about: "關於我", credentials: "專業資歷", global: "海外見習", awards: "得獎紀錄", portfolio: "專案作品", contact: "聯絡方式",
+                credentials_sub: "Professional Credentials & Training", global_sub: "Global Initiatives & Apprenticeships", awards_sub: "專業領域的肯定與榮譽", portfolio_sub: "結合 AI 技術與 ESG 指標的實務應用成果",
+                portfolio_title: "精選專案", certs_title: "專業證照", training_title: "專業培訓", global_title: "國際實務見習",
                 tab_all: "全部", tab_personal: "個人作品", tab_tanji: "碳吉 TanJi", tab_team: "Ecoshane 團隊", tab_finance: "金融", tab_pm: "專案管理", tab_tech: "資訊科技",
                 contact_title: "聯絡方式", contact_personal: "個人聯繫", contact_business: "團隊業務/合作", contact_tanji: "碳吉專案",
                 why_purple_title: "Why Purple?", why_purple_desc: "紫色融合了代表熱情與行動的紅色，以及象徵科技與智慧的藍色。代表我如何運用理性的 AI 數據技術 (Blue)，去實踐對 ESG 永續發展的熱忱 (Red)。科技與人性的平衡，即是永續的起點。",
@@ -63,12 +66,12 @@
                 team_card_title: "Ecoshane", team_card_sub: "The Team", team_card_desc: "我們是一群致力於 AI 賦能永續的學生團隊。提供全方位的 ESG 數位轉型解決方案，讓永續不再只是口號。",
                 tanji_card_title: "碳吉 TanJi", tanji_card_sub: "The Project", tanji_card_desc: "全方位的氣候科技與永續創新專案。涵蓋綠色金融、碳排管理、社區韌性與互動教育，用科技讓永續觸手可及。", view_project: "查看專案",
                 pagination_prev: "上一頁", pagination_next: "下一頁",
-                timeline_label: "賽程進度"
+                timeline_label: "賽程進度", view_details: "查看完整紀錄"
             },
             en: {
-                about: "About Me", credentials: "Credentials", awards: "Awards", portfolio: "Portfolio", contact: "Contact",
-                credentials_sub: "Professional Credentials & Training", awards_sub: "Recognitions and Honors in Professional Fields", portfolio_sub: "Practical applications combining AI technology and ESG metrics",
-                portfolio_title: "Selected Projects", certs_title: "Certifications", training_title: "Professional Training",
+                about: "About Me", credentials: "Credentials", global: "Global Initiatives", awards: "Awards", portfolio: "Portfolio", contact: "Contact",
+                credentials_sub: "Professional Credentials & Training", global_sub: "Global Initiatives & Apprenticeships", awards_sub: "Recognitions and Honors in Professional Fields", portfolio_sub: "Practical applications combining AI technology and ESG metrics",
+                portfolio_title: "Selected Projects", certs_title: "Certifications", training_title: "Professional Training", global_title: "Global Initiatives",
                 tab_all: "All", tab_personal: "Personal", tab_tanji: "TanJi Project", tab_team: "Team Ecoshane", tab_finance: "Finance", tab_pm: "Project Mgmt", tab_tech: "Tech",
                 contact_title: "Contact", contact_personal: "Personal Inquiry", contact_business: "Business / Partnership", contact_tanji: "TanJi Project",
                 why_purple_title: "Why Purple?", why_purple_desc: "Purple blends the red of passion and action with the blue of technology and wisdom. It represents how I apply rational AI data technology (Blue) to practice enthusiasm for ESG sustainability (Red). The balance between technology and humanity is the starting point of sustainability.",
@@ -77,9 +80,26 @@
                 team_card_title: "Ecoshane", team_card_sub: "The Team", team_card_desc: "We are a student team dedicated to AI-empowered sustainability. Providing comprehensive ESG digital transformation solutions.",
                 tanji_card_title: "TanJi", tanji_card_sub: "The Project", tanji_card_desc: "A comprehensive climate tech and sustainability innovation project. Covering green finance, carbon management, community resilience, and interactive education, making sustainability accessible through technology.", view_project: "View Project",
                 pagination_prev: "Prev", pagination_next: "Next",
-                timeline_label: "Timeline"
+                timeline_label: "Timeline", view_details: "View Full Journey"
             }
         };
+
+        const globalInitiatives = [
+            {
+                id: 'gi1',
+                title: { zh: "青年百億海外圓夢基金計畫 - 旅遊綠方程", en: "Youth 10 Billion Dreams Fund - Travel Green Equation" },
+                institution: { zh: "EarthCheck 學院", en: "EarthCheck Academy" },
+                location: { zh: "澳洲 布里斯本", en: "Brisbane, Australia" },
+                date: "2026.06.20 - 2026.07.11",
+                description: {
+                    zh: "獲選前往全球知名的旅遊與目的地永續發展機構 EarthCheck 進行見習。課程著重實務應用，涵蓋永續管理體系、綠色團隊運作、環境績效監測及目的地管理等主題，學習以科學化與系統化的方法推動旅遊業認證準備與永續轉型。",
+                    en: "Selected for an apprenticeship at the globally recognized EarthCheck Academy. The program emphasizes practical application, covering sustainable management systems, green team operations, environmental performance monitoring, and destination management, focusing on scientific and systematic approaches for tourism certification and sustainable transformation."
+                },
+                tags: ["Brisbane, Australia", "EarthCheck", "Tourism ESG"],
+                image: "https://placehold.co/800x600/f3f4f6/94a3b8?text=Brisbane+EarthCheck",
+                link: "earthcheck.html"
+            }
+        ];
 
         const certifications = [
             { id: 1, title: { zh: "永續發展基礎能力測驗", en: "Certificate of Sustainable Development Basic Ability" }, issuer: { zh: "證期會", en: "SFI" }, category: "ESG" },
@@ -325,16 +345,16 @@
 
             return (
                 <div className="min-h-screen bg-slate-50 font-sans">
-                    {/* Navigation Bar */}
                     <nav className="sticky top-0 w-full bg-white/95 backdrop-blur-sm shadow-sm z-50 border-b border-purple-100">
                         <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
                             <div className="font-bold text-xl md:text-2xl text-purple-800 tracking-tight flex items-center cursor-pointer" onClick={() => window.scrollTo(0,0)}>
                                 YIN, KOYING <span className="text-sm font-normal text-purple-600 ml-2 border-l border-purple-200 pl-2">AI x ESG</span>
                             </div>
                             <div className="flex items-center gap-6">
-                                <div className="hidden md:flex gap-8 text-sm font-medium text-slate-600">
+                                <div className="hidden lg:flex gap-8 text-sm font-medium text-slate-600">
                                     <a href="#about" className="hover:text-purple-700 transition-colors py-1">{t.about}</a>
                                     <a href="#credentials" className="hover:text-purple-700 transition-colors py-1">{t.credentials}</a>
+                                    <a href="#global" className="hover:text-teal-600 transition-colors py-1">{t.global}</a>
                                     <a href="#awards" className="hover:text-amber-600 transition-colors py-1">{t.awards}</a>
                                     <a href="#portfolio" className="hover:text-purple-700 transition-colors py-1">{t.portfolio}</a>
                                     <a href="#contact" className="hover:text-purple-700 transition-colors py-1">{t.contact}</a>
@@ -351,7 +371,6 @@
                         </div>
                     </nav>
 
-                    {/* Hero Section */}
                     <header id="about" className="relative pt-24 pb-16 px-4 bg-gradient-to-br from-purple-950 via-indigo-950 to-purple-900 text-white overflow-hidden">
                         <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-purple-800/35 to-transparent pointer-events-none"></div>
                         <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl pointer-events-none"></div>
@@ -399,7 +418,6 @@
                         </div>
                     </header>
 
-                    {}
                     <section id="credentials" className="py-16 bg-white border-t border-slate-100">
                         <div className="max-w-6xl mx-auto px-4">
                             <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-8 gap-6">
@@ -467,7 +485,61 @@
                         </div>
                     </section>
 
-                    {}
+                    <section id="global" className="py-16 bg-gradient-to-b from-white to-slate-50 relative border-t border-slate-100 overflow-hidden">
+                        <div className="absolute top-20 left-0 w-96 h-96 bg-teal-500/5 rounded-full blur-3xl pointer-events-none"></div>
+                        <div className="max-w-6xl mx-auto px-4 relative z-10">
+                            <div className="flex flex-col md:flex-row justify-between items-end mb-8 gap-6">
+                                <div>
+                                    <div className="flex items-center gap-3 mb-2">
+                                        <div className="p-2 bg-teal-100 rounded-lg text-teal-700">
+                                            <Compass size={24} />
+                                        </div>
+                                        <h2 className="text-3xl font-bold text-slate-800">{t.global_title}</h2>
+                                    </div>
+                                    <p className="text-slate-500 md:pl-14">{t.global_sub}</p>
+                                </div>
+                            </div>
+
+                            <div className="flex flex-col gap-6">
+                                {globalInitiatives.map((item) => (
+                                    <div key={item.id} className="bg-white rounded-2xl shadow-sm border border-slate-200 hover:shadow-xl transition-all duration-300 flex flex-col lg:flex-row overflow-hidden group">
+                                        <div className="lg:w-2/5 relative h-64 lg:h-auto overflow-hidden bg-slate-100">
+                                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent z-10"></div>
+                                            <img src={item.image} alt={item.title[lang]} onError={handleImageError} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                                            <div className="absolute bottom-4 left-4 z-20 flex flex-wrap gap-2">
+                                                {item.tags.map(tag => (
+                                                    <span key={tag} className="text-[10px] px-2.5 py-1 bg-white/20 backdrop-blur-md text-white rounded-full border border-white/30 font-medium">
+                                                        {tag}
+                                                    </span>
+                                                ))}
+                                            </div>
+                                        </div>
+                                        <div className="lg:w-3/5 p-6 md:p-8 flex flex-col justify-between">
+                                            <div>
+                                                <div className="flex flex-wrap items-center gap-4 text-sm font-medium text-slate-500 mb-4">
+                                                    <span className="flex items-center gap-1.5"><MapPin size={16} className="text-teal-600"/> {item.location[lang]}</span>
+                                                    <span className="flex items-center gap-1.5"><CalendarIcon size={16} className="text-teal-600"/> {item.date}</span>
+                                                    <span className="flex items-center gap-1.5"><Award size={16} className="text-teal-600"/> {item.institution[lang]}</span>
+                                                </div>
+                                                <h3 className="text-2xl font-bold text-slate-800 mb-4 group-hover:text-teal-700 transition-colors">
+                                                    {item.title[lang]}
+                                                </h3>
+                                                <p className="text-slate-600 leading-relaxed mb-6 line-clamp-3">
+                                                    {item.description[lang]}
+                                                </p>
+                                            </div>
+                                            <div className="pt-6 border-t border-slate-100 mt-auto flex justify-end">
+                                                <a href={item.link} className="inline-flex items-center gap-2 text-sm font-bold text-white bg-teal-600 hover:bg-teal-700 px-5 py-2.5 rounded-lg transition-colors shadow-sm hover:shadow-md">
+                                                    {t.view_details} <ArrowRight size={16} />
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+
                     <section id="awards" className="py-16 bg-gradient-to-b from-slate-50 to-white relative border-t border-slate-100 overflow-hidden">
                         <div className="absolute top-10 right-0 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl pointer-events-none"></div>
 
@@ -575,7 +647,6 @@
                         </div>
                     </section>
 
-                    {}
                     <section id="portfolio" className="py-16 bg-slate-50">
                         <div className="max-w-6xl mx-auto px-4">
                             <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-6 gap-4">
@@ -642,7 +713,6 @@
                                 ))}
                             </div>
 
-                            {}
                             {totalPages > 1 && (
                                 <div className="flex justify-center items-center mt-10 gap-2">
                                     <button 
@@ -681,7 +751,6 @@
                         </div>
                     </section>
 
-                    {}
                     <section id="contact" className="py-12 bg-white border-t border-slate-100">
                         <div className="max-w-5xl mx-auto px-4">
                             <div className="bg-gradient-to-r from-purple-950 to-indigo-950 rounded-2xl p-6 md:p-10 text-white shadow-xl flex flex-col items-center justify-between gap-8 relative overflow-hidden">
@@ -720,7 +789,6 @@
                         </div>
                     </section>
 
-                    {/* Footer Section */}
                     <footer className="bg-slate-50 py-10 border-t border-slate-200">
                         <div className="max-w-6xl mx-auto px-4 text-center">
                             <div className="mb-6 max-w-2xl mx-auto">

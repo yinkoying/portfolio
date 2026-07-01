@@ -59,6 +59,7 @@
                 credentials_sub: "Professional Credentials & Training", global_sub: "Global Initiatives & Apprenticeships", awards_sub: "專業領域的肯定與榮譽", portfolio_sub: "結合 AI 技術與 ESG 指標的實務應用成果",
                 portfolio_title: "精選專案", certs_title: "專業證照", training_title: "專業培訓", global_title: "國際實務見習",
                 tab_all: "全部", tab_personal: "個人作品", tab_tanji: "碳吉 TanJi", tab_team: "Ecoshane 團隊", tab_finance: "金融", tab_pm: "專案管理", tab_tech: "資訊科技",
+                tab_climate: "氣候科技", tab_local: "地方創生", tab_fin_award: "永續金融",
                 contact_title: "聯絡方式", contact_personal: "個人聯繫", contact_business: "團隊業務/合作", contact_tanji: "碳吉專案",
                 why_purple_title: "Why Purple?", why_purple_desc: "紫色融合了代表熱情與行動的紅色，以及象徵科技與智慧的藍色。代表我如何運用理性的 AI 數據技術 (Blue)，去實踐對 ESG 永續發展的熱忱 (Red)。科技與人性的平衡，即是永續的起點。",
                 rights: "© 2026 YIN, KOYING. All rights reserved.", specialized: "Specialized in AI & ESG Solutions",
@@ -73,6 +74,7 @@
                 credentials_sub: "Professional Credentials & Training", global_sub: "Global Initiatives & Apprenticeships", awards_sub: "Recognitions and Honors in Professional Fields", portfolio_sub: "Practical applications combining AI technology and ESG metrics",
                 portfolio_title: "Selected Projects", certs_title: "Certifications", training_title: "Professional Training", global_title: "Global Initiatives",
                 tab_all: "All", tab_personal: "Personal", tab_tanji: "TanJi Project", tab_team: "Team Ecoshane", tab_finance: "Finance", tab_pm: "Project Mgmt", tab_tech: "Tech",
+                tab_climate: "Climate Tech", tab_local: "Local Revitalization", tab_fin_award: "Sustainable Finance",
                 contact_title: "Contact", contact_personal: "Personal Inquiry", contact_business: "Business / Partnership", contact_tanji: "TanJi Project",
                 why_purple_title: "Why Purple?", why_purple_desc: "Purple blends the red of passion and action with the blue of technology and wisdom. It represents how I apply rational AI data technology (Blue) to practice enthusiasm for ESG sustainability (Red). The balance between technology and humanity is the starting point of sustainability.",
                 rights: "© 2026 YIN, KOYING. All rights reserved.", specialized: "Specialized in AI & ESG Solutions",
@@ -136,12 +138,26 @@
 
         const awardsData = [
             { 
-                id: 5, status: 'winner', year: "2026", 
+                id: 1, status: 'finalist', year: "2026", category: "climate",
+                title: { zh: "2026 新北市青年氣候行動徵件", en: "2026 New Taipei City Youth Climate Action Campaign" }, 
+                issuer: { zh: "新北市政府 / 環保局", en: "New Taipei City Government / EPB" }, 
+                description: { 
+                    zh: "【進入決選】以「碳吉圈圈：在地微型循環網絡」入圍。方案呼應國家淨零綠領人才培育與 ICLEI 計畫，結合 IoT 物理感測與 O2O 點收機制，將社區咖啡渣與落葉調配黃金碳氮比轉化為黑金土，打造零門檻之循環生態系。", 
+                    en: "[Finalist] Shortlisted with 'TanJi Loop: Local Micro-Circular Network'. The project targets Net-Zero goals by combining IoT physical sensors and O2O recycling mechanics to upcycle organic waste." 
+                }, 
+                projectLink: "https://tanji2026.github.io/tanji-loop/",
+                timeline: [
+                    { date: "2026.05", event: { zh: "提案投稿", en: "Proposal Submitted" }, status: 'done' },
+                    { date: "2026.07.01", event: { zh: "進入決選", en: "Shortlisted for Finals" }, status: 'current', link: "https://ntpcyouthforum.org/open-call/#Selected" }
+                ]
+            },
+            { 
+                id: 5, status: 'winner', year: "2026", category: "climate",
                 title: { zh: "第二屆 CCUS 創意教案徵選活動", en: "2nd CCUS Creative Lesson Plan Selection" }, 
                 issuer: { zh: "中央大學 / CCUS科學教育推廣計畫", en: "National Central University / CCUS Science Education Promotion Program" }, 
                 description: { 
                     zh: "【榮獲 優等獎】以「碳吉：CCUS 淨零決策模擬器」榮獲優等獎肯定。方案兼具創新教學理念、課程實踐價值及推廣潛力，藉由角色分權與即時互動遊戲設計，成功轉化嚴肅的碳捕捉、利用與封存（CCUS）技術為沉浸式教案。", 
-                    en: "[Won Excellence Award] Honored with the Excellence Award for 'TanJi: CCUS Net Zero Simulator' in the 2nd CCUS Creative Lesson Plan Selection. The curriculum features outstanding teaching concepts and potential." 
+                    en: "[Won Excellence Award] Honored with the Excellence Award for 'TanJi: CCUS Net Zero Simulator' in the 2nd CCUS Creative Lesson Plan Selection." 
                 }, 
                 projectLink: "https://tanji2026.github.io/ccus/",
                 timeline: [
@@ -155,12 +171,12 @@
                 ]
             },
             { 
-                id: 2, status: 'winner', year: "2026", 
+                id: 2, status: 'winner', year: "2026", category: "climate",
                 title: { zh: "115年度 氣候變遷創意實作競賽", en: "Climate Change Creative Practice Competition" }, 
                 issuer: { zh: "教育部 / 交通部中央氣象署", en: "MOE / CWA" }, 
                 description: { 
                     zh: "【榮獲 氣候應用特別獎】以「碳吉：社區微氣候韌性決策平台」榮獲交通部中央氣象署特別肯定。方案深度結合 GIS 風險快篩與 NbS 自然解方，為社區提供具備微氣候調適能力的韌性決策支援。", 
-                    en: "[Won Climate Application Special Award] Honored with the Special Award from the Central Weather Administration (CWA) for 'TanJi: Micro-climate Resilience Platform'. The solution integrates GIS risk screening and NbS." 
+                    en: "[Won Climate Application Special Award] Honored with the Special Award from the Central Weather Administration (CWA) for 'TanJi: Micro-climate Resilience Platform'." 
                 }, 
                 projectLink: "https://tanji2026.github.io/nbs/",
                 timeline: [
@@ -170,36 +186,43 @@
                 ]
             },
             { 
-                id: 3, status: 'finalist', year: "2026", 
-                title: { zh: "2026 IASE 影響力創新獎", en: "2026 IASE Impact Innovation Award" }, 
-                issuer: { zh: "IASE", en: "IASE" }, 
-                description: { 
-                    zh: "【入圍】三峽職人：手路尋蹤。這是一款結合職人性格測驗與在地文化的互動式網頁遊戲，透過五感問答分析玩家專屬屬性，並引導至三峽老街實體工作室解鎖任務，藉由數位體驗促進地方創生。", 
-                    en: "[Finalist] Sanxia Artisan Quest. An interactive web experience combining personality tests with local culture, guiding players to real-world workshops in Sanxia Old Street to promote regional revitalization through digital engagement." 
-                }, 
-                projectLink: "https://tanji2026.github.io/sanxia/",
-                timeline: [
-                    { date: "2026.03", event: { zh: "初審投遞", en: "Proposal" }, status: 'done' },
-                    { date: "2026.04.30", event: { zh: "入圍【青年人才】", en: "Shortlisted" }, status: 'current', link: "https://iase.tw/announcements/shortlist-2026/" }
-                ]
-            },
-            { 
-                id: 4, status: 'finalist', year: "2026", 
+                id: 4, status: 'finalist', year: "2026", category: "local",
                 title: { zh: "2026 Impact Star 青年影響力啟動賽", en: "2026 Impact Star Youth Influence Competition" }, 
                 issuer: { zh: "新北市政府青年局", en: "NTPC Youth Dept." }, 
                 description: { 
                     zh: "【晉級複賽】三峽職人：手路尋蹤。這是一款結合職人性格測驗與在地文化的互動式網頁遊戲，透過五感問答分析玩家專屬屬性，並引導至三峽老街實體工作室解鎖任務，藉由數位體驗促進地方創生。", 
-                    en: "[Semi-Finalist] Sanxia Artisan Quest. An interactive web experience combining personality tests with local culture, guiding players to real-world workshops in Sanxia Old Street to promote regional revitalization through digital engagement." 
+                    en: "[Semi-Finalist] Sanxia Artisan Quest. An interactive web experience combining personality tests with local culture." 
                 }, 
                 projectLink: "https://tanji2026.github.io/sanxia/",
                 timeline: [
                     { date: "2026.04", event: { zh: "初審投遞", en: "Proposal" }, status: 'done' },
                     { date: "2026.05.08", event: { zh: "晉級複賽", en: "Semi-Finals" }, status: 'current', link: "https://drive.google.com/file/d/1IEV6rc2cathzh_51frk2b8W5rAFr-161/view" }
                 ]
+            },
+            { 
+                id: 3, status: 'finalist', year: "2026", category: "local",
+                title: { zh: "2026 IASE 影響力創新獎", en: "2026 IASE Impact Innovation Award" }, 
+                issuer: { zh: "IASE", en: "IASE" }, 
+                description: { 
+                    zh: "// ... existing code ...", 
+                    en: "// ... existing code ..." 
+                }, 
+                projectLink: "https://tanji2026.github.io/sanxia/",
+                timeline: [
+                    { date: "2026.03", event: { zh: "初審投遞", en: "Proposal" }, status: 'done' },
+                    { date: "2026.04.30", event: { zh: "入圍【青年人才】", en: "Shortlisted" }, status: 'current', link: "https://iase.tw/announcements/shortlist-2026/" }
+                ]
             }
         ];
 
         const projects = [
+            { 
+                id: 'tj6', type: 'tanji', 
+                title: { zh: "碳吉圈圈：在地微型循環網絡", en: "TanJi Loop: Local Micro-Circular Network" }, link: "https://tanji2026.github.io/tanji-loop/", 
+                tags: ["Circular Economy", "IoT Sensors", "O2O Check-in", "Firebase"], 
+                description: { zh: "新北青年氣候行動徵件入圍作品。結合 MycoNode 微型感測模組（ESP32主控）與 O2O 掃碼打卡，將社區咖啡渣與落葉依黃金碳氮比轉化為有機黑金土，打造零門檻的循環生態系。", en: "An innovative circular economy initiative matching golden carbon-to-nitrogen ratios. It integrates MycoNode sensors (ESP32) and O2O QR scanning to upcycle local coffee grounds and leaves into organic soil." }, 
+                image: "images/tanji-loop.jpg" 
+            },
             { 
                 id: 'tj5', type: 'tanji', 
                 title: { zh: "三峽職人：手路尋蹤", en: "Sanxia Artisan Quest" }, link: "https://tanji2026.github.io/sanxia/", 
@@ -304,8 +327,13 @@
             const [lang, setLang] = useState('zh');
             const [activeCredentialTab, setActiveCredentialTab] = useState('all');
             const [activeProjectTab, setActiveProjectTab] = useState('all');
+            const [activeAwardTab, setActiveAwardTab] = useState('all');
+            
             const [currentPage, setCurrentPage] = useState(1);
+            const [currentAwardPage, setCurrentAwardPage] = useState(1);
+            
             const projectsPerPage = 6;
+            const awardsPerPage = 4;
 
             const toggleLang = () => {
                 setLang(prev => prev === 'zh' ? 'en' : 'zh');
@@ -317,17 +345,28 @@
             const filteredTrainings = activeCredentialTab === 'all' ? trainings : trainings.filter(t => t.category === activeCredentialTab);
             
             const filteredProjects = activeProjectTab === 'all' ? projects : projects.filter(p => p.type === activeProjectTab);
-            
+            const filteredAwards = activeAwardTab === 'all' ? awardsData : awardsData.filter(a => a.category === activeAwardTab);
+
             useEffect(() => {
                 setCurrentPage(1);
             }, [activeProjectTab]);
+
+            useEffect(() => {
+                setCurrentAwardPage(1);
+            }, [activeAwardTab]);
 
             const indexOfLastProject = currentPage * projectsPerPage;
             const indexOfFirstProject = indexOfLastProject - projectsPerPage;
             const currentProjects = filteredProjects.slice(indexOfFirstProject, indexOfLastProject);
             const totalPages = Math.ceil(filteredProjects.length / projectsPerPage);
 
+            const indexOfLastAward = currentAwardPage * awardsPerPage;
+            const indexOfFirstAward = indexOfLastAward - awardsPerPage;
+            const currentAwards = filteredAwards.slice(indexOfFirstAward, indexOfLastAward);
+            const totalAwardPages = Math.ceil(filteredAwards.length / awardsPerPage);
+
             const paginate = (pageNumber) => setCurrentPage(pageNumber);
+            const paginateAwards = (pageNumber) => setCurrentAwardPage(pageNumber);
 
             const credentialTabs = [
                 { id: 'all', label: t.tab_all }, 
@@ -336,6 +375,13 @@
                 { id: 'Finance', label: t.tab_finance }, 
                 { id: 'PM', label: t.tab_pm }, 
                 { id: 'Tech', label: t.tab_tech }
+            ];
+
+            const awardTabs = [
+                { id: 'all', label: t.tab_all },
+                { id: 'climate', label: t.tab_climate },
+                { id: 'local', label: t.tab_local },
+                { id: 'finance', label: t.tab_fin_award }
             ];
 
             const handleImageError = (e) => {
@@ -418,6 +464,7 @@
                         </div>
                     </header>
 
+                    {}
                     <section id="credentials" className="py-16 bg-white border-t border-slate-100">
                         <div className="max-w-6xl mx-auto px-4">
                             <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-8 gap-6">
@@ -485,6 +532,7 @@
                         </div>
                     </section>
 
+                    {}
                     <section id="global" className="py-16 bg-gradient-to-b from-white to-slate-50 relative border-t border-slate-100 overflow-hidden">
                         <div className="absolute top-20 left-0 w-96 h-96 bg-teal-500/5 rounded-full blur-3xl pointer-events-none"></div>
                         <div className="max-w-6xl mx-auto px-4 relative z-10">
@@ -540,11 +588,12 @@
                         </div>
                     </section>
 
+                    {}
                     <section id="awards" className="py-16 bg-gradient-to-b from-slate-50 to-white relative border-t border-slate-100 overflow-hidden">
                         <div className="absolute top-10 right-0 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl pointer-events-none"></div>
 
                         <div className="max-w-6xl mx-auto px-4 relative z-10">
-                            <div className="flex flex-col md:flex-row justify-between items-end mb-8 gap-6">
+                            <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-8 gap-6">
                                 <div>
                                     <div className="flex items-center gap-3 mb-2">
                                         <div className="p-2 bg-amber-100 rounded-lg text-amber-600">
@@ -554,10 +603,25 @@
                                     </div>
                                     <p className="text-slate-500 md:pl-14">{t.awards_sub}</p>
                                 </div>
+                                <div className="flex flex-wrap gap-1.5 bg-white p-1.5 rounded-lg shadow-sm border border-slate-200 w-full lg:w-auto overflow-x-auto">
+                                    {awardTabs.map((tab) => (
+                                        <button 
+                                            key={tab.id}
+                                            onClick={() => setActiveAwardTab(tab.id)}
+                                            className={`px-3 py-1.5 rounded-md text-xs font-medium transition-all duration-200 whitespace-nowrap ${
+                                                activeAwardTab === tab.id 
+                                                ? 'bg-amber-500 text-white shadow-sm' 
+                                                : 'text-slate-600 hover:bg-slate-100'
+                                            }`}
+                                        >
+                                            {tab.label}
+                                        </button>
+                                    ))}
+                                </div>
                             </div>
 
-                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                                {awardsData.map((award) => {
+                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 min-h-[460px] content-start">
+                                {currentAwards.map((award) => {
                                     const isWinner = award.status === 'winner';
                                     const sideBorderClass = isWinner ? "from-amber-400 to-amber-600" : "from-blue-400 to-indigo-500";
                                     const pillBgClass = isWinner ? "bg-amber-50 text-amber-700 border-amber-200" : "bg-blue-50 text-blue-700 border-blue-100";
@@ -644,9 +708,46 @@
                                     );
                                 })}
                             </div>
+
+                            {totalAwardPages > 1 && (
+                                <div className="flex justify-center items-center mt-10 gap-2">
+                                    <button 
+                                        onClick={() => paginateAwards(currentAwardPage - 1)} 
+                                        disabled={currentAwardPage === 1}
+                                        className={`p-2 rounded-lg flex items-center gap-1 text-sm font-medium transition-colors ${currentAwardPage === 1 ? 'text-slate-300 cursor-not-allowed' : 'text-slate-600 hover:bg-slate-200 bg-white border border-slate-200 shadow-sm'}`}
+                                    >
+                                        <ChevronLeft size={16} /> <span className="hidden sm:inline">{t.pagination_prev}</span>
+                                    </button>
+                                    
+                                    <div className="flex items-center gap-1 bg-white border border-slate-200 rounded-lg p-1 shadow-sm">
+                                        {Array.from({ length: totalAwardPages }, (_, i) => i + 1).map(number => (
+                                            <button
+                                                key={number}
+                                                onClick={() => paginateAwards(number)}
+                                                className={`w-8 h-8 rounded-md flex items-center justify-center text-sm font-bold transition-colors ${
+                                                    currentAwardPage === number 
+                                                    ? 'bg-amber-100 text-amber-700' 
+                                                    : 'text-slate-500 hover:bg-slate-50'
+                                                }`}
+                                            >
+                                                {number}
+                                            </button>
+                                        ))}
+                                    </div>
+
+                                    <button 
+                                        onClick={() => paginateAwards(currentAwardPage + 1)} 
+                                        disabled={currentAwardPage === totalAwardPages}
+                                        className={`p-2 rounded-lg flex items-center gap-1 text-sm font-medium transition-colors ${currentAwardPage === totalAwardPages ? 'text-slate-300 cursor-not-allowed' : 'text-slate-600 hover:bg-slate-200 bg-white border border-slate-200 shadow-sm'}`}
+                                    >
+                                        <span className="hidden sm:inline">{t.pagination_next}</span> <ChevronRight size={16} />
+                                    </button>
+                                </div>
+                            )}
                         </div>
                     </section>
 
+                    {}
                     <section id="portfolio" className="py-16 bg-slate-50">
                         <div className="max-w-6xl mx-auto px-4">
                             <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-6 gap-4">
@@ -751,6 +852,7 @@
                         </div>
                     </section>
 
+                    {}
                     <section id="contact" className="py-12 bg-white border-t border-slate-100">
                         <div className="max-w-5xl mx-auto px-4">
                             <div className="bg-gradient-to-r from-purple-950 to-indigo-950 rounded-2xl p-6 md:p-10 text-white shadow-xl flex flex-col items-center justify-between gap-8 relative overflow-hidden">
@@ -789,6 +891,7 @@
                         </div>
                     </section>
 
+                    {}
                     <footer className="bg-slate-50 py-10 border-t border-slate-200">
                         <div className="max-w-6xl mx-auto px-4 text-center">
                             <div className="mb-6 max-w-2xl mx-auto">

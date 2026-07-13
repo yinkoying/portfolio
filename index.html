@@ -119,6 +119,7 @@
         ];
 
         const trainings = [
+            { id: 14, title: { zh: "永續管理與溝通導論", en: "Introduction to Sustainable Management and Communication" }, organization: { zh: "EarthCheck 學院", en: "EarthCheck Academy" }, category: "ESG" },
             { id: 1, title: { zh: "AI 新秀-金融創新X生成式AI", en: "AI Rookie: Financial Innovation X GenAI" }, organization: { zh: "經濟部AI新秀計劃", en: "MOEA AI Program" }, category: "AI" },
             { id: 2, title: { zh: "ESG 淨零人才永續管理師養成班", en: "ESG Net Zero Talent Training" }, organization: { zh: "勞動部產業新尖兵", en: "MOL New Generation" }, category: "ESG" },
             { id: 3, title: { zh: "ESG 企業永續報告書製作實務班", en: "ESG Report Production Practice" }, organization: { zh: "勞動部產業人才投資", en: "MOL Investment" }, category: "ESG" },
@@ -135,6 +136,21 @@
         ];
 
         const awardsData = [
+            { 
+                id: 4, status: 'finalist', year: "2026", category: "local",
+                title: { zh: "2026 Impact Star 青年影響力啟動賽", en: "2026 Impact Star Youth Influence Competition" }, 
+                issuer: { zh: "新北市政府青年局", en: "NTPC Youth Dept." }, 
+                description: { 
+                    zh: "【晉級複賽】三峽職人：手路尋蹤。這是一款結合職人性格測驗與在地文化的互動式網頁遊戲，透過五感問答分析玩家專屬屬性，並引導至三峽老街實體工作室解鎖任務，藉由數位體驗促進地方創生。", 
+                    en: "[Semi-Finalist] Sanxia Artisan Quest. An interactive web experience combining personality tests with local culture." 
+                }, 
+                projectLink: "https://tanji2026.github.io/sanxia/",
+                timeline: [
+                    { date: "2026.04", event: { zh: "初審投遞", en: "Proposal" }, status: 'done' },
+                    { date: "2026.05.08", event: { zh: "晉級初賽", en: "Advance to Preliminaries" }, status: 'done', link: "https://drive.google.com/file/d/1IEV6rc2cathzh_51frk2b8W5rAFr-161/view" },
+                    { date: "2026.07.03", event: { zh: "晉級複賽", en: "Semi-Finals" }, status: 'current' }
+                ]
+            },
             { 
                 id: 1, status: 'finalist', year: "2026", category: "climate",
                 title: { zh: "2026 新北市青年氣候行動徵件", en: "2026 New Taipei City Youth Climate Action Campaign" }, 
@@ -181,21 +197,6 @@
                     { date: "2026.01", event: { zh: "初審投遞", en: "Proposal" }, status: 'done' },
                     { date: "2026.02.13", event: { zh: "晉級決賽", en: "Finals" }, status: 'done', link: "https://climatechange.moe.edu.tw/Content/Images/news/ede0127096174f389b9f382fc0e6f390.png" },
                     { date: "2026.06.05", event: { zh: "榮獲 氣候應用特別獎", en: "Won Special Award" }, status: 'current', link: "https://climatechange.moe.edu.tw/Climate/CompetitionAnnouncementList#" }
-                ]
-            },
-            { 
-                id: 4, status: 'finalist', year: "2026", category: "local",
-                title: { zh: "2026 Impact Star 青年影響力啟動賽", en: "2026 Impact Star Youth Influence Competition" }, 
-                issuer: { zh: "新北市政府青年局", en: "NTPC Youth Dept." }, 
-                description: { 
-                    zh: "【晉級複賽】三峽職人：手路尋蹤。這是一款結合職人性格測驗與在地文化的互動式網頁遊戲，透過五感問答分析玩家專屬屬性，並引導至三峽老街實體工作室解鎖任務，藉由數位體驗促進地方創生。", 
-                    en: "[Semi-Finalist] Sanxia Artisan Quest. An interactive web experience combining personality tests with local culture." 
-                }, 
-                projectLink: "https://tanji2026.github.io/sanxia/",
-                timeline: [
-                    { date: "2026.04", event: { zh: "初審投遞", en: "Proposal" }, status: 'done' },
-                    { date: "2026.05.08", event: { zh: "晉級初賽", en: "Advance to Preliminaries" }, status: 'done', link: "https://drive.google.com/file/d/1IEV6rc2cathzh_51frk2b8W5rAFr-161/view" },
-                    { date: "2026.07.03", event: { zh: "晉級複賽", en: "Semi-Finals" }, status: 'current' }
                 ]
             },
             { 
@@ -796,7 +797,6 @@
                                                         {tag}
                                                     </span>
                                                 ))}
-                                                {project.tags.length > 3 && <span className="text-[10px] px-2 py-0.5 text-slate-400">+{project.tags.length - 3}</span>}
                                             </div>
                                         </div>
                                     </a>

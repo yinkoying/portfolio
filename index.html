@@ -136,6 +136,20 @@
         ];
 
         const awardsData = [
+            {
+                id: 6, status: 'finalist', year: "2026", category: "finance",
+                title: { zh: "2026 臺灣「能」- 永續能源創意實作競賽", en: "2026 Taiwan \"ENERGY\" Sustainable Energy Creative Practice Competition" },
+                issuer: { zh: "教育部 / 國立科學工藝博物館", en: "MOE / National Science and Technology Museum" },
+                description: {
+                    zh: "【晉級複賽】入圍作品：TanJi 淨零群募平台（大專淨零創新企劃組）。本提案深度結合綠色金融與數位群募模式，打造專屬低碳提案的資金媒合與大眾參與生態系，實踐個人與企業之綠色投資與碳抵換機制，積極回應國家十二項關鍵戰略。",
+                    en: "[Semi-Finalist] Project: TanJi Net-Zero Crowdfunding Platform. Shortlisted in the Net-Zero Planning division. This project integrates green finance with a digital crowdfunding ecosystem to channel public and corporate capital into zero-carbon initiatives."
+                },
+                projectLink: "https://tanji2026.github.io/twenergy/",
+                timeline: [
+                    { date: "2026.06", event: { zh: "初賽投遞", en: "Proposal Submitted" }, status: 'done' },
+                    { date: "2026.07.17", event: { zh: "晉級複賽", en: "Advance to Semi-Finals" }, status: 'current', link: "https://twenergy.tw/UploadFile/News/20260717142521/%E8%A4%87%E8%B3%BD%E5%85%A5%E9%81%B8%E5%90%8D%E5%96%AE_%E5%A4%A7%E5%B0%88%E6%B7%A8%E9%9B%B6%E5%89%B5%E6%96%B0%E4%BC%81%E5%8A%83%E7%B5%84.pdf" }
+                ]
+            },
             { 
                 id: 4, status: 'finalist', year: "2026", category: "local",
                 title: { zh: "2026 Impact Star 青年影響力啟動賽", en: "2026 Impact Star Youth Influence Competition" }, 
@@ -216,6 +230,13 @@
         ];
 
         const projects = [
+            { 
+                id: 'tj7', type: 'tanji', 
+                title: { zh: "TanJi 淨零群募平台", en: "TanJi Net-Zero Crowdfunding Platform" }, link: "https://tanji2026.github.io/twenergy/", 
+                tags: ["Green Finance", "Crowdfunding", "Net-Zero", "FinTech"], 
+                description: { zh: "教育部「臺灣能」永續能源實作競賽入圍作品。結合綠色金融與群募機制，為永續提案打造便利、透明的資金媒合與個人/企業碳抵換平台，引導大眾資金精準支持淨零轉型與氣候科技實踐。", en: "Shortlisted for the Taiwan 'ENERGY' Competition. An innovative FinTech platform integrating green finance and crowdfunding to channel public capital into zero-carbon initiatives." }, 
+                image: "images/tanji-energy.jpg" 
+            },
             { 
                 id: 'tj6', type: 'tanji', 
                 title: { zh: "碳吉圈圈：在地微型循環網絡", en: "TanJi Loop: Local Micro-Circular Network" }, link: "https://tanji2026.github.io/tanji-loop/", 
@@ -445,7 +466,6 @@
                                                 <Sprout size={20} className="group-hover:text-emerald-300 transition-colors" />
                                                 <span className="font-bold tracking-wider uppercase text-xs">{t.tanji_card_sub}</span>
                                             </div>
-                                            {/* <ExternalLink size={16} className="text-emerald-400 opacity-50 group-hover:opacity-100 transition-opacity" /> */}
                                         </div>
                                         <h2 className="text-xl md:text-2xl font-bold text-white mb-2">{t.tanji_card_title}</h2>
                                         <p className="text-emerald-50 text-sm leading-relaxed">{t.tanji_card_desc}</p>
@@ -455,6 +475,7 @@
                         </div>
                     </header>
 
+                    {}
                     <section id="credentials" className="py-16 bg-white border-t border-slate-100">
                         <div className="max-w-6xl mx-auto px-4">
                             <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-8 gap-6">
@@ -522,6 +543,7 @@
                         </div>
                     </section>
 
+                    {}
                     <section id="global" className="py-16 bg-gradient-to-b from-white to-slate-50 relative border-t border-slate-100 overflow-hidden">
                         <div className="absolute top-20 left-0 w-96 h-96 bg-teal-500/5 rounded-full blur-3xl pointer-events-none"></div>
                         <div className="max-w-6xl mx-auto px-4 relative z-10">
@@ -583,6 +605,7 @@
                         </div>
                     </section>
 
+                    {}
                     <section id="awards" className="py-16 bg-gradient-to-b from-slate-50 to-white relative border-t border-slate-100 overflow-hidden">
                         <div className="absolute top-10 right-0 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl pointer-events-none"></div>
 
@@ -619,7 +642,7 @@
                                     const isWinner = award.status === 'winner';
                                     const sideBorderClass = isWinner ? "from-amber-400 to-amber-600" : "from-blue-400 to-indigo-500";
                                     const pillBgClass = isWinner ? "bg-amber-50 text-amber-700 border-amber-200" : "bg-blue-50 text-blue-700 border-blue-100";
-                                    const iconClass = isWinner ? "text-amber-500 shadow-sm rounded-full" : "text-blue-500 animate-pulse";
+                                    const iconClass = isWinner ? "text-amber-500 shadow-sm rounded-full" : "text-blue-500";
                                     const titleHoverClass = isWinner ? "group-hover:text-amber-800" : "group-hover:text-indigo-700";
                                     const IconComponent = isWinner ? Star : Rocket;
 
@@ -632,7 +655,7 @@
                                                     <IconComponent size={14} className={iconClass} />
                                                     {award.year}
                                                 </div>
-                                                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider bg-slate-50 px-2.5 py-1 rounded-md border border-slate-100">
+                                                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider bg-slate-50 px-2.5 py-1 rounded-md border border-slate-100 text-right">
                                                     {award.issuer[lang]}
                                                 </span>
                                             </div>
@@ -693,7 +716,7 @@
                                                 )}
                                                 
                                                 {award.projectLink && (
-                                                    <a href={award.projectLink} target="_blank" rel="noopener noreferrer" className="flex-shrink-0 inline-flex items-center justify-center gap-1 text-[11px] font-bold text-purple-600 hover:text-purple-800 bg-purple-50 hover:bg-purple-100 px-3 py-2 rounded-lg transition-colors">
+                                                    <a href={award.projectLink} target="_blank" rel="noopener noreferrer" className="flex-shrink-0 inline-flex items-center justify-center gap-1 text-[11px] font-bold text-purple-600 hover:text-purple-800 bg-purple-50 hover:bg-purple-100 px-3 py-2 rounded-lg transition-colors h-fit self-end">
                                                         {t.view_project} <ArrowRight size={12} />
                                                     </a>
                                                 )}
@@ -741,6 +764,7 @@
                         </div>
                     </section>
 
+                    {}
                     <section id="portfolio" className="py-16 bg-slate-50">
                         <div className="max-w-6xl mx-auto px-4">
                             <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-6 gap-4">
@@ -792,7 +816,7 @@
                                                 {project.description[lang]}
                                             </p>
                                             <div className="flex flex-wrap gap-1.5 pt-3 border-t border-slate-100 mt-auto">
-                                                {project.tags.slice(0,3).map(tag => (
+                                                {project.tags.slice(0,4).map(tag => (
                                                     <span key={tag} className="text-[10px] px-2 py-0.5 bg-slate-50 text-slate-500 rounded border border-slate-100 font-medium">
                                                         {tag}
                                                     </span>
@@ -841,6 +865,7 @@
                         </div>
                     </section>
 
+                    {}
                     <section id="contact" className="py-12 bg-white border-t border-slate-100">
                         <div className="max-w-5xl mx-auto px-4">
                             <div className="bg-gradient-to-r from-purple-950 to-indigo-950 rounded-2xl p-6 md:p-10 text-white shadow-xl flex flex-col items-center justify-between gap-8 relative overflow-hidden">

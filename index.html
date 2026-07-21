@@ -137,6 +137,21 @@
 
         const awardsData = [
             {
+                id: 7, status: 'finalist', year: "2026", category: "climate",
+                title: { zh: "2026 台灣仿生設計競賽", en: "2026 Taiwan Biomimicry Design Challenge" },
+                issuer: { zh: "台灣仿生科技發展協會 / 新北市政府", en: "Biomimicry Taiwan / NTPC" },
+                description: {
+                    zh: "【晉級決賽】作品：MycoTanji 仿生社區碳循環系統。以「Nature Positive 自然正向」為核心，汲取真菌菌絲體分解有機質與碳循環運作邏輯，結合社區微型循環網絡，打造兼具減碳與增益自然資本之永續仿生解方。",
+                    en: "[Finalist] Project: MycoTanji Biomimicry Local Carbon Cycle System. Centered on 'Nature Positive', inspired by fungal mycelium decomposition and carbon cycling to create a sustainable biomimicry net-zero solution."
+                },
+                projectLink: "https://tanji2026.github.io/biomimicry/",
+                timeline: [
+                    { date: "2026.06.30", event: { zh: "作品投遞", en: "Proposal Submitted" }, status: 'done' },
+                    { date: "2026.07.20", event: { zh: "晉級決賽", en: "Advance to Finals" }, status: 'current' },
+                    { date: "2026.07.31", event: { zh: "決賽簡報與仿生咖啡館", en: "Final Presentation & Co-learning Cafe" }, status: 'upcoming' }
+                ]
+            },
+            {
                 id: 6, status: 'finalist', year: "2026", category: "finance",
                 title: { zh: "2026 臺灣「能」- 永續能源創意實作競賽", en: "2026 Taiwan \"ENERGY\" Sustainable Energy Creative Practice Competition" },
                 issuer: { zh: "教育部 / 國立科學工藝博物館", en: "MOE / National Science and Technology Museum" },
@@ -230,6 +245,13 @@
         ];
 
         const projects = [
+            { 
+                id: 'tj8', type: 'tanji', 
+                title: { zh: "MycoTanji 仿生社區碳循環系統", en: "MycoTanji Biomimicry Local Carbon Cycle System" }, link: "https://tanji2026.github.io/biomimicry/", 
+                tags: ["Biomimicry", "Mycelium", "Carbon Cycle", "SDGs"], 
+                description: { zh: "2026 台灣仿生設計競賽決賽作品。汲取真菌菌絲體分解與養分循環機制，打造社區微型碳循環生態系，推動 Nature Positive 增益自然之淨零轉型。", en: "2026 Taiwan Biomimicry Design Challenge Finalist. Inspired by fungal mycelium decomposition and carbon cycling to build a community micro-carbon cycle ecosystem." }, 
+                image: "images/mycotanji.jpg" 
+            },
             { 
                 id: 'tj7', type: 'tanji', 
                 title: { zh: "TanJi 淨零群募平台", en: "TanJi Net-Zero Crowdfunding Platform" }, link: "https://tanji2026.github.io/twenergy/", 
@@ -475,7 +497,6 @@
                         </div>
                     </header>
 
-                    {}
                     <section id="credentials" className="py-16 bg-white border-t border-slate-100">
                         <div className="max-w-6xl mx-auto px-4">
                             <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-8 gap-6">
@@ -543,7 +564,6 @@
                         </div>
                     </section>
 
-                    {}
                     <section id="global" className="py-16 bg-gradient-to-b from-white to-slate-50 relative border-t border-slate-100 overflow-hidden">
                         <div className="absolute top-20 left-0 w-96 h-96 bg-teal-500/5 rounded-full blur-3xl pointer-events-none"></div>
                         <div className="max-w-6xl mx-auto px-4 relative z-10">
@@ -605,7 +625,6 @@
                         </div>
                     </section>
 
-                    {}
                     <section id="awards" className="py-16 bg-gradient-to-b from-slate-50 to-white relative border-t border-slate-100 overflow-hidden">
                         <div className="absolute top-10 right-0 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl pointer-events-none"></div>
 
@@ -764,7 +783,6 @@
                         </div>
                     </section>
 
-                    {}
                     <section id="portfolio" className="py-16 bg-slate-50">
                         <div className="max-w-6xl mx-auto px-4">
                             <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-6 gap-4">
@@ -865,7 +883,6 @@
                         </div>
                     </section>
 
-                    {}
                     <section id="contact" className="py-12 bg-white border-t border-slate-100">
                         <div className="max-w-5xl mx-auto px-4">
                             <div className="bg-gradient-to-r from-purple-950 to-indigo-950 rounded-2xl p-6 md:p-10 text-white shadow-xl flex flex-col items-center justify-between gap-8 relative overflow-hidden">
